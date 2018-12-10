@@ -2,7 +2,7 @@
 <!-- Fecha de creación: 10/12/2018 -->
  
  <?php
-//entrada a la aplicacion
+//entrada a la aplicacio n
 //se va usar la session de la conexion
 session_start();
 //funcion de autenticacion
