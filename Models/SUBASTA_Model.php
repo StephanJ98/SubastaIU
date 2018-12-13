@@ -32,13 +32,11 @@ class SUBASTA_Model { //declaración de la clase
 
 	} // fin del constructor
 
-	//funcion de destrucción del objeto: se ejecuta automaticamente
-	//al finalizar el script
+	//funcion de destrucción del objeto: se ejecuta automaticamente al finalizar el script
 	function __destruct() {
 	} // fin del metodo destruct
 
-	//funcion SEARCH: hace una búsqueda en la tabla con
-	//los datos proporcionados. Si van vacios devuelve todos
+	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "SELECT  idSubasta,
@@ -65,9 +63,8 @@ class SUBASTA_Model { //declaración de la clase
 	} // fin metodo SEARCH
 
 	//Metodo ADD()
-	//Inserta en la tabla  de la bd  los valores
-	// de los atributos del objeto. Comprueba si la clave/s esta vacia y si 
-	//existe ya en la tabla
+	//Inserta en la tabla  de la bd  los valores de los atributos del objeto. Comprueba si la clave/s esta vacia y 
+	//si existe ya en la tabla
 	function ADD() {
 		if ( ( $this->idSubasta <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
@@ -121,8 +118,8 @@ class SUBASTA_Model { //declaración de la clase
 	} // fin del metodo ADD
 
 	// funcion DELETE()
-	// comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
-	// se manda un mensaje de que ese valor de clave no existe
+	//Comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
+	//se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
@@ -145,8 +142,8 @@ class SUBASTA_Model { //declaración de la clase
 	} // fin metodo DELETE
 
 	// funcion RellenaDatos()
-	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
-	// en el atributo de la clase
+	//Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
+	//en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
 				FROM SUBASTAS 
