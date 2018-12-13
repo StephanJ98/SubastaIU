@@ -9,15 +9,17 @@ class HISTORIAL_Model { //declaración de la clase
 	var $idSubasta; //declaración del atributo idSubasta
 	var $idUser; // declaración del atributo idUser
 	var $idPuja; // declaración del atributo idPuja
+	var $importe; // declaración del atributo importe
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
-	function __construct($idHistorial, $idSubasta, $idUser, $idPuja) {
+	function __construct($idHistorial, $idSubasta, $idUser, $idPuja, $importe) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->idHistorial = $idHistorial;
 		$this->idSubasta = $idSubasta;
 		$this->idUser = $idUser;
 		$this->idPuja = $idPuja;
+		$this->importe = $importe;
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/AccessBD.php';
 		// conectamos con la bd y guardamos el manejador en un atributo de la clase
@@ -34,13 +36,15 @@ class HISTORIAL_Model { //declaración de la clase
 		$sql = "SELECT  idHistorial,
 						idSubasta,
 						idUser,
-						idPuja
+						idPuja,
+						importe
        			FROM HISTORIAL
     			WHERE 
     				( (BINARY idHistorial LIKE '%$this->idHistorial%') &&
 					(BINARY idSubasta LIKE '%$this->idSubasta%') &&
 					(BINARY idUser LIKE '%$this->idUser%') &&
-	 				(BINARY idPuja LIKE '%$this->idPuja%') )";
+	 				(BINARY idPuja LIKE '%$this->idPuja%') &&
+	 				(BINARY importe LIKE '%$this->importe%') )";
 		// si se produce un error en la busqueda mandamos el idPuja de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -81,12 +85,14 @@ class HISTORIAL_Model { //declaración de la clase
 									idHistorial,
 									idSubasta,
 									idUser,
-									idPuja) 
+									idPuja,
+									importe) 
 								VALUES(
 									'$this->idHistorial',
 									'$this->idSubasta',
 									'$this->idUser',
-									'$this->idPuja')";
+									'$this->idPuja',
+									'$this->importe')";
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos idPuja
 						return 'Error en la inserción';
