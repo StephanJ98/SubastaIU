@@ -50,8 +50,7 @@ class USUARIOS_Model { //declaración de la clase
 					(BINARY nombre LIKE '%$this->nombre%') &&
 	 				(BINARY email LIKE '%$this->email%') &&
 					(BINARY avatar LIKE'%$this->avatar%') &&
-					(BINARY rol LIKE'%$this->rol%')
-    				)";
+					(BINARY rol LIKE'%$this->rol%') )";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
