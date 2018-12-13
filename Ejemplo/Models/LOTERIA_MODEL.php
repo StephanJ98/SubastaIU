@@ -19,8 +19,6 @@ class LOTERIA_Model { //declaración de la clase
             var $pagado;
 	//Constructor de la clase
         function __construct($email,$nombre,$apellidos,$participacion,$resguardo,$ingresado,$premiopersonal,$pagado){
-
-       
             $this->email = $email;
             $this->nombre = $nombre;
             $this->apellidos = $apellidos;

@@ -11,7 +11,7 @@ class USUARIOS_Model { //declaración de la clase
 	var $nombre; // declaración del atributo nombre
 	var $email; // declaración del atributo email
 	var $avatar; // declaración del atributo avatar
-	var $rol;
+	var $rol; //declaración del atributo rol
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
