@@ -10,18 +10,18 @@ class USUARIOS_Model { //declaración de la clase
 	var $password; //declaración del atributo password
 	var $nombre; // declaración del atributo nombre
 	var $email; // declaración del atributo email
-	var $fotopersonal; // declaración del atributo fotopersonal
+	var $avatar; // declaración del atributo avatar
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct( $login, $password, $nombre, $email, $fotopersonal) {
+	function __construct( $login, $password, $nombre, $email, $avatar) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;
 		$this->password = $password;
 		$this->nombre = $nombre;
 		$this->email = $email;
-		$this->fotopersonal = $fotopersonal;
+		$this->avatar = $avatar;
 
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/AccessBD.php';
@@ -38,7 +38,7 @@ class USUARIOS_Model { //declaración de la clase
 					password,
 					nombre,
 					email,
-					fotopersonal
+					avatar
        			FROM USUARIOS 
     			WHERE 
     				(
@@ -46,7 +46,7 @@ class USUARIOS_Model { //declaración de la clase
 					(BINARY password LIKE '%$this->password%') &&
 					(BINARY nombre LIKE '%$this->nombre%') &&
 	 				(BINARY email LIKE '%$this->email%') &&
-					(BINARY fotopersonal LIKE'%$this->fotopersonal%')
+					(BINARY avatar LIKE'%$this->avatar%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -91,13 +91,13 @@ class USUARIOS_Model { //declaración de la clase
 									password,
 									nombre,
 									email,
-									fotopersonal) 
+									avatar) 
 								VALUES(
 									'$this->login',
 									'$this->password',
 									'$this->nombre',
 									'$this->email',
-									'$this->fotopersonal')";
+									'$this->avatar')";
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
@@ -170,13 +170,13 @@ class USUARIOS_Model { //declaración de la clase
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			if($this->fotopersonal <> null){
+			if($this->avatar <> null){
 				$sql = "UPDATE USUARIOS SET 
 							login = '$this->login',
 							password = '$this->password',
 							nombre = '$this->nombre',
 							email = '$this->email',
-							fotopersonal ='$this->fotopersonal'
+							avatar ='$this->avatar'
 						WHERE ( login COLLATE utf8_bin = '$this->login')";
 			}else{
 				$sql = "UPDATE USUARIOS SET 
