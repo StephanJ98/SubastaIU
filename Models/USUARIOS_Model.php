@@ -11,17 +11,19 @@ class USUARIOS_Model { //declaración de la clase
 	var $nombre; // declaración del atributo nombre
 	var $email; // declaración del atributo email
 	var $avatar; // declaración del atributo avatar
+	var $rol;
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct( $login, $password, $nombre, $email, $avatar) {
+	function __construct( $login, $password, $nombre, $email, $avatar, $rol) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;
 		$this->password = $password;
 		$this->nombre = $nombre;
 		$this->email = $email;
 		$this->avatar = $avatar;
+		$this->rol = $rol;
 
 		// incluimos la funcion de acceso a la bd
 		include_once '../Functions/AccessBD.php';
@@ -38,7 +40,8 @@ class USUARIOS_Model { //declaración de la clase
 					password,
 					nombre,
 					email,
-					avatar
+					avatar,
+					rol
        			FROM USUARIOS 
     			WHERE 
     				(
@@ -46,7 +49,8 @@ class USUARIOS_Model { //declaración de la clase
 					(BINARY password LIKE '%$this->password%') &&
 					(BINARY nombre LIKE '%$this->nombre%') &&
 	 				(BINARY email LIKE '%$this->email%') &&
-					(BINARY avatar LIKE'%$this->avatar%')
+					(BINARY avatar LIKE'%$this->avatar%') &&
+					(BINARY rol LIKE'%$this->rol%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -91,13 +95,15 @@ class USUARIOS_Model { //declaración de la clase
 									password,
 									nombre,
 									email,
-									avatar) 
+									avatar,
+									rol) 
 								VALUES(
 									'$this->login',
 									'$this->password',
 									'$this->nombre',
 									'$this->email',
-									'$this->avatar')";
+									'$this->avatar',
+									'$this->rol')";
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
@@ -176,14 +182,16 @@ class USUARIOS_Model { //declaración de la clase
 							password = '$this->password',
 							nombre = '$this->nombre',
 							email = '$this->email',
-							avatar ='$this->avatar'
+							avatar = '$this->avatar' ,
+							rol = '$this->rol'
 						WHERE ( login COLLATE utf8_bin = '$this->login')";
 			}else{
 				$sql = "UPDATE USUARIOS SET 
 							login = '$this->login',
 							password = '$this->password',
 							nombre = '$this->nombre',
-							email = '$this->email'
+							email = '$this->email' ,
+							rol = '$this->rol'
 						WHERE ( login COLLATE utf8_bin = '$this->login')";
 			}
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
