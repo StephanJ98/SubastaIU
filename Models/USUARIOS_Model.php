@@ -1,43 +1,32 @@
 <?php
 /*
-	Archivo php
-	Nombre: USUARIOS_MODEL.php
-	Autor: 	cvy3ms
-	Fecha de creación: 19/11/2018 
+	Autor: 	GUI
+	Fecha de creación: 13/12/2018 
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
 class USUARIOS_Model { //declaración de la clase
 
 	var $login; // declaración del atributo login
 	var $password; //declaración del atributo password
-	var $DNI; // declaración del atributo DNI
 	var $nombre; // declaración del atributo nombre
-	var $apellidos; // declaración del atributo apellidos
-	var $telefono; // declaración del atributo telefono
 	var $email; // declaración del atributo email
-	var $FechaNacimiento; // declaración del atributo Fecha Nacimiento
-	var $fotopersonal; // declaración del atributo fotopersonal
-	var $sexo; //declaración del atributo sexo
+	var $avatar; // declaración del atributo avatar
+	var $rol; //declaración del atributo rol
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct( $login, $password, $DNI, $nombre, $apellidos, $telefono, $email, $FechaNacimiento, $fotopersonal, $sexo ) {
+	function __construct( $login, $password, $nombre, $email, $avatar, $rol) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->login = $login;
 		$this->password = $password;
-		$this->DNI = $DNI;
 		$this->nombre = $nombre;
-		$this->apellidos = $apellidos;
-		$this->telefono = $telefono;
 		$this->email = $email;
-		$this->FechaNacimiento = $FechaNacimiento;
-		$this->fotopersonal = $fotopersonal;
-		$this->sexo = $sexo;
-
+		$this->avatar = $avatar;
+		$this->rol = $rol;
 
 		// incluimos la funcion de acceso a la bd
-		include_once '../Functions/BdAdmin.php';
+		include_once '../Functions/AccessBD.php';
 		// conectamos con la bd y guardamos el manejador en un atributo de la clase
 		$this->mysqli = ConectarBD();
 
@@ -47,29 +36,21 @@ class USUARIOS_Model { //declaración de la clase
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "select  login,
+		$sql = "SELECT  login,
 					password,
-					DNI,
 					nombre,
-					apellidos,
-					telefono,
 					email,
-					FechaNacimiento,
-					fotopersonal,
-					sexo
-       			from USUARIOS 
-    			where 
+					avatar,
+					rol
+       			FROM USUARIOS 
+    			WHERE 
     				(
 					(BINARY login LIKE '%$this->login%') &&
 					(BINARY password LIKE '%$this->password%') &&
-    				(BINARY DNI LIKE '%$this->DNI%') &&
 					(BINARY nombre LIKE '%$this->nombre%') &&
-	 				(BINARY apellidos LIKE '%$this->apellidos%') &&
-	 				(BINARY telefono LIKE '%$this->telefono%') &&
 	 				(BINARY email LIKE '%$this->email%') &&
-	 				(BINARY DATE_FORMAT(FechaNacimiento,'%d/%m/%Y') LIKE '%$this->FechaNacimiento%') &&
-					(BINARY fotopersonal LIKE'%$this->fotopersonal%') &&
-					(BINARY sexo LIKE '%$this->sexo%')
+					(BINARY avatar LIKE'%$this->avatar%') &&
+					(BINARY rol LIKE'%$this->rol%')
     				)";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -89,7 +70,9 @@ class USUARIOS_Model { //declaración de la clase
 		if ( ( $this->login <> '' ) ) { // si el atributo clave de la entidad no esta vacio
 
 			// construimos el sql para buscar esa clave en la tabla
-			$sql = "SELECT * FROM USUARIOS WHERE (  login COLLATE utf8_bin = '$this->login')";
+			$sql = "SELECT * 
+					FROM USUARIOS 
+					WHERE (  login COLLATE utf8_bin = '$this->login')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
@@ -97,55 +80,36 @@ class USUARIOS_Model { //declaración de la clase
 
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el login)
 					// construimos el sql para buscar esa clave candidata en la tabla
-					$sql = "SELECT * FROM USUARIOS WHERE (DNI COLLATE utf8_bin = '$this->DNI')";
-					
-					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el dni)
+					$sql = "SELECT * 
+							FROM USUARIOS 
+							WHERE  (email COLLATE utf8_bin = '$this->email')";
+
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el DNI introducido en la base de datos';// ya existe
+						return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
 						
 					} else {
-						// construimos el sql para buscar esa clave candidata en la tabla
-						$sql = "SELECT * FROM USUARIOS WHERE  (email COLLATE utf8_bin = '$this->email')";
 
-						if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
-							// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-							return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
-							
-						} else {
-
-							$sql = "INSERT INTO USUARIOS (
-							login,
-							password,
-							DNI,
-							nombre,
-							apellidos,
-							telefono,
-							email,
-							FechaNacimiento,
-							fotopersonal,
-							sexo) 
+						$sql = "INSERT INTO USUARIOS (
+									login,
+									password,
+									nombre,
+									email,
+									avatar,
+									rol) 
 								VALUES(
-								'$this->login',
-								'$this->password',
-								'$this->DNI',
-								'$this->nombre',
-								'$this->apellidos',
-								'$this->telefono',
-								'$this->email',
-								STR_TO_DATE(REPLACE('$this->FechaNacimiento','/','.') ,GET_FORMAT(date,'EUR')),
-								'$this->fotopersonal',
-								'$this->sexo'
-								)";
-
-						}
-
+									'$this->login',
+									'$this->password',
+									'$this->nombre',
+									'$this->email',
+									'$this->avatar',
+									'$this->rol')";
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
-
 				} else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
 					return 'Ya existe el usuario introducido en la base de datos'; // ya existe
 			}
@@ -165,14 +129,16 @@ class USUARIOS_Model { //declaración de la clase
 	// se manda un mensaje de que ese valor de clave no existe
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * FROM USUARIOS WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * 
+				FROM USUARIOS 
+				WHERE (login COLLATE utf8_bin = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
-
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM USUARIOS WHERE (login COLLATE utf8_bin = '$this->login' )";
+			$sql = "DELETE FROM USUARIOS 
+					WHERE (login COLLATE utf8_bin = '$this->login' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -186,14 +152,14 @@ class USUARIOS_Model { //declaración de la clase
 	// Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	// en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
-
-		$sql = "SELECT * FROM USUARIOS WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * 
+				FROM USUARIOS 
+				WHERE (login COLLATE utf8_bin = '$this->login')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
 		} else { // si existe se devuelve la tupla resultado
 			$result = $resultado->fetch_array();
-			$result[ 'FechaNacimiento' ] = date( "d/m/Y", strtotime( $result[ 'FechaNacimiento' ] ) );
 			return $result;
 		}
 	} // fin del metodo RellenaDatos()
@@ -203,54 +169,40 @@ class USUARIOS_Model { //declaración de la clase
 	// si existe se modifica
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
-		$sql = "SELECT * FROM USUARIOS WHERE (login COLLATE utf8_bin = '$this->login')";
+		$sql = "SELECT * 
+				FROM USUARIOS 
+				WHERE (login COLLATE utf8_bin = '$this->login')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
-			if($this->fotopersonal <> null){
+			if($this->avatar <> null){
 				$sql = "UPDATE USUARIOS SET 
-					login = '$this->login',
-					password = '$this->password',
-					DNI = '$this->DNI',
-					nombre = '$this->nombre',
-					apellidos = '$this->apellidos',
-					telefono = '$this->telefono',
-					email = '$this->email',
-					FechaNacimiento = STR_TO_DATE(REPLACE('$this->FechaNacimiento','/','.') ,GET_FORMAT(date,'EUR')),
-					fotopersonal ='$this->fotopersonal',
-					sexo ='$this->sexo'
-					
-				WHERE ( login COLLATE utf8_bin = '$this->login'
-				)";
+							login = '$this->login',
+							password = '$this->password',
+							nombre = '$this->nombre',
+							email = '$this->email',
+							avatar = '$this->avatar' ,
+							rol = '$this->rol'
+						WHERE ( login COLLATE utf8_bin = '$this->login')";
 			}else{
-				
 				$sql = "UPDATE USUARIOS SET 
-					login = '$this->login',
-					password = '$this->password',
-					DNI = '$this->DNI',
-					nombre = '$this->nombre',
-					apellidos = '$this->apellidos',
-					telefono = '$this->telefono',
-					email = '$this->email',
-					FechaNacimiento = STR_TO_DATE(REPLACE('$this->FechaNacimiento','/','.') ,GET_FORMAT(date,'EUR')),
-					sexo ='$this->sexo'
-					
-				WHERE ( login COLLATE utf8_bin = '$this->login'
-				)";
+							login = '$this->login',
+							password = '$this->password',
+							nombre = '$this->nombre',
+							email = '$this->email' ,
+							rol = '$this->rol'
+						WHERE ( login COLLATE utf8_bin = '$this->login')";
 			}
-			
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';
 			} else { // si no hay problemas con la modificación se indica que se ha modificado
 				return 'Modificado correctamente';
 			}
-
 		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
 			return 'No existe en la base de datos';
 	} // fin del metodo EDIT
-
 
 
 	// funcion login: realiza la comprobación de si existe el usuario en la bd y despues si la pass
@@ -259,10 +211,8 @@ class USUARIOS_Model { //declaración de la clase
 	function login() {
 
 		$sql = "SELECT *
-			FROM USUARIOS
-			WHERE (
-				(login COLLATE utf8_bin = '$this->login') 
-			)";
+				FROM USUARIOS
+				WHERE ((login COLLATE utf8_bin = '$this->login'))";
 		$resultado = $this->mysqli->query( $sql );
 		if ( $resultado->num_rows == 0 ) {
 			return 'El usuario no existe';
@@ -279,33 +229,24 @@ class USUARIOS_Model { //declaración de la clase
 	//
 	function Register() {
 
-		$sql = "select * from USUARIOS where login COLLATE utf8_bin = '" . $this->login . "'";
-
+		$sql = "SELECT * 
+				FROM USUARIOS 
+				WHERE login COLLATE utf8_bin = '" . $this->login . "'";
 		$result = $this->mysqli->query( $sql );
 		if ( $result->num_rows == 1 ) { // existe el usuario
-			return 'El usuario ya existe';
+			return 'El usuario ya existe';	
 		} else {
-			$sql = "SELECT * FROM USUARIOS WHERE (DNI COLLATE utf8_bin = '$this->DNI')";
-					
-				if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el dni)
-					// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-					return 'Ya existe un usuario con el DNI introducido en la base de datos';// ya existe
-					
-				} else {
-					// construimos el sql para buscar esa clave candidata en la tabla
-					$sql = "SELECT * FROM USUARIOS WHERE  (email COLLATE utf8_bin = '$this->email')";
-
-					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
-						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
-						
-					}else{
-								return true; //no existe el usuario
-					}
-				}
+			// construimos el sql para buscar esa clave candidata en la tabla
+			$sql = "SELECT * 
+					FROM USUARIOS 
+					WHERE  (email COLLATE utf8_bin = '$this->email')";
+			if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
+				// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
+				return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
+			}else{
+				return true; //no existe el usuario
+			}
 		}
-
 	}
 } //fin de clase
-
 ?>
