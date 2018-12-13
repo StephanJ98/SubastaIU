@@ -1,4 +1,4 @@
-<!-- Autor: GUI  -->
+<!-- Autor: GUI                                                                                                                                 --> 
 <!-- Fecha de creación: 10/12/2018 -->
  
  <?php
