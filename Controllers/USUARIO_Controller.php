@@ -1,9 +1,7 @@
 <?php
 /*
-	Archivo php
-	Nombre: USUARIOS_CONTROLLER.php
-	Autor: 	cvy3ms
-	Fecha de creación: 19/11/2018 
+	Autor: GUI
+	Fecha de creación: 20/12/2018 
 	Función: controlador que realiza las acciones, recibidas de las vistas, necesarias para realizar altas, bajas, modificaciones y búsquedas.
 */
 session_start(); //solicito trabajar con la session
