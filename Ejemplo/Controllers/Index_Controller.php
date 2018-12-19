@@ -4,7 +4,7 @@
 	Nombre: Index_Controller.php
 	Autor: 	cvy3ms
 	Fecha de creación: 23/11/2018 
-	Función: controlador que comprueba si el usuario está autenticado o no
+	Función: controlador que comprueba si el usuario está autenticado o  no
 */
 //session
 session_start();
