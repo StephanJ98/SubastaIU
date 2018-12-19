@@ -78,7 +78,6 @@ class LOTERIA_Model { //declaración de la clase
     function ADD()
     {
         
-     
         $sql = "SELECT * FROM LOTERIAIU WHERE `lot.email`='$this->email'";
         if (!$result = $this->mysqli->query($sql)){
             return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd
