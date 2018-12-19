@@ -22,9 +22,6 @@ GRANT USAGE ON *.* TO `GUIBD`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR
 GRANT ALL PRIVILEGES ON `GUIBD`.* TO `GUIBD`@`localhost` WITH GRANT OPTION;
 --
 -- Estructura de tabla para la tabla `USUARIO`
--- 0->Admin
--- 1->Pujador
--- 2->Subastador
 --
 CREATE TABLE IF NOT EXISTS `USUARIO`(
 `idUser` varchar(30) NOT NULL,
@@ -32,12 +29,27 @@ CREATE TABLE IF NOT EXISTS `USUARIO`(
 `nombre` varchar(150) NOT NULL,
 `email` varchar(60) NOT NULL,
 `avatar` varchar(50) NOT NULL,
-`rol` enum('0','1','2') NOT NULL,
+`rol` varchar(1) NOT NULL,
 PRIMARY KEY (`idUser`),
+FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`)
 UNIQUE KEY `email` (`email`),
-UNIQUE KEY `nombre` (`nombre`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Estructura de tabla para la tabla `ROL`
+--
+CREATE TABLE IF NOT EXISTS `ROL`(
+`idRol` varchar(1) NOT NULL,
+`nomRol` varchar(15) NOT NULL,
+`descripRol` varchar(300) NOT NULL,
+PRIMARY KEY (`idRol`),
+UNIQUE KEY `NomRol` (`NomRol`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('0','Administrador','Supervisa usuarios y subastas.');
+INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('1','Pujador','Solo puede pujar.');
+INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('2','Subastador','Crea subastas.');
 
 --
 -- Estructura de tabla para la tabla `SUBASTA`
@@ -47,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `SUBASTA`(
 `producto` varchar(30) NOT NULL,
 `info` varchar(30) NOT NULL,
 `ficheroSubasta` varchar(30) NOT NULL,
-`esCiega` enum(`true`,`false`) NOT NULL,
+`esCiega` enum('true','false') NOT NULL,
 `mayorPuja` varchar(50) NOT NULL,
 PRIMARY KEY (`idSubasta`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
