@@ -33,18 +33,18 @@ class HISTORIAL_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  idHistorial,
-						idSubasta,
-						idUser,
-						idPuja,
-						importe
+		$sql = "SELECT  `idHistorial` as idHistorial,
+						`idSubasta` as idSubasta,
+						`idUser` as idUser,
+						`idPuja` as idPuja,
+						`importe` as importe
        			FROM HISTORIAL
     			WHERE 
-    				( (BINARY idHistorial LIKE '%$this->idHistorial%') &&
-					(BINARY idSubasta LIKE '%$this->idSubasta%') &&
-					(BINARY idUser LIKE '%$this->idUser%') &&
-	 				(BINARY idPuja LIKE '%$this->idPuja%') &&
-	 				(BINARY importe LIKE '%$this->importe%') )";
+    				( (BINARY `idHistorial` LIKE '%$this->idHistorial%') &&
+					(BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+					(BINARY `idUser` LIKE '%$this->idUser%') &&
+	 				(BINARY `idPuja` LIKE '%$this->idPuja%') &&
+	 				(BINARY `importe` LIKE '%$this->importe%') )";
 		// si se produce un error en la busqueda mandamos el idPuja de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -63,7 +63,7 @@ class HISTORIAL_Model { //declaración de la clase
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
 					FROM HISTORIAL 
-					WHERE (idHistorial COLLATE utf8_bin = '$this->idHistorial')";
+					WHERE (`idHistorial` COLLATE utf8_bin = '$this->idHistorial')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un idPuja que el contmayorPujaador manejara
@@ -73,7 +73,7 @@ class HISTORIAL_Model { //declaración de la clase
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM HISTORIAL 
-							WHERE (idHistorial COLLATE utf8_bin = '$this->idHistorial')";
+							WHERE (`idHistorial` COLLATE utf8_bin = '$this->idHistorial')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el idPuja)
 						// si ya existe ese valor de clave en la tabla devolvemos el idPuja correspondiente
@@ -82,11 +82,11 @@ class HISTORIAL_Model { //declaración de la clase
 					} else {
 
 						$sql = "INSERT INTO HISTORIAL (
-									idHistorial,
-									idSubasta,
-									idUser,
-									idPuja,
-									importe) 
+									`idHistorial`,
+									`idSubasta`,
+									`idUser`,
+									`idPuja`,
+									`importe`) 
 								VALUES(
 									'$this->idHistorial',
 									'$this->idSubasta',
@@ -113,7 +113,7 @@ class HISTORIAL_Model { //declaración de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
 				FROM HISTORIAL 
-				WHERE (idHistorial COLLATE utf8_bin = '$this->idHistorial')";
+				WHERE (`idHistorial` COLLATE utf8_bin = '$this->idHistorial')";
 		// Si la busqueda no da resultados, se devuelve el idPuja de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
