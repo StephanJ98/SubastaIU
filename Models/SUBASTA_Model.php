@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 13/12/2018 
+	Fecha de creación: 13/12/2018
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
 class SUBASTA_Model { //declaración de la clase

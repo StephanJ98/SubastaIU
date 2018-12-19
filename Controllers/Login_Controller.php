@@ -8,7 +8,6 @@ if(!isset($_REQUEST['idUser']) && !(isset($_REQUEST['password']))){
 	$login = new Login();
 }
 else{
-
 	include '../Functions/AccessDB.php';
 
 	include '../Models/USUARIO_Model.php';
@@ -24,7 +23,5 @@ else{
 		include '../Views/MESSAGE_View.php';
 		new MESSAGE($respuesta, 'LOGIN_Controller.php');
 	}
-
 }
-
 ?>
