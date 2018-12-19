@@ -4,20 +4,20 @@
 	Fecha de creación: 13/12/2018  
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
-class ROLES_Model {
+class ROL_Model {
     
     var $idRol; //declaración del atributo idRol
-    var $nombreRol; //declaración del atributo nombreRol
-    var $descRol; //declaración del atributo descRol
+    var $nomRol; //declaración del atributo nomRol
+    var $descripRol; //declaración del atributo descripRol
     var $mysqli; //declaracion del atributo manejador de la bd
     
     //Constructor de la clase
     
-    function __construct( $idRol, $nombreRol, $descRol) {
+    function __construct( $idRol, $nomRol, $descripRol) {
         //asignación de valores de parámetro a los atributos de la clase
         $this->idRol = $idRol;
-        $this->nombreRol = $nombreRol;
-        $this->descRol = $descRol;
+        $this->nomRol = $nomRol;
+        $this->descripRol = $descripRol;
         
         //Incluimos la función de acceso a la bd
         include_once '../Functions/AccessDB.php';
@@ -32,15 +32,15 @@ class ROLES_Model {
     //funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacíos devuelve todos
     function SEARCH() {
         // construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-        $sql = "SELECT  idRol,
-                        nombreRol,
-                        descRol
+        $sql = "SELECT  `idRol` as idRol,
+                        `nomRol` as nomRol,
+                        `descripRol` as descripRol
                 FROM ROLES
                 WHERE
                     (
-                    (BINARY idRol LIKE '%$this->idRol%') &&
-                    (BINARY nombreRol LIKE '%$this->nombreRol%') &&
-                    (BINARY descRol LIKE '%$this->descRol%')
+                    (BINARY `idRol` LIKE '%$this->idRol%') &&
+                    (BINARY `nomRol` LIKE '%$this->nomRol%') &&
+                    (BINARY `descripRol` LIKE '%$this->descripRol%')
                     )";
         // si se produce un error en la busqueda mandamos el mensaje de error en la consulta
         if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

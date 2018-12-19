@@ -39,20 +39,20 @@ class SUBASTA_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  idSubasta,
-						producto,
-						info,
-						ficheroSubasta,
-						esCiega,
-						mayorPuja
+		$sql = "SELECT  `idSubasta` as idSubasta,
+						`producto` as producto,
+						`info` as info,
+						`ficheroSubasta` as ficheroSubasta,
+						`esCiega` as esCiega,
+						`mayorPuja` as mayorPuja
        			FROM SUBASTAS 
     			WHERE 
-    				( (BINARY idSubasta LIKE '%$this->idSubasta%') &&
-					(BINARY producto LIKE '%$this->producto%') &&
-					(BINARY info LIKE '%$this->info%') &&
-	 				(BINARY ficheroSubasta LIKE '%$this->ficheroSubasta%') &&
-					(BINARY esCiega LIKE'%$this->esCiega%') &&
-					(BINARY mayorPuja LIKE'%$this->mayorPuja%') )";
+    				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+					(BINARY `producto` LIKE '%$this->producto%') &&
+					(BINARY `info` LIKE '%$this->info%') &&
+	 				(BINARY `ficheroSubasta` LIKE '%$this->ficheroSubasta%') &&
+					(BINARY `esCiega` LIKE'%$this->esCiega%') &&
+					(BINARY `mayorPuja` LIKE'%$this->mayorPuja%') )";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -71,7 +71,7 @@ class SUBASTA_Model { //declaración de la clase
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
 					FROM SUBASTAS 
-					WHERE (idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+					WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
@@ -81,7 +81,7 @@ class SUBASTA_Model { //declaración de la clase
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM SUBASTAS 
-							WHERE  (ficheroSubasta COLLATE utf8_bin = '$this->ficheroSubasta')";
+							WHERE  (`ficheroSubasta` COLLATE utf8_bin = '$this->ficheroSubasta')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el ficheroSubasta)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
@@ -90,12 +90,12 @@ class SUBASTA_Model { //declaración de la clase
 					} else {
 
 						$sql = "INSERT INTO SUBASTAS (
-									idSubasta,
-									producto,
-									info,
-									ficheroSubasta,
-									esCiega,
-									mayorPuja) 
+									`idSubasta`,
+									`producto`,
+									`info`,
+									`ficheroSubasta`,
+									`esCiega`,
+									`mayorPuja`) 
 								VALUES(
 									'$this->idSubasta',
 									'$this->producto',
@@ -124,14 +124,14 @@ class SUBASTA_Model { //declaración de la clase
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
 				FROM SUBASTAS 
-				WHERE (idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM SUBASTAS 
-					WHERE (idSubasta COLLATE utf8_bin = '$this->idSubasta' )";
+					WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -147,7 +147,7 @@ class SUBASTA_Model { //declaración de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
 				FROM SUBASTAS 
-				WHERE (idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -164,28 +164,28 @@ class SUBASTA_Model { //declaración de la clase
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * 
 				FROM SUBASTAS 
-				WHERE (idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			if($this->ficheroSubasta <> null){
 				$sql = "UPDATE SUBASTAS SET 
-							idSubasta = '$this->idSubasta',
-							producto = '$this->producto',
-							info = '$this->info',
-							ficheroSubasta = '$this->ficheroSubasta',
-							esCiega = '$this->esCiega' ,
-							mayorPuja = '$this->mayorPuja'
-						WHERE ( idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+							`idSubasta` = '$this->idSubasta',
+							`producto` = '$this->producto',
+							`info` = '$this->info',
+							`ficheroSubasta` = '$this->ficheroSubasta',
+							`esCiega` = '$this->esCiega' ,
+							`mayorPuja` = '$this->mayorPuja'
+						WHERE ( `idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 			}else{
 				$sql = "UPDATE SUBASTAS SET 
-							idSubasta = '$this->idSubasta',
-							producto = '$this->producto',
-							info = '$this->info',
-							esCiega = '$this->esCiega' ,
-							mayorPuja = '$this->mayorPuja'
-						WHERE ( idSubasta COLLATE utf8_bin = '$this->idSubasta')";
+							`idSubasta` = '$this->idSubasta',
+							`producto` = '$this->producto',
+							`info` = '$this->info',
+							`esCiega` = '$this->esCiega' ,
+							`mayorPuja` = '$this->mayorPuja'
+						WHERE ( `idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 			}
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
