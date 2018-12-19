@@ -243,7 +243,7 @@ class USUARIOS_Model { //declaración de la clase
 				// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
 				return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
 			}else{
-				return true; //no existe el usuario
+				return true; //no existe el usuario 
 			}
 		}
 	}
