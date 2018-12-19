@@ -21,17 +21,73 @@ CREATE USER IF NOT EXISTS `GUIBD`@`localhost` IDENTIFIED BY 'passGUIBD';
 GRANT USAGE ON *.* TO `GUIBD`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
 GRANT ALL PRIVILEGES ON `GUIBD`.* TO `GUIBD`@`localhost` WITH GRANT OPTION;
 --
--- Estructura de tabla para la tabla `datos`
+-- Estructura de tabla para la tabla `USUARIO`
+-- 0->Admin
+-- 1->Pujador
+-- 2->Subastador
 --
-CREATE TABLE IF NOT EXISTS `` (
-`login` varchar(15) NOT NULL,
+CREATE TABLE IF NOT EXISTS `USUARIO`(
+`idUser` varchar(30) NOT NULL,
 `password` varchar(128) NOT NULL,
-`nombre` varchar(30) NOT NULL,
-`apellidos` varchar(50) NOT NULL,
+`nombre` varchar(150) NOT NULL,
 `email` varchar(60) NOT NULL,
-`FechaNacimiento` date NOT NULL,
 `avatar` varchar(50) NOT NULL,
-`admin` enum('true','false') NOT NULL,
-PRIMARY KEY (`login`),
-UNIQUE KEY `email` (`email`)
+`rol` enum('0','1','2') NOT NULL,
+PRIMARY KEY (`idUser`),
+UNIQUE KEY `email` (`email`),
+UNIQUE KEY `nombre` (`nombre`),
+UNIQUE KEY `avatar` (`avatar`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Estructura de tabla para la tabla `SUBASTA`
+-- 
+CREATE TABLE IF NOT EXISTS `SUBASTA`(
+`idSubasta` varchar(30) NOT NULL,
+`producto` varchar(30) NOT NULL,
+`info` varchar(30) NOT NULL,
+`ficheroSubasta` varchar(30) NOT NULL,
+`esCiega` enum(`true`,`false`) NOT NULL,
+`mayorPuja` varchar(50) NOT NULL,
+PRIMARY KEY (`idSubasta`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Estructura de tabla para la tabla `PUJA`
+-- 
+CREATE TABLE IF NOT EXISTS `PUJA`(
+`idPuja` varchar(30) NOT NULL,
+`idSubasta` varchar(30) NOT NULL,
+`idUser` varchar(30) NOT NULL,
+`importe` varchar(50) NOT NULL,
+PRIMARY KEY (`idPuja`),
+FOREIGN KEY (`idSubasta`) REFERENCES SUBASTA(`idSubasta`),
+FOREIGN KEY (`idUser`) REFERENCES USUARIO(`idUser`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Estructura de tabla para la tabla `NOTIFICACION`
+-- 
+CREATE TABLE IF NOT EXISTS `NOTIFICACION`(
+`idNotificacion` varchar(30) NOT NULL,
+`fecha` date NOT NULL,
+`idUser` varchar(30) NOT NULL,
+`mensaje` varchar(300) NOT NULL,
+PRIMARY KEY (`idNotificacion`),
+FOREIGN KEY (`idUser`) REFERENCES USUARIO(`idUser`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Estructura de tabla para la tabla `HISTORIAL`
+-- 
+CREATE TABLE IF NOT EXISTS `HISTORIAL`(
+`idHistorial` varchar(30) NOT NULL,
+`idSubasta` varchar(30) NOT NULL,
+`idUser` varchar(30) NOT NULL,
+`idPuja` varchar(30) NOT NULL,
+`importe` varchar(50) NOT NULL,
+PRIMARY KEY (`idHistorial`),
+FOREIGN KEY (`idSubasta`) REFERENCES SUBASTA(`idSubasta`),
+FOREIGN KEY (`idUser`) REFERENCES USUARIO(`idUser`),
+FOREIGN KEY (`idPuja`) REFERENCES PUJA(`idPuja`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
