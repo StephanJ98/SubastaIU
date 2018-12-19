@@ -49,7 +49,7 @@ class LOTERIA_ADD {
 						<th class="formThTd">
 							<?php echo $strings['resguardo'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="resguardo" name="resguardo" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this','50')" maxlength="50"  required />
+						<td class="formThTd"><input type="file" id="resguardo" name="resguardo" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required />
 					</tr>
 					<tr>
 						<th class="formThTd">
