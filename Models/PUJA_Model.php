@@ -35,16 +35,16 @@ class PUJA_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  idPuja,
-						idSubasta,
-						idUser,
-						importe
+		$sql = "SELECT  `idPuja` as idPuja,
+						`idSubasta` as idSubasta,
+						`idUser` as idUser,
+						`importe` as importe
        			FROM PUJAS 
     			WHERE 
-    				( (BINARY idPuja LIKE '%$this->idPuja%') &&
-					(BINARY idSubasta LIKE '%$this->idSubasta%') &&
-					(BINARY idUser LIKE '%$this->idUser%') &&
-	 				(BINARY importe LIKE '%$this->importe%') )";
+    				( (BINARY `idPuja` LIKE '%$this->idPuja%') &&
+					(BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+					(BINARY `idUser` LIKE '%$this->idUser%') &&
+	 				(BINARY `importe` LIKE '%$this->importe%') )";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -63,7 +63,7 @@ class PUJA_Model { //declaración de la clase
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
 					FROM PUJAS 
-					WHERE (idPuja COLLATE utf8_bin = '$this->idPuja')";
+					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
@@ -73,7 +73,7 @@ class PUJA_Model { //declaración de la clase
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM PUJAS 
-							WHERE  (importe COLLATE utf8_bin = '$this->importe')";
+							WHERE  (`importe` COLLATE utf8_bin = '$this->importe')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el importe)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
@@ -82,10 +82,10 @@ class PUJA_Model { //declaración de la clase
 					} else {
 
 						$sql = "INSERT INTO PUJAS (
-									idPuja,
-									idSubasta,
-									idUser,
-									importe) 
+									`idPuja`,
+									`idSubasta`,
+									`idUser`,
+									`importe`) 
 								VALUES(
 									'$this->idPuja',
 									'$this->idSubasta',
@@ -112,14 +112,14 @@ class PUJA_Model { //declaración de la clase
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
 				FROM PUJAS 
-				WHERE (idPuja COLLATE utf8_bin = '$this->idPuja')";
+				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM PUJAS 
-					WHERE (idPuja COLLATE utf8_bin = '$this->idPuja' )";
+					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -135,7 +135,7 @@ class PUJA_Model { //declaración de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
 				FROM PUJAS 
-				WHERE (idPuja COLLATE utf8_bin = '$this->idPuja')";
+				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
@@ -152,17 +152,17 @@ class PUJA_Model { //declaración de la clase
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * 
 				FROM PUJAS 
-				WHERE (idPuja COLLATE utf8_bin = '$this->idPuja')";
+				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			$sql = "UPDATE PUJAS SET 
-						idPuja = '$this->idPuja',
-						idSubasta = '$this->idSubasta',
-						idUser = '$this->idUser',
-						importe = '$this->importe'
-					WHERE ( idPuja COLLATE utf8_bin = '$this->idPuja')";
+						`idPuja` = '$this->idPuja',
+						`idSubasta` = '$this->idSubasta',
+						`idUser` = '$this->idUser',
+						`importe` = '$this->importe'
+					WHERE ( `idPuja` COLLATE utf8_bin = '$this->idPuja')";
 			// si hay un problema con la query se envia un mensaje de error en la modificacion
 			if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 				return 'Error en la modificación';

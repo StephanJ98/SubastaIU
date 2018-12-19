@@ -35,16 +35,16 @@ class NOTIFICACION_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  idNotificacion,
-						fecha,
-						idUser,
-						mensaje
+		$sql = "SELECT  `idNotificacion` as idNotificacion,
+						`fecha` as fecha,
+						`idUser` as idUser,
+						`mensaje` as mensaje
        			FROM NOTIFICACION
     			WHERE 
-    				( (BINARY idNotificacion LIKE '%$this->idNotificacion%') &&
-					(BINARY DATE_FORMAT(fecha,'%d/%m/%Y') LIKE '%$this->fecha%') &&
-					(BINARY idUser LIKE '%$this->idUser%') &&
-	 				(BINARY mensaje LIKE '%$this->mensaje%') )";
+    				( (BINARY `idNotificacion` LIKE '%$this->idNotificacion%') &&
+					(BINARY DATE_FORMAT(`fecha`,'%d/%m/%Y') LIKE '%$this->fecha%') &&
+					(BINARY `idUser` LIKE '%$this->idUser%') &&
+	 				(BINARY `mensaje` LIKE '%$this->mensaje%') )";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -63,7 +63,7 @@ class NOTIFICACION_Model { //declaración de la clase
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
 					FROM NOTIFICACION 
-					WHERE (idNotificacion COLLATE utf8_bin = '$this->idNotificacion')";
+					WHERE (`idNotificacion` COLLATE utf8_bin = '$this->idNotificacion')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
@@ -73,7 +73,7 @@ class NOTIFICACION_Model { //declaración de la clase
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM NOTIFICACION 
-							WHERE  (mensaje COLLATE utf8_bin = '$this->mensaje')";
+							WHERE  (`mensaje` COLLATE utf8_bin = '$this->mensaje')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el mensaje)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
@@ -82,10 +82,10 @@ class NOTIFICACION_Model { //declaración de la clase
 					} else {
 
 						$sql = "INSERT INTO NOTIFICACION (
-									idNotificacion,
-									fecha,
-									idUser,
-									mensaje) 
+									`idNotificacion`,
+									`fecha`,
+									`idUser`,
+									`mensaje`) 
 								VALUES(
 									'$this->idNotificacion',
 									STR_TO_DATE(REPLACE('$this->fecha','/','.') ,GET_FORMAT(date,'EUR')),
@@ -112,14 +112,14 @@ class NOTIFICACION_Model { //declaración de la clase
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
 				FROM NOTIFICACION 
-				WHERE (idNotificacion COLLATE utf8_bin = '$this->idNotificacion')";
+				WHERE (`idNotificacion` COLLATE utf8_bin = '$this->idNotificacion')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
 			$sql = "DELETE FROM NOTIFICACION 
-					WHERE (idNotificacion COLLATE utf8_bin = '$this->idNotificacion' )";
+					WHERE (`idNotificacion` COLLATE utf8_bin = '$this->idNotificacion' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
 			// se devuelve el mensaje de borrado correcto
@@ -135,7 +135,7 @@ class NOTIFICACION_Model { //declaración de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
 				FROM NOTIFICACION 
-				WHERE (idNotificacion COLLATE utf8_bin = '$this->idNotificacion')";
+				WHERE (`idNotificacion` COLLATE utf8_bin = '$this->idNotificacion')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'No existe en la base de datos'; // 
