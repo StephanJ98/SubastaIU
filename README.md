@@ -6,3 +6,6 @@ La carpeta Ejemplo contiene un ejemplo de la ET3 (0 fallos) del que se puede ext
 El archivo Mere.png contiene la imagen del que deveria ser la estructura de la BD.
 
 Los demas archivos y ficheros son los que componen el proyecto.
+
+
+<h2><strong> Para futuras contribuciones seguir esta guia de estilo: CONTRIBUTING.md </strong></h2>
