@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `USUARIO`(
 `avatar` varchar(50) NOT NULL,
 `rol` varchar(1) NOT NULL,
 PRIMARY KEY (`idUser`),
-FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`)
+FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`),
 UNIQUE KEY `email` (`email`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
