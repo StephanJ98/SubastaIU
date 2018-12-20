@@ -5,45 +5,44 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Subastas
 */
 session_start(); //solicito trabajar con la session
-include '../Models/LOTERIA_MODEL.php';
-include '../Views/LOTERIA_SHOWALL_View.php';
-include '../Views/LOTERIA_SEARCH_View.php';
-include '../Views/LOTERIA_ADD_View.php';
-include '../Views/LOTERIA_EDIT_View.php';
-include '../Views/LOTERIA_DELETE_View.php';
-include '../Views/LOTERIA_SHOWCURRENT_View.php';
+include '../Models/SUBASTA_Model.php';
+include '../Views/SUBASTA_ADD_View.php';
+include '../Views/SUBASTA_DELETE_View.php';
+include '../Views/SUBASTA_EDIT_View.php';
+include '../Views/SUBASTA_SEARCH_View.php';
+include '../Views/SUBASTA_SHOWALL_View.php';
+include '../Views/SUBASTA_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
 
-function get_data_form() {
-    $email = $_REQUEST['email'];
-    $nombre = $_REQUEST['nombre'];
-    $apellidos = $_REQUEST['apellidos'];
-    $participacion = $_REQUEST['participacion'];
-    $ingresado = $_REQUEST['ingresado'];
-    $premiopersonal = $_REQUEST['premiopersonal'];
-	$resguardo = null;
-    $pagado = $_REQUEST['pagado'];
+function get_data_form() { //en las vistas los id y name de los elemntos deben ser exactamente estos.
+    $idSubasta = $_REQUEST['idSubasta'];
+    $producto = $_REQUEST['producto'];
+    $info = $_REQUEST['info'];
+    $ficheroSubasta = null;
+    $esCiega = $_REQUEST['esCiega'];
+    $mayorPuja = $_REQUEST['mayorPuja'];
+    $action = $_REQUEST[ 'action' ];//Variable a incluir en las vistas ( ver ejemplo)
 
-	if ( isset( $_FILES[ 'resguardo' ][ 'name' ] ) ) {
-		$nombreFoto = $_FILES[ 'resguardo' ][ 'name' ];
+	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'name' ] ) ) {
+		$productoFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
 	} 
 	else {
-		$nombreFoto = null;
+		$productoFicheroSubasta = null;
 	}
-	if ( isset( $_FILES[ 'resguardo' ][ 'tmp_name' ] ) ) {
-		$nombreTempFoto = $_FILES[ 'resguardo' ][ 'tmp_name' ];
+	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ] ) ) {
+		$productoTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
 	} 
 	else {
-		$nombreTempFoto = null;
+		$productoTempFicheroSubasta = null;
 	}
-	if ( $nombreFoto != null ) {
+	if ( $productoFicheroSubasta != null ) {
 		$dir_subida = '../Files/';
-		$resguardo = $dir_subida . $nombreFoto;
-		move_uploaded_file( $nombreTempFoto, $resguardo );
+		$ficheroSubasta = $dir_subida . $productoFicheroSubasta;
+		move_uploaded_file( $productoTempFicheroSubasta, $ficheroSubasta );
 	}
 	$action = $_REQUEST[ 'action' ];
-    $LOTERIA = new LOTERIA_Model($email,$nombre,$apellidos,$participacion,$resguardo,$ingresado,$premiopersonal,$pagado);
-	return $LOTERIA;
+    $SUBASTA = new SUBASTA_Model($idSubasta,$producto,$info,$ficheroSubasta,$esCiega,$mayorPuja);
+	return $SUBASTA;
 }
 
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -52,66 +51,66 @@ if ( !isset( $_REQUEST[ 'action' ] ) ) {
 switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
-			new LOTERIA_ADD();
+			new SUBASTA_ADD();
 		}
 		else {
-			$LOTERIA = get_data_form();
-			$respuesta = $LOTERIA->ADD();
-			new MESSAGE( $respuesta, '../Controllers/LOTERIA_CONTROLLER.php' );
+			$SUBASTA = get_data_form();
+			$respuesta = $SUBASTA->ADD();
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
 		}
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$LOTERIA = new LOTERIA_Model( $_REQUEST['email'],'','','','','','','' );
-			$valores = $LOTERIA->RellenaDatos( $_REQUEST[ 'email' ] );
-			new LOTERIA_DELETE( $valores );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','','' );
+			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
+			new SUBASTA_DELETE( $valores );
 		} 
 		else {
-			$LOTERIA = get_data_form();
-			$respuesta = $LOTERIA->DELETE();
-			new MESSAGE( $respuesta, '../Controllers/LOTERIA_CONTROLLER.php' );
+			$SUBASTA = get_data_form();
+			$respuesta = $SUBASTA->DELETE();
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
 		}
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$LOTERIA = new LOTERIA_Model( $_REQUEST['email'],'','','','','','','' );
-			$valores = $LOTERIA->RellenaDatos( $_REQUEST[ 'email' ] );
-			new LOTERIA_EDIT( $valores );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','','' );
+			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
+			new SUBASTA_EDIT( $valores );
 		} 
 		else {
 
-			$LOTERIA = get_data_form();
-			$respuesta = $LOTERIA->EDIT();
-			new MESSAGE( $respuesta, '../Controllers/LOTERIA_CONTROLLER.php' );
+			$SUBASTA = get_data_form();
+			$respuesta = $SUBASTA->EDIT();
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
 		}
 		break;
 	case 'SEARCH':
 		if ( !$_POST ) {
-			new LOTERIA_SEARCH();
+			new SUBASTA_SEARCH();
 		} 
 		else {
-			$LOTERIA = new LOTERIA_Model($_REQUEST['email'],$_REQUEST['nombre'],$_REQUEST['apellidos'],$_REQUEST['participacion'],'',$_REQUEST['ingresado'],$_REQUEST['premiopersonal'], $_REQUEST['pagado'] );
-			$datos = $LOTERIA->SEARCH();
-			$lista = array('email','nombre','apellidos','ingresado','pagado');
-			new LOTERIA_SHOWALL( $lista, $datos );
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja']);
+			$datos = $SUBASTA->SEARCH();
+			$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja');
+			new SUBASTA_SHOWALL( $lista, $datos );
 		}
 		break;
 	case 'SHOWCURRENT':
-		$LOTERIA = new LOTERIA_Model( $_REQUEST['email'],'','','','','','','' );
-		$valores = $LOTERIA->RellenaDatos( $_REQUEST[ 'email' ] );
-		new LOTERIA_SHOWCURRENT( $valores );
+		$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','');
+		$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
+		new SUBASTA_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$LOTERIA = new LOTERIA_Model( '','','','','','','','' );
+			$SUBASTA = new SUBASTA_Model( '','','','','','');
 		} 
 		else {
-			$LOTERIA = get_data_form();
+			$SUBASTA = get_data_form();
 		}
-		$datos = $LOTERIA->SEARCH();
-		$lista = array( 'email','nombre','apellidos','ingresado','pagado');
-		new LOTERIA_SHOWALL( $lista, $datos );
+		$datos = $SUBASTA->SEARCH();
+		$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja');
+		new SUBASTA_SHOWALL( $lista, $datos );
 }
 
 ?>
