@@ -1,7 +1,9 @@
 <?php
-//Creado el : 19-12-2018
-//Creado por: Salva
-
+/*
+	Creado el: 19-12-2018
+	Modificado el: 20/12/2018
+	Creado por: Salva
+*/
 session_start();
 if(!isset($_REQUEST['idUser']) && !(isset($_REQUEST['password']))){
 	include '../Views/LOGIN_View.php';

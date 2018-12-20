@@ -2,7 +2,7 @@
 /*
 	Autor: 	GUI
 	Fecha de creación: 20/12/2018 
-	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Subastas
+	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Subasta
 */
 session_start(); //solicito trabajar con la session
 include '../Models/SUBASTA_Model.php';
@@ -24,27 +24,26 @@ function get_data_form() { //en las vistas los id y name de los elemntos deben s
     $action = $_REQUEST[ 'action' ];//Variable a incluir en las vistas ( ver ejemplo)
 
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'name' ] ) ) {
-		$productoFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
+		$dirFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
 	} 
 	else {
-		$productoFicheroSubasta = null;
+		$dirFicheroSubasta = null;
 	}
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ] ) ) {
-		$productoTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
+		$dirTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
 	} 
 	else {
-		$productoTempFicheroSubasta = null;
+		$dirTempFicheroSubasta = null;
 	}
-	if ( $productoFicheroSubasta != null ) {
+	if ( $dirFicheroSubasta != null ) {
 		$dir_subida = '../Files/';
-		$ficheroSubasta = $dir_subida . $productoFicheroSubasta;
-		move_uploaded_file( $productoTempFicheroSubasta, $ficheroSubasta );
+		$ficheroSubasta = $dir_subida . $dirFicheroSubasta;
+		move_uploaded_file( $dirTempFicheroSubasta, $ficheroSubasta );
 	}
 	$action = $_REQUEST[ 'action' ];
     $SUBASTA = new SUBASTA_Model($idSubasta,$producto,$info,$ficheroSubasta,$esCiega,$mayorPuja);
 	return $SUBASTA;
 }
-
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 }
@@ -112,5 +111,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja');
 		new SUBASTA_SHOWALL( $lista, $datos );
 }
-
 ?>
