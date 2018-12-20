@@ -11,7 +11,7 @@ class Login{
 ?>			
 	<h1>LOGIN</h1>
 	<div id="forms">		
-		<form name = 'Form' action='../Controllers/Login_Controller.php' method='post' id="formularioLogin">
+		<form name = 'Form' action='../Controllers/LOGIN_Controller.php' method='post' id="formularioLogin">
 			Login : <input type = 'text'  name = 'login'  size = '10'  ><br>
 			Paswordtraseña : <input type = 'password' name = 'password' id="password" value="" size = '10' ><br>
 			<button>Sin función todavía</button> <!-- incluír acciones para confirmación -->

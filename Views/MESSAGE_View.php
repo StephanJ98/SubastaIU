@@ -18,8 +18,8 @@ class MESSAGE { // declaración de la función
 		<br>
 		<br>
 		<?php
-			echo $strings[$this->text]; // se muestra por pantalla el texto
-		?>
+			echo $strings[$this->text];; // se muestra por pantalla el texto
+		?> 
 		<br>
 		<br>
 		<br>

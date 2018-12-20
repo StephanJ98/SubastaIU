@@ -4,16 +4,15 @@
 
 session_start();
 if(!isset($_REQUEST['idUser']) && !(isset($_REQUEST['password']))){
-	include '../Views/Login_View.php';
+	include '../Views/LOGIN_View.php';
 	$login = new Login();
 }
 else{
-	include '../Functions/AccessDB.php';
-
+	include '../Functions/AccessBD.php';
 	include '../Models/USUARIO_Model.php';
-	$usuario = new USUARIO_Model($_REQUEST['idUser'],$_REQUEST['password'],'','','','','','','','');
+	
+	$usuario = new USUARIOS_Model($_REQUEST['idUser'],$_REQUEST['password'],'','','','');
 	$respuesta = $usuario->login();
-
 	if ($respuesta == 'true'){
 		session_start();
 		$_SESSION['idUser'] = $_REQUEST['idUser'];
