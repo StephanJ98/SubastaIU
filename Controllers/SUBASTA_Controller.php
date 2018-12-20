@@ -55,7 +55,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		else {
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->ADD();
-			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
 		}
 		break;
 	case 'DELETE':
@@ -67,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		else {
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->DELETE();
-			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
 		}
 		break;
 	case 'EDIT':
@@ -81,7 +81,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->EDIT();
-			new MESSAGE( $respuesta, '../Controllers/SUBASTA_CONTROLLER.php' );
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
 		}
 		break;
 	case 'SEARCH':
