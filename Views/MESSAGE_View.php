@@ -1,21 +1,17 @@
 <?php
-
 /*  Archivo php
 	Autor: 	GUI
 	Fecha de creación: 10/12/2018 
 	Función: vista de un mensaje(message) realizada con una clase donde se muestra el mensaje deseado
 */
 class MESSAGE { // declaración de la función
-
 	function __construct( $text, $ruta ) {
 		$this->text = $text;
 		$this->ruta = $ruta;
 		$this->render();
 	}
-
-	function render() {
-
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+	function render(){
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
 		<br>
@@ -27,7 +23,6 @@ class MESSAGE { // declaración de la función
 		<br>
 		<br>
 		<br>
-
 		<form action='<?php $this->ruta?>'>
 			<button type="submit">Atras</button>
 		</form>
