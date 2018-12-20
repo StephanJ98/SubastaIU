@@ -2,11 +2,9 @@
 /*
 	Autor: 	GUI
 	Fecha de creación: 11/12/2018 
-=======
 	Función: Realiza la conexión a la base de datos. Es el único lugar donde se definen los parametros de conexión a la bd
-
 */
-function ConectarBD() //declaración de funcion
+function ConectarBD()
 	{
 	    $mysqli = new mysqli("localhost", "GUIBD", "passGUIBD", "GUIBD"); //maquina, user, pass, bd
 		if ($mysqli->connect_errno) {
@@ -15,15 +13,4 @@ function ConectarBD() //declaración de funcion
 		}
 		return $mysqli;
 	}
-
-
-
-
-/*Adaptar a PDO Y A NUESTRA BD*/
-
-
-
 ?>
-
-
-
