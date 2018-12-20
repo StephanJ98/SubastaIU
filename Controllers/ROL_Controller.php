@@ -4,8 +4,13 @@
 	Fecha de creación: 20/12/2018 
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Usuario
 */
-session_start(); //solicito trabajar con la session
-include '../Models/USUARIO_Model.php';
+
+/*
+	Es necesario??
+*/
+
+/*session_start(); //solicito trabajar con la session
+include '../Models/ROL_Model.php';
 include '../Views/USUARIOS_ADD_View.php';
 include '../Views/USUARIOS_DELETE_View.php';
 include '../Views/USUARIOS_EDIT_View.php';
@@ -113,3 +118,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 }
 
 ?>
+*/
