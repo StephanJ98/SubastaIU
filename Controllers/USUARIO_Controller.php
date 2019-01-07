@@ -5,7 +5,7 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Usuario
 */
 session_start(); //solicito trabajar con la session
-include '../Models/USUARIO_Model.php';
+include '../Models/USUARIOS_Model.php';
 include '../Views/USUARIO_ADD_View.php';
 include '../Views/USUARIO_DELETE_View.php';
 include '../Views/USUARIO_EDIT_View.php';
