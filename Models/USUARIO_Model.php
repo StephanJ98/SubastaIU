@@ -104,7 +104,7 @@ class USUARIOS_Model { //declaración de la clase
 									'$this->avatar',
 									'$this->rol')";
 					}
-					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
+					if ( !$this->mysqli->query($sql) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
