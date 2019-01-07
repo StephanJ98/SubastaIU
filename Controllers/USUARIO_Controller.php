@@ -103,7 +103,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( '', '', '', '', '', '');
 		} else {
 			$USUARIO = get_data_form();
 		}
@@ -111,5 +111,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
 		new USUARIOS_SHOWALL( $lista, $datos );
 }
-
 ?>
