@@ -10,7 +10,7 @@ class Index {
 		$this->render();
 	}
 	function render(){
-		include '../Locales/SP.php';
+		include '../Locales/SPANISH.php';
 		include '../Views/Header.php';
 		include '../Views/Footer.php';
 	}
