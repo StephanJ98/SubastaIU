@@ -49,7 +49,7 @@ class USUARIOS_SHOWALL {
 <?php
     					if($atributo == 'avatar'){
 ?>
-						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" ><?php echo $fila['avatar']?></a>
+						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
 <?php
 						} else {
 							echo $fila[ $atributo ];
