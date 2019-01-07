@@ -21,7 +21,7 @@ class Login {
 					<th class="formThTd">
 						<?php echo $strings['Usuario'];?>: </th>
 
-					<td class="formThTd"><input type='text' id="idUser" name='idUser' placeholder="<?php echo $strings['Escriba aqui...'] ?>" maxlength='15' size='15' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"><br>
+					<td class="formThTd"><input type='text' id="idUser" name='idUser' placeholder="<?php echo $strings['Escriba aqui...'] ?>" maxlength='30' size='30' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')"><br>
 				</tr>
 				<tr>
 					<th class="formThTd">

@@ -38,7 +38,7 @@ function get_data_form() {
 		$avatar = $dir_subida . $nombreAvatar;
 		move_uploaded_file( $nombreTempAvatar, $avatar );
 	}
-	$USUARIO = new USUARIO_Model(
+	$USUARIO = new USUARIOS_Model(
 		$idUser,
 		$password,
 		$nombre,
@@ -64,7 +64,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_DELETE( $valores );
 		} else {
@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_EDIT( $valores );
 		} else {
@@ -97,13 +97,13 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		break;
 	case 'SHOWCURRENT':
-		$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+		$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 		new USUARIOS_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 		} else {
 			$USUARIO = get_data_form();
 		}

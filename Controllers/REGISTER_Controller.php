@@ -12,7 +12,7 @@ if(!isset($_POST['idUser'])){
 	$register = new Register();
 }
 else{	
-	include '../Models/USUARIO_MODEL.php';
+	include '../Models/USUARIO_Model.php';
 	$nombreFoto = $_FILES[ 'nombreFoto' ][ 'name' ];
 	$nombreTempAvatar = $_FILES[ 'nombreFoto' ][ 'tmp_name' ];
 	$dir_subida = '../Files/';

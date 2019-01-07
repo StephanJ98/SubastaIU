@@ -1,8 +1,6 @@
 <?php
-/*  Archivo php
-	Nombre: Register_View.php
-	Autor: 	cvy3ms
-	Fecha de creación: 23/11/2018 
+/*  Autor: 	GUI
+	Fecha de creación: 07/01/2019 
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
 */
 class Register {

@@ -10,7 +10,7 @@ class USUARIOS_SHOWALL {
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
 		<div class="seccion">
@@ -19,20 +19,20 @@ class USUARIOS_SHOWALL {
 			</h2>
 			<table>
 				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIOS_CONTROLLER.php'>
+					<form action='../Controllers/USUARIO_Controller.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 					</form>
 				</caption>
 				<tr>
 <?php
-					foreach ( $lista as $atributo ) {
+					/*foreach ( $lista as $atributo ) {
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
 					</th>
 <?php
-					}
+					}*/
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>
@@ -47,7 +47,7 @@ class USUARIOS_SHOWALL {
 ?>
 					<td>
 <?php
-    						if($atributo == 'avatar'){
+    					if($atributo == 'avatar'){
 ?>
 						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" ><?php echo $fila['avatar']?></a>
 <?php
@@ -60,8 +60,8 @@ class USUARIOS_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/USUARIOS_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
+						<form action="../Controllers/USUARIO_Controller.php" method="get" style="display:inline" >
+							<input type="hidden" name="idUser" value="<?php echo $fila['idUser']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 					<td>
 								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
@@ -74,11 +74,11 @@ class USUARIOS_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/USUARIO_Controller.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
-<?php
-		include '../Views/Footer.php';
+<?php 
+	include '../Views/Footer.php';
 		}
-?>
+	}?>
