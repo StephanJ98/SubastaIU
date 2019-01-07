@@ -35,10 +35,10 @@ class PUJA_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idPuja` as idPuja,
-						`idSubasta` as idSubasta,
-						`idUser` as idUser,
-						`importe` as importe
+		$sql = "SELECT  idPuja,
+						idSubasta,
+						idUser,
+						importe
        			FROM PUJAS 
     			WHERE 
     				( (BINARY `idPuja` LIKE '%$this->idPuja%') &&
