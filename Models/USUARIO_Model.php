@@ -36,12 +36,12 @@ class USUARIOS_Model { //declaración de la clase
 	//los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idUser` as idUser,
-						`password` as password,
-						`nombre` as nombre,
-						`email` as email,
-						`avatar` as avatar,
-						`rol` as rol
+		$sql = "SELECT  idUser,
+						password,
+						nombre,
+						email,
+						avatar,
+						rol
        			FROM USUARIO 
     			WHERE 
     				(
@@ -90,12 +90,12 @@ class USUARIOS_Model { //declaración de la clase
 					} else {
 
 						$sql = "INSERT INTO USUARIO (
-									`idUser` as idUser,
-									`password` as password,
-									`nombre` as nombre,
-									`email` as email,
-									`avatar` as avatar,
-									`rol` as rol) 
+									idUser,
+									password,
+									nombre,
+									email,
+									avatar,
+									rol) 
 								VALUES(
 									'$this->idUser',
 									'$this->password',

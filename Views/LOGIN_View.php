@@ -15,7 +15,7 @@ class Login {
 		<h1>
 			<?php echo  $strings['Login']; ?>
 		</h1>
-		<form name='Form' action='../Controllers/Login_Controller.php' method='post' onsubmit="return comprobarLogin()">
+		<form name='Form' action='../Controllers/LOGIN_Controller.php' method='post' onsubmit="return comprobarLogin()">
 			<table>
 				<tr>
 					<th class="formThTd">

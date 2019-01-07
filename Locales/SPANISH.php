@@ -6,7 +6,7 @@
 */
 $strings=
 array(
-	'Portal de Gestión' => 'Portal de Gestión',
+	'Portal de Subastas' => 'Portal de Subastas',
 	'Login' => 'Login',
 	'ENTREGAS' => 'Entregas',
 	'QA' => 'QA',

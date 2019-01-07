@@ -25,7 +25,7 @@
 	<p style="text-align:center">
 		<h1>
 <?php
-			echo $strings['Portal de Gestión'];
+			echo $strings['Portal de Subastas'];
 ?>
 		</h1>
 	</p>
@@ -35,7 +35,8 @@
 ?>
 		<p style="font-size:20px; ">
 <?php
-			echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
+			$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
+			echo $strings['Usuario'] . ' : ' . $sesion . '<br>';
 ?>	
 			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
 	
@@ -43,7 +44,7 @@
 <?php
 	} else {
 		
-			echo $strings['Usuario no identificado'];
+		echo $strings['Usuario no identificado'];
 ?> 
 		<a href = '../Controllers/Register_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
 <?php		
