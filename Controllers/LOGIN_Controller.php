@@ -18,11 +18,11 @@ else{
 	if ($respuesta == 'true'){
 		session_start();
 		$_SESSION['idUser'] = $_REQUEST['idUser'];
-		header('Location:../index.php');
+		header('Location:../Controllers/USUARIO_Controller.php');
 	}
 	else{
 		include '../Views/MESSAGE_View.php';
-		new MESSAGE($respuesta, 'LOGIN_Controller.php');
+		new MESSAGE($respuesta, '../Controllers/LOGIN_Controller.php');
 	}
 }
 ?>

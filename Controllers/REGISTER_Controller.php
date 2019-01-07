@@ -13,12 +13,12 @@ if(!isset($_POST['idUser'])){
 }
 else{	
 	include '../Models/USUARIO_MODEL.php';
-	$nombreAvatar = $_FILES[ 'avatar' ][ 'name' ];
-	$nombreTempAvatar = $_FILES[ 'avatar' ][ 'tmp_name' ];
+	$nombreFoto = $_FILES[ 'nombreFoto' ][ 'name' ];
+	$nombreTempAvatar = $_FILES[ 'nombreFoto' ][ 'tmp_name' ];
 	$dir_subida = '../Files/';
 	$avatar = $dir_subida . $nombreFoto ;
 
-	$usuario = new USUARIO_Model($_REQUEST['idUser'],$_REQUEST['password'],$_REQUEST['nombre'],$_REQUEST['email'],$avatar,$_REQUEST['rol']);
+	$usuario = new USUARIOS_Model($_REQUEST['idUser'],$_REQUEST['password'],$_REQUEST['nombre'],$_REQUEST['email'],$avatar,$_REQUEST['rol']);
 	$respuesta = $usuario->Register();
 
 	if ($respuesta == 'true'){

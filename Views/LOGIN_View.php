@@ -1,26 +1,44 @@
 <?php
 //Crea-do el : 19-12-2018
 //Creado por: Salva
-class Login{
-	function __construct(){	
+class Login {
+
+	function __construct() {
 		$this->render();
 	}
 
-	function render(){
-		include 'Header.php'; 
-?>			
-	<h1>LOGIN</h1>
-	<div id="forms">		
-		<form name = 'Form' action='../Controllers/LOGIN_Controller.php' method='post' id="formularioLogin">
-			Login : <input type = 'text'  name = 'login'  size = '10'  ><br>
-			Paswordtraseña : <input type = 'password' name = 'password' id="password" value="" size = '10' ><br>
-			<button>Sin función todavía</button> <!-- incluír acciones para confirmación -->
+	function render() {
+
+		include '../Views/Header.php';
+		?>
+
+		<h1>
+			<?php echo  $strings['Login']; ?>
+		</h1>
+		<form name='Form' action='../Controllers/Login_Controller.php' method='post' onsubmit="return comprobarLogin()">
+			<table>
+				<tr>
+					<th class="formThTd">
+						<?php echo $strings['Usuario'];?>: </th>
+
+					<td class="formThTd"><input type='text' id="idUser" name='idUser' placeholder="<?php echo $strings['Escriba aqui...'] ?>" maxlength='15' size='15' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'15') && comprobarTexto(this,'15')"><br>
+				</tr>
+				<tr>
+					<th class="formThTd">
+						<?php echo $strings['Contraseña'];?>: </th>
+					<td class="formThTd"><input type='password' id="password" name='password' placeholder="<?php echo $strings['Escriba aqui...'] ?>" maxlength='20' size='20' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"><br>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<button type="submit" name="action" value="Login"><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse'] ?>" /></button>
+				</tr>
+			</table>
 		</form>
-	</div>	
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-							
+
 <?php
-	include 'Footer.php';
+		include '../Views/Footer.php';
 	} //fin metodo render
-} //fin Login
+
+	} //fin Login
+
 ?>

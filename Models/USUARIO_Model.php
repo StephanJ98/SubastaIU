@@ -230,7 +230,7 @@ class USUARIOS_Model { //declaración de la clase
 
 		$sql = "SELECT * 
 				FROM USUARIOS 
-				WHERE (`idUser` COLLATE utf8_bin = '" . $this->idUser . "')";
+				WHERE (idUser COLLATE utf8_bin = '" . $this->idUser . "')";
 		$result = $this->mysqli->query( $sql );
 		if ( $result->num_rows == 1 ) { // existe el usuario
 			return 'El usuario ya existe';	
@@ -238,7 +238,7 @@ class USUARIOS_Model { //declaración de la clase
 			// construimos el sql para buscar esa clave candidata en la tabla
 			$sql = "SELECT * 
 					FROM USUARIOS 
-					WHERE  (`email` COLLATE utf8_bin = '$this->email')";
+					WHERE  (email COLLATE utf8_bin = '$this->email')";
 			if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
 				// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
 				return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
