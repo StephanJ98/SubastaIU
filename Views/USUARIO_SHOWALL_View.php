@@ -1,5 +1,5 @@
 <?php
-class USUARIOS_SHOWALL {
+class USUARIO_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;

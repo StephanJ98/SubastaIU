@@ -1,5 +1,5 @@
 <?php
-    class USUARIOS_ADD {
+    class USUARIO_ADD {
         
      function __construct() {
 		$this->render();
@@ -13,7 +13,7 @@
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-            <form name="ADDFORM" action="../Controllers/USUARIOS_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
+            <form name="ADDFORM" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
                 <table>
 					<tr>
 						<th class="formThTd">
@@ -55,7 +55,7 @@
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
