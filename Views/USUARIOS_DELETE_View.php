@@ -1,5 +1,5 @@
 <?php
-class USUARIO_DELETE {
+class USUARIOS_DELETE {
 
 	function __construct( $valores ) {
 		$this->valores = $valores;
@@ -69,7 +69,7 @@ class USUARIO_DELETE {
                 <p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/USUARIO_CONTROLLER.php" method="post" style="display: inline">
+			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
 				<input type="hidden" name="idUser" value=<?php echo $this->valores['idUser'] ?> />
 				<input type="hidden" name="password" value=<?php echo $this->valores['password'] ?> />
 				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombre'] ?> />
@@ -78,7 +78,7 @@ class USUARIO_DELETE {
 				<input type="hidden" name="userRol" value=<?php echo $this->valores['userRol'] ?> />
 				<button type="submit" name="action" value="DELETE"><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
-			<form action='../Controllers/USUARIO_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>

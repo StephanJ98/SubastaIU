@@ -1,5 +1,5 @@
 <?php
-class USUARIO_SHOWALL {
+class USUARIOS_SHOWALL {
 
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
@@ -60,7 +60,6 @@ class USUARIO_SHOWALL {
 					}
 ?>
 					<td>
-
 						<form action="../Controllers/USUARIO_Controller.php" method="get" style="display:inline" >
 							<input type="hidden" name="idUser" value="<?php echo $fila['idUser']; ?>">
 								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>

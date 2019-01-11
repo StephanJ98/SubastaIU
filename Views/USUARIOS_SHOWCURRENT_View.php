@@ -1,5 +1,5 @@
 <?php
-class USUARIO_SHOWCURRENT {
+class USUARIOS_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;
@@ -66,7 +66,7 @@ class USUARIO_SHOWCURRENT {
                 </td>
             </tr>
             <caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
+				<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>

@@ -4,7 +4,7 @@
 	Fecha de creación: 13/12/2018 
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
-class USUARIO_Model { //declaración de la clase
+class USUARIOS_Model { //declaración de la clase
 
 	var $idUser; // declaración del atributo idUser
 	var $password; //declaración del atributo password
