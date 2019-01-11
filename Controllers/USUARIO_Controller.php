@@ -90,9 +90,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new USUARIOS_SEARCH();
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = new USUARIOS_Model($_REQUEST['idUser'],$_REQUEST['nombre'],$_REQUEST['email'],'',$_REQUEST['rol'],'');
 			$datos = $USUARIO->SEARCH();
-			$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
+			$lista = array( 'idUser', 'nombre', 'email', 'rol' );
 			new USUARIOS_SHOWALL( $lista, $datos );
 		}
 		break;

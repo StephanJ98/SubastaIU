@@ -6,20 +6,20 @@
 	}
     
     function render() {
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
     <div class="seccion">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-            <form name="ADDFORM" action="../Controllers/USUARIOS_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
+            <form name="ADDFORM" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
                 <table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Nombre de Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="idUser" name="idUsers" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
+						<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
 					</tr>
                     <tr>
 						<th class="formThTd">
@@ -29,7 +29,7 @@
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre y apellidos'];?>
+							<?php echo $strings['Nombre'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="150" size = '154' value = '' onBlur="comprobarVacio(this) && comprobarLongitud(this,'150') && comprobarTexto(this,'150')" />
 					</tr>
@@ -49,18 +49,20 @@
 						<th class="formThTd">
 							<?php echo $strings['Rol'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="userRol" name="userRol"  placeholder="<?php echo $strings['0, 1 o 2']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
+						<td class="formThTd"><input type="text" id="rol" name="rol"  placeholder="<?php echo $strings['0(Admin), 1(Pujador) o 2(Subastador)']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
 					</tr>
                     <tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-						<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
+						<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
 					</tr>
 				</table>
 		</div>
+		<br>
+		<br>
 <?php
 		include '../Views/Footer.php';
 		}

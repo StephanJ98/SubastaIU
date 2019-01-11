@@ -94,5 +94,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'idHistorial', 'idSubasta', 'idUser', 'idPuja', 'importe' );
 		new HISTORIAL_SHOWALL( $lista, $datos );
 }
-
 ?>

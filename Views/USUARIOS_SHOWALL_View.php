@@ -13,12 +13,12 @@ class USUARIOS_SHOWALL {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+		<div class="container seccion" >
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<table>
-				<caption style="margin-bottom:10px;">
+				<caption style="margin-bottom:10px;margin: 10px;">
 					<form action='../Controllers/USUARIO_Controller.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
@@ -78,6 +78,8 @@ class USUARIOS_SHOWALL {
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
+		<br>
+		<br>
 <?php 
 	include '../Views/Footer.php';
 		}

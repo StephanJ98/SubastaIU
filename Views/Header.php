@@ -36,6 +36,7 @@
 <?php	
 	if (IsAuthenticated()){
 ?>
+		<br>
 		<p style="font-size:20px; ">
 <?php
 			$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
@@ -60,4 +61,53 @@
 		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
 	</form>	
+	<div class="row">
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<form action='../Controllers/USUARIO_Controller.php'>
+						<button type="submit" name="action" value="EDIT" style="border: none;background-color:#f4f4f4"><p>Perfil</p></button>
+					</form>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/PUJA_Controller.php">Pujas</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
+					<?php
+				}
+			?>
+		</div>
+	</div>
 </header>
