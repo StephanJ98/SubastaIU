@@ -8,6 +8,7 @@ $strings=
 array(
 	'Portal de Subastas' => 'Portal de Subastas',
 	'Login' => 'Login',
+	'Introduzca los datos' => 'Introduzca los datos',
 	'ENTREGAS' => 'Entregas',
 	'QA' => 'QA',
 	'Avatar' => 'Avatar',
