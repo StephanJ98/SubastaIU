@@ -13,7 +13,7 @@ class Register {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php'; //header necesita los strings
 		?>
-		<div class="seccion">
+		<div class="container-fluid seccion">
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
