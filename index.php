@@ -1,7 +1,7 @@
 <!-- Autor: GUI  -->
 <!-- Fecha de creación: 10/12/2018 -->
  
- <?php 
+ <?php
 //entrada a la aplicacio n
 //se va usar la session de la conexion
 session_start();

@@ -15,13 +15,16 @@
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/estilos.css" hreflang="es">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- Ceci doit être le premier css chargé.-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" media="screen" href="../Views/style/index.css" hreflang="es">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/tcal/tcal.css" hreflang="es">
 	<?php include '../Views/js/validaciones.js' ?>
 	<title>Subastas</title>
 </head>
 <body>
- <header>
+<header class="container" id="head">
 	<p style="text-align:center">
 		<h1>
 <?php
@@ -33,6 +36,7 @@
 <?php	
 	if (IsAuthenticated()){
 ?>
+		<br>
 		<p style="font-size:20px; ">
 <?php
 			$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
@@ -57,4 +61,53 @@
 		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
 	</form>	
+	<div class="row">
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<form action='../Controllers/USUARIO_Controller.php'>
+						<button type="submit" name="action" value="EDIT" style="border: none;background-color:#f4f4f4"><p>Perfil</p></button>
+					</form>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/PUJA_Controller.php">Pujas</a>
+					<?php
+				}
+			?>
+		</div>
+		<div class="col">
+			<?php
+				if (IsAuthenticated()){
+					?>
+					<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
+					<?php
+				}
+			?>
+		</div>
+	</div>
 </header>

@@ -1,5 +1,5 @@
 <?php
-class USUARIO_SHOWCURRENT {
+class USUARIOS_SHOWCURRENT {
 
 	function __construct( $lista ) {
 		$this->lista = $lista;
@@ -8,7 +8,7 @@ class USUARIO_SHOWCURRENT {
 
 	function render( $lista ) {
 		$this->lista = $lista;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
 		<h2>
@@ -33,7 +33,7 @@ class USUARIO_SHOWCURRENT {
 			</tr>
             <tr>
 				<th>
-					<?php echo $strings['Nombre y apellidos'];?>
+					<?php echo $strings['Nombre'];?>
 				</th>
 				<td>
 					<?php echo $this->lista['nombre'] ?>
@@ -62,16 +62,17 @@ class USUARIO_SHOWCURRENT {
                     <?php echo $strings['Rol'];?>
                 </th>
                 <td>
-                    <?php echo $this->lista['userRol']?>
+                    <?php echo $this->lista['rol']?>
                 </td>
             </tr>
             <caption style="margin-top:10px;" align="bottom">
-				<form action='../Controllers/USUARIO_CONTROLLER.php' method="post">
+				<form action='../Controllers/USUARIO_Controller.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>
 		</table>
-
+		<br>
+		<br>
 <?php
 		include '../Views/Footer.php';
 	}
