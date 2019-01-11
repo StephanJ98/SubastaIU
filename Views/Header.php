@@ -18,13 +18,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Ceci doit être le premier css chargé.-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/estilos.css" hreflang="es">
+	<link rel="stylesheet" type="text/css" media="screen" href="../Views/style/index.css" hreflang="es">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/tcal/tcal.css" hreflang="es">
 	<?php include '../Views/js/validaciones.js' ?>
 	<title>Subastas</title>
 </head>
 <body>
-<header class="container-fluid>
+<header class="container" id="head">
 	<p style="text-align:center">
 		<h1>
 <?php
