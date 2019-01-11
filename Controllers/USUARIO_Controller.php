@@ -5,7 +5,7 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Usuario
 */
 session_start(); //solicito trabajar con la session
-include '../Models/USUARIOS_Model.php';
+include '../Models/USUARIO_Model.php';
 include '../Views/USUARIO_ADD_View.php';
 include '../Views/USUARIO_DELETE_View.php';
 include '../Views/USUARIO_EDIT_View.php';
@@ -103,7 +103,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIO_Model( '', '', '', '', '', '');
 		} else {
 			$USUARIO = get_data_form();
 		}
@@ -111,5 +111,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
 		new USUARIO_SHOWALL( $lista, $datos );
 }
-
 ?>

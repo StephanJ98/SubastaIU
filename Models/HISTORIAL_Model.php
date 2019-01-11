@@ -33,11 +33,11 @@ class HISTORIAL_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idHistorial` as idHistorial,
-						`idSubasta` as idSubasta,
-						`idUser` as idUser,
-						`idPuja` as idPuja,
-						`importe` as importe
+		$sql = "SELECT  idHistorial,
+						idSubasta,
+						idUser,
+						idPuja,
+						importe
        			FROM HISTORIAL
     			WHERE 
     				( (BINARY `idHistorial` LIKE '%$this->idHistorial%') &&

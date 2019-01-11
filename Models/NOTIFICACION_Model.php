@@ -35,10 +35,10 @@ class NOTIFICACION_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idNotificacion` as idNotificacion,
-						`fecha` as fecha,
-						`idUser` as idUser,
-						`mensaje` as mensaje
+		$sql = "SELECT  idNotificacion,
+						fecha,
+						idUser,
+						mensaje
        			FROM NOTIFICACION
     			WHERE 
     				( (BINARY `idNotificacion` LIKE '%$this->idNotificacion%') &&

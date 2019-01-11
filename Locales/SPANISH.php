@@ -6,10 +6,15 @@
 */
 $strings=
 array(
-	'Portal de Gestión' => 'Portal de Gestión',
+	'Portal de Subastas' => 'Portal de Subastas',
 	'Login' => 'Login',
 	'ENTREGAS' => 'Entregas',
 	'QA' => 'QA',
+	'Avatar' => 'Avatar',
+	'Rol' => 'Rol',
+	'Elija rol' => 'Elija rol',
+	'Pujador' => 'Pujador',
+	'Subastador' => 'Subastador',
 	'idioma' => 'Idioma',
 	'Opciones' => 'Opciones',
 	'Registro' => 'Registro',

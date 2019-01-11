@@ -39,12 +39,12 @@ class SUBASTA_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idSubasta` as idSubasta,
-						`producto` as producto,
-						`info` as info,
-						`ficheroSubasta` as ficheroSubasta,
-						`esCiega` as esCiega,
-						`mayorPuja` as mayorPuja
+		$sql = "SELECT  idSubasta,
+						producto,
+						info,
+						ficheroSubasta,
+						esCiega,
+						mayorPuja
        			FROM SUBASTAS 
     			WHERE 
     				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
