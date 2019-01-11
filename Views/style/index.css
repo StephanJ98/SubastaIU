@@ -1,0 +1,46 @@
+#head {
+  text-align: center;
+  background-color: #f4f4f4;
+}
+#foot {
+  text-align: center;
+  background-color: #f4f4f4;
+}
+* {
+  margin:0;
+  padding:0;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555555;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 1.6em;
+  width: 1200px;
+}
+
+a {
+  text-decoration: none;
+  color:#000;
+}
+
+a:hover{
+  color:green;
+}
+
+a:active{
+  color:red;
+}
+
+a:visited{
+  color:#000;
+}
+
+.formThTd {
+  display:block;
+}
+
+.formThTd input[type="text"] {
+  padding:8px;
+  width:80%;
+}
