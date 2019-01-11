@@ -6,7 +6,7 @@
 */
 ?>
 		<footer><?php echo date("d-M-Y", time());?></br>
-				<?php if (IsAuthenticated()){  
+				<?php if ( IsAuthenticated() ){  
 					$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
 					echo $strings['Usuario'] . ' : ' . $sesion . '<br>'; }?>
 		</footer>
