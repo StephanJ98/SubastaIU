@@ -1,4 +1,9 @@
 <?php
+/*
+	Autor: 	GUI
+	idSubasta de creación: 13/1/2019 
+	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
+*/
 class USUARIOS_SHOWALL {
 
 	function __construct( $lista, $datos) {
@@ -60,13 +65,23 @@ class USUARIOS_SHOWALL {
 					}
 ?>
 					<td>
-						<form action="../Controllers/USUARIO_Controller.php" method="get" style="display:inline" >
+						<form action="../Controllers/USUARIO_Controller.php" method="get" style="display:inline">
 							<input type="hidden" name="idUser" value="<?php echo $fila['idUser']; ?>">
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+							<?php
+							if (IsAuthenticated()){
+								if (($_SESSION['rol'] == 0) || ($_SESSION['idUser'] == $fila['idUser'])) {
+							?>
+										<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+									<td>
+										<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+									<td>
+										<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+								<?php
+								}
+								?>
+							<?php
+							}
+							?>
 						</form>
 
 				</tr>

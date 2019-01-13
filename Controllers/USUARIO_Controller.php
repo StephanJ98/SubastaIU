@@ -6,6 +6,7 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/USUARIO_Model.php';
+include '../Models/HISTORIAL_Model.php';
 include '../Views/USUARIOS_ADD_View.php';
 include '../Views/USUARIOS_DELETE_View.php';
 include '../Views/USUARIOS_EDIT_View.php';
@@ -46,6 +47,7 @@ function get_data_form() {
 		$avatar,
 		$rol
 	);
+	
 	return $USUARIO;
 }
 
