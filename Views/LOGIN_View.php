@@ -30,6 +30,17 @@ class Login {
 								<td class="formThTd"><input type='password' id="password" name='password' maxlength='20'  value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"><br>
 							</tr>
 							<tr>
+								<th class="formThTd">
+									<?php echo $strings['Rol'];?> </th>
+								<td class="formThTd">
+									<select id="rol" name="rol">
+										<option value=""><?php echo $strings['Seleccione una opción'];?></option>
+										<option value="0"><?php echo $strings['Administrador'];?></option>
+										<option value="1"><?php echo $strings['Pujador'];?></option>
+										<option value="2"><?php echo $strings['Subastador'];?></option>
+									</select>
+							</tr>
+							<tr>
 								<td colspan="2">
 									<button type="submit" name="action" value="Login"><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse'] ?>" /></button>
 							</tr>

@@ -40,7 +40,18 @@
 		<p style="font-size:20px; ">
 <?php
 			$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
-			echo $strings['Usuario'] . ' : ' . $sesion . '<br>';
+			$tipo = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'Sin Rol Asignado';
+			echo $strings['Usuario'] . ' : ' . $sesion . '&nbsp&nbsp&nbsp&nbsp';
+			if ($tipo == 0) {
+				$texto = 'Administrador';
+			}
+			elseif ($tipo == 1) {
+				$texto = 'Pujador';
+			}
+			else{
+				$texto = 'Subastador';
+			}
+			echo $strings['Rol'] . ' : ' . $texto . '<br>';
 ?>	
 			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
 	
@@ -62,52 +73,49 @@
 		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
 	</form>	
 	<div class="row">
-		<div class="col">
-			<?php
-				if (IsAuthenticated()){
-					?>
-					<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
-					<?php
-				}
+		<?php
+		if (IsAuthenticated()){
 			?>
-		</div>
-		<div class="col">
+			<div class="col">
+			<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
+			</div>
 			<?php
-				if (IsAuthenticated()){
-					?>
-					<form action='../Controllers/USUARIO_Controller.php'>
-						<button type="submit" name="action" value="EDIT" style="border: none;background-color:#f4f4f4"><p>Perfil</p></button>
-					</form>
-					<?php
-				}
-			?>
-		</div>
-		<div class="col">
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			if (($_SESSION['rol'] == 2) || ($_SESSION['rol'] == 0)) {
+		?>
+				<div class="col">
+				<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
+				</div>
 			<?php
-				if (IsAuthenticated()){
-					?>
-					<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
-					<?php
-				}
+			}
 			?>
-		</div>
-		<div class="col">
+		<?php
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 0)) {
+		?>
+				<div class="col">
+				<a href="../Controllers/PUJA_Controller.php">Pujas</a>
+				</div>
 			<?php
-				if (IsAuthenticated()){
-					?>
-					<a href="../Controllers/PUJA_Controller.php">Pujas</a>
-					<?php
-				}
+			}
 			?>
-		</div>
-		<div class="col">
+		<?php
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			?>
+			<div class="col">
+			<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
+			</div>
 			<?php
-				if (IsAuthenticated()){
-					?>
-					<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
-					<?php
-				}
-			?>
-		</div>
+		}
+		?>
 	</div>
 </header>

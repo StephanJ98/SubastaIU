@@ -75,7 +75,7 @@ class USUARIOS_DELETE {
 				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombre'] ?> />
 				<input type="hidden" name="email" value=<?php echo $this->valores['email'] ?> />
 				<input type="hidden" name="avatar" value=<?php echo $this->valores['avatar'] ?> />
-				<input type="hidden" name="Rol" value=<?php echo $this->valores['rol'] ?> />
+				<input type="hidden" name="rol" value=<?php echo $this->valores['rol'] ?> />
 				<button type="submit" name="action" value="DELETE"><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 			<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">

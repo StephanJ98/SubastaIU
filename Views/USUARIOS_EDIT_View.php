@@ -52,12 +52,18 @@ class USUARIOS_EDIT {
 					
 							<input type="file" id="avatar" name="avatar" value="<?php echo $this->valores['avatar']?>" accept="image/*"  />
 					</tr>
-                    <tr>
+					<?php
+					if ($_SESSION['rol'] == 0) {
+						?>
+						<tr>
 						<th class="formThTd">
 							<?php echo $strings['Rol'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="rol" name="rol"  value="<?php echo $this->valores['rol']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
-					</tr>
+						</tr>
+					<?php
+					}
+					?>
                     <tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
