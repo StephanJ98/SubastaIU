@@ -98,4 +98,5 @@ class USUARIOS_SHOWALL {
 <?php 
 	include '../Views/Footer.php';
 		}
-	}?>
+	}
+?>
