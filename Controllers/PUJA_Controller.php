@@ -6,9 +6,6 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/PUJA_Model.php';
-include '../Views/PUJA_ADD_View.php';
-include '../Views/PUJA_DELETE_View.php';
-include '../Views/PUJA_EDIT_View.php';
 include '../Views/PUJA_SEARCH_View.php';
 include '../Views/PUJA_SHOWALL_View.php';
 include '../Views/PUJA_SHOWCURRENT_View.php';
