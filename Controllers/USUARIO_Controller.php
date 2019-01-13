@@ -75,12 +75,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
 			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_EDIT( $valores );
 		} else {
-
 			$USUARIO = get_data_form();
 			$respuesta = $USUARIO->EDIT();
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_Controller.php' );

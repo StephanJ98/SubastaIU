@@ -81,11 +81,11 @@ class SUBASTA_Model { //declaración de la clase
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM SUBASTAS 
-							WHERE  (`ficheroSubasta` COLLATE utf8_bin = '$this->ficheroSubasta')";
+							WHERE  (`producto` COLLATE utf8_bin = '$this->producto')";
 
-					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el ficheroSubasta)
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el producto)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el ficheroSubasta introducido en la base de datos';// ya existe
+						return 'Ya existe un usuario con el producto introducido en la base de datos';// ya existe
 						
 					} else {
 

@@ -26,13 +26,13 @@ class USUARIOS_SHOWALL {
 				</caption>
 				<tr>
 <?php
-					/*foreach ( $lista as $atributo ) {
+					foreach ( $lista as $atributo ) {
 ?>
 					<th>
 						<?php echo $strings[$atributo]?>
 					</th>
 <?php
-					}*/
+					}
 ?>
 					<th colspan="3" >
 						<?php echo $strings['Opciones']?>

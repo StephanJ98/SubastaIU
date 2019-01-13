@@ -218,7 +218,12 @@ class USUARIOS_Model { //declaración de la clase
 		} else {
 			$tupla = $resultado->fetch_array();
 			if ( $tupla[ 'password' ] == $this->password ) {
-				return true;
+				if ( $tupla[ 'rol' ] == $this->rol ) {
+					return true;
+				}
+				else{
+					return 'El Rol para el usuario no es correcto';
+				}
 			} else {
 				return 'La password para este usuario no es correcta';
 			}
@@ -245,6 +250,19 @@ class USUARIOS_Model { //declaración de la clase
 			}else{
 				return true; //no existe el usuario
 			}
+		}
+	}
+
+	function Gestion(){
+		$sql = "SELECT rol
+       			FROM USUARIO 
+    			WHERE (BINARY `idUser` LIKE '%$this->idUser%')";
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
 		}
 	}
 } //fin de clase
