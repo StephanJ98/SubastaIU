@@ -17,7 +17,6 @@ class HISTORIAL_SHOWALL{
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		
 		<br>
 		<br>
 <?php 

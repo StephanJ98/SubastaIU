@@ -25,14 +25,12 @@ function get_data_form() { //en las vistas los id y name de los elemntos deben s
 
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'name' ] ) ) {
 		$dirFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
-	} 
-	else {
+	} else {
 		$dirFicheroSubasta = null;
 	}
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ] ) ) {
 		$dirTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
-	} 
-	else {
+	} else {
 		$dirTempFicheroSubasta = null;
 	}
 	if ( $dirFicheroSubasta != null ) {
@@ -40,8 +38,14 @@ function get_data_form() { //en las vistas los id y name de los elemntos deben s
 		$ficheroSubasta = $dir_subida . $dirFicheroSubasta;
 		move_uploaded_file( $dirTempFicheroSubasta, $ficheroSubasta );
 	}
-	$action = $_REQUEST[ 'action' ];
-    $SUBASTA = new SUBASTA_Model($idSubasta,$producto,$info,$ficheroSubasta,$esCiega,$mayorPuja);
+    $SUBASTA = new SUBASTA_Model(
+    	$idSubasta,
+    	$producto,
+    	$info,
+    	$ficheroSubasta,
+    	$esCiega,
+    	$mayorPuja
+    );
 	return $SUBASTA;
 }
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -51,8 +55,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'ADD':
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
-		}
-		else {
+		} else {
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->ADD();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
@@ -78,7 +81,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new SUBASTA_EDIT( $valores );
 		} 
 		else {
-
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->EDIT();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );

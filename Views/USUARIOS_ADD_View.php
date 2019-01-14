@@ -49,7 +49,21 @@
 						<th class="formThTd">
 							<?php echo $strings['Rol'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="rol" name="rol"  placeholder="<?php echo $strings['0(Admin), 1(Pujador) o 2(Subastador)']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
+						<td class="formThTd">
+								<select id="rol" name="rol" value="" required >
+									<option value="">
+										<?php echo $strings['Elija rol']; ?>
+									</option>
+									<option value="1">
+										<?php echo $strings['Pujador']; ?>
+									</option>
+									<option value="2">
+										<?php echo $strings['Subastador']; ?>
+									</option>
+									<option value="0">
+										<?php echo $strings['Administrador']; ?>
+									</option>
+								</select>
 					</tr>
                     <tr>
 						<td colspan="2">

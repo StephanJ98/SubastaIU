@@ -16,6 +16,7 @@ array(
 	'Rol' => 'Rol',
 	'rol' => 'Rol',
 	'Elija rol' => 'Elija rol',
+	'Elija una opción'=> 'Elija una opción',
 	'Pujador' => 'Pujador',
 	'Subastador' => 'Subastador',
 	'idioma' => 'Idioma',
@@ -42,6 +43,7 @@ array(
 	'0(Admin), 1(Pujador) o 2(Subastador)' => '0(Admin), 1(Pujador) o 2(Subastador)',
 	'idSubasta' => 'idSubasta',
 	'producto' => 'producto',
+	'Producto' => 'Producto',
 	'Correo electrónico' => 'Correo electrónico',
 	'email' => 'Correo electrónico',
 	'info' => 'info',
@@ -103,35 +105,28 @@ array(
 	'Modificar' => 'Modificar',
 	'Eliminar' => 'Eliminar',
 	'Ver en detalle' => 'Ver en detalle',
-	
-				'Elija' => 'Elija',
-				'IdUsuario' => 'Insertar loteria',
-				'IdSubasta' => 'IdSubasta',
-				'idPuja' => 'idPuja',
-				'idSubasta' => 'idSubasta',
-				'idUser' => 'idUser',
-				'importe' => 'importe',
-				'Informacion del premio' => 'Informacion del premio',
-				'premiopersonal' => 'premiopersonal',
-				'pagado' => 'pagado',
-				
-				'Borrar loteria' => 'Borrar loteria',
-		
-				'Buscar loteria' => 'Buscar loteria',
-				'SI' => 'SI',
-				'NO' => 'NO',
-		        'Opciones' => 'Opciones',
-				'Inicio' => 'INICIO',
-				'usuarios' => 'USUARIOS',
-				'Footer' => 'FOOTER',
-				'Mostrar Usuarios' => 'Mostrar Usuarios',
-				'Mostrar Loterias' => 'Mostrar Loterias',
-				'Insertar Usuario' => 'INSERTAR USUARIO',
-				'Elija opción' => 'Elija opción',
-				'Buscar Usuario' => 'BUSCAR USUARIO'
-				
- 				
-		);
-				
-				
+	'Elija' => 'Elija',
+	'IdUsuario' => 'IdUsuario',
+	'IdSubasta' => 'IdSubasta',
+	'idPuja' => 'idPuja',
+	'idSubasta' => 'idSubasta',
+	'idUser' => 'idUser',
+	'importe' => 'importe',
+	'Si' => 'Si',
+	'No' => 'No',
+	'Ciega' => 'Ciega',
+	'Fichero' => 'Fichero',
+	'Precio Base' => 'Precio Base',
+	'SI' => 'SI',
+	'NO' => 'NO',
+    'Opciones' => 'Opciones',
+	'Inicio' => 'INICIO',
+	'usuarios' => 'USUARIOS',
+	'Footer' => 'FOOTER',
+	'Mostrar Usuarios' => 'Mostrar Usuarios',
+	'Identificador de Subasta' => 'Identificador de Subasta',
+	'Insertar Usuario' => 'INSERTAR USUARIO',
+	'Elija opción' => 'Elija opción',
+	'Buscar Usuario' => 'BUSCAR USUARIO'	
+		);				
     ?>

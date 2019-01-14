@@ -26,7 +26,15 @@ class USUARIOS_SHOWALL {
 				<caption style="margin-bottom:10px;margin: 10px;">
 					<form action='../Controllers/USUARIO_Controller.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+						<?php
+							if (IsAuthenticated()){
+								if ($_SESSION['rol'] == 0) {
+						?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+						<?php
+							}
+						}
+						?>
 					</form>
 				</caption>
 				<tr>
@@ -80,8 +88,6 @@ class USUARIOS_SHOWALL {
 										<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 								<?php
 								}
-								?>
-							<?php
 							}
 							?>
 						</form>

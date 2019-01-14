@@ -55,7 +55,6 @@ class USUARIOS_Model { //declaración de la clase
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
 			return $resultado;
 		}
 	} // fin metodo SEARCH
@@ -85,10 +84,8 @@ class USUARIOS_Model { //declaración de la clase
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el email)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el email introducido en la base de datos';// ya existe
-						
+						return 'Ya existe un usuario con el email introducido en la base de datos';	
 					} else {
-
 						$sql = "INSERT INTO USUARIO (
 									idUser,
 									password,
@@ -218,12 +215,7 @@ class USUARIOS_Model { //declaración de la clase
 		} else {
 			$tupla = $resultado->fetch_array();
 			if ( $tupla[ 'password' ] == $this->password ) {
-				if ( $tupla[ 'rol' ] == $this->rol ) {
-					return true;
-				}
-				else{
-					return 'El Rol para el usuario no es correcto';
-				}
+				return true;
 			} else {
 				return 'La password para este usuario no es correcta';
 			}
@@ -252,17 +244,17 @@ class USUARIOS_Model { //declaración de la clase
 			}
 		}
 	}
-
 	function Gestion(){
 		$sql = "SELECT rol
-       			FROM USUARIO 
-    			WHERE (BINARY `idUser` LIKE '%$this->idUser%')";
-		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
-		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
-			return 'Error en la consulta sobre la base de datos';
-		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
-			return $resultado;
+				FROM USUARIO
+				WHERE (`idUser` COLLATE utf8_bin = '$this->idUser')";
+		$resultado = $this->mysqli->query( $sql );
+		if ( $resultado->num_rows == 0 ) {
+			return 'El usuario no existe';
+		} else {
+			$tupla = $resultado->fetch_array();
+			$retour = $tupla[ 'rol' ];
+			return $retour;
 		}
 	}
 } //fin de clase
