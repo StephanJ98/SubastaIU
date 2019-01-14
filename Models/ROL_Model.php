@@ -32,9 +32,9 @@ class ROL_Model {
     //funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacíos devuelve todos
     function SEARCH() {
         // construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-        $sql = "SELECT  `idRol` as idRol,
-                        `nomRol` as nomRol,
-                        `descripRol` as descripRol
+        $sql = "SELECT  idRol,
+                        nomRol,
+                        descripRol
                 FROM ROLES
                 WHERE
                     (

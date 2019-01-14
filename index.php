@@ -9,10 +9,10 @@ session_start();
 include './Functions/Authentication.php';
 //si no ha pasado por el login de forma correcta
 if (!IsAuthenticated()){
-	header('Location:./Controllers/Login_Controller.php');
+	header('Location:./Controllers/LOGIN_Controller.php');
 }
 //si ha pasado por el login de forma correcta 
 else{
-	header('Location:./Controllers/Index_Controller.php');
+	header('Location:./Controllers/INDEX_Controller.php');
 }
 ?>

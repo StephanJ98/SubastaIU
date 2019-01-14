@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `SUBASTA`(
 `producto` varchar(30) NOT NULL,
 `info` varchar(30) NOT NULL,
 `ficheroSubasta` varchar(30) NOT NULL,
-`esCiega` enum('true','false') NOT NULL,
+`esCiega` varchar(30) NOT NULL,
 `mayorPuja` varchar(50) NOT NULL,
 PRIMARY KEY (`idSubasta`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

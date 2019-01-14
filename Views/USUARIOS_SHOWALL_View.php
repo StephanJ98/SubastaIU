@@ -1,4 +1,9 @@
 <?php
+/*
+	Autor: 	GUI
+	idSubasta de creación: 13/1/2019 
+	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
+*/
 class USUARIOS_SHOWALL {
 
 	function __construct( $lista, $datos) {
@@ -10,18 +15,26 @@ class USUARIOS_SHOWALL {
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+		<div class="container seccion" >
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
 			<table>
-				<caption style="margin-bottom:10px;">
-					<form action='../Controllers/USUARIOS_CONTROLLER.php'>
+				<caption style="margin-bottom:10px;margin: 10px;">
+					<form action='../Controllers/USUARIO_Controller.php'>
 						<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+						<?php
+							if (IsAuthenticated()){
+								if ($_SESSION['rol'] == 0) {
+						?>
 						<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+						<?php
+							}
+						}
+						?>
 					</form>
 				</caption>
 				<tr>
@@ -47,26 +60,36 @@ class USUARIOS_SHOWALL {
 ?>
 					<td>
 <?php
-    						if($atributo == 'avatar'){
+    					if($atributo == 'avatar'){
 ?>
-						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" ><?php echo $fila['avatar']?></a>
+						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
+						
 <?php
 						} else {
 							echo $fila[ $atributo ];
 						}
 ?>
+						
 					</td>
 <?php
 					}
 ?>
 					<td>
-						<form action="../Controllers/USUARIOS_CONTROLLER.php" method="get" style="display:inline" >
-							<input type="hidden" name="login" value="<?php echo $fila['login']; ?>">
-								<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
-					<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+						<form action="../Controllers/USUARIO_Controller.php" method="get" style="display:inline">
+							<input type="hidden" name="idUser" value="<?php echo $fila['idUser']; ?>">
+							<?php
+							if (IsAuthenticated()){
+								if (($_SESSION['rol'] == 0) || ($_SESSION['idUser'] == $fila['idUser'])) {
+							?>
+										<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+									<td>
+										<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+									<td>
+										<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
+								<?php
+								}
+							}
+							?>
 						</form>
 
 				</tr>
@@ -74,11 +97,14 @@ class USUARIOS_SHOWALL {
 				}
 ?>
 			</table>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post">
+			<form action='../Controllers/USUARIO_Controller.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
-<?php
-		include '../Views/Footer.php';
+		<br>
+		<br>
+<?php 
+	include '../Views/Footer.php';
 		}
+	}
 ?>

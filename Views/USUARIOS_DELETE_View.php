@@ -8,7 +8,7 @@ class USUARIOS_DELETE {
 
 	function render( $valores ) {
 		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
 		<div class="seccion">
@@ -34,7 +34,7 @@ class USUARIOS_DELETE {
 				</tr>
                 <tr>
 					<th>
-						<?php echo $strings['Nombre y apellidos'];?>
+						<?php echo $strings['Nombre'];?>
 					</th>
 					<td>
 						<?php echo $this->valores['nombre']?>
@@ -53,8 +53,8 @@ class USUARIOS_DELETE {
 						<?php echo $strings['Avatar'];?>
 					</th>
 					<td>
-						<a href="<?php echo $this->valores['avatar']?>" alt="<?php echo $strings['avatar'];?>">
-							<?php echo $this->valores['avatar']?>
+						<a href="<?php echo $this->valores['avatar']?>" alt="<?php echo $strings['Avatar'];?>">
+								<?php echo $this->valores['avatar']?></a>
 						</a>
 					</td>
 				</tr>
@@ -63,25 +63,27 @@ class USUARIOS_DELETE {
                         <?php echo $strings['Rol'];?>
                     </th>
                     <td>
-                        <?php echo $this->valores['userRol']?>
+                        <?php echo $this->valores['rol']?>
                     </td>
                 </tr>
                 <p style="text-align:center;">
 				<?php echo $strings['¿Está seguro de que quiere borrar esta tupla de la tabla?'];?>
 			</p>
-			<form action="../Controllers/USUARIOS_CONTROLLER.php" method="post" style="display: inline">
+			<form action="../Controllers/USUARIO_Controller.php" method="post" style="display: inline">
 				<input type="hidden" name="idUser" value=<?php echo $this->valores['idUser'] ?> />
 				<input type="hidden" name="password" value=<?php echo $this->valores['password'] ?> />
 				<input type="hidden" name="nombre" value=<?php echo $this->valores['nombre'] ?> />
 				<input type="hidden" name="email" value=<?php echo $this->valores['email'] ?> />
 				<input type="hidden" name="avatar" value=<?php echo $this->valores['avatar'] ?> />
-				<input type="hidden" name="userRol" value=<?php echo $this->valores['userRol'] ?> />
+				<input type="hidden" name="rol" value=<?php echo $this->valores['rol'] ?> />
 				<button type="submit" name="action" value="DELETE"><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' method="post" style="display: inline">
+			<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
+		<br>
+		<br>
 <?php
 		include '../Views/Footer.php';
 	}

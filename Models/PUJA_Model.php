@@ -35,11 +35,11 @@ class PUJA_Model { //declaración de la clase
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
-		$sql = "SELECT  `idPuja` as idPuja,
-						`idSubasta` as idSubasta,
-						`idUser` as idUser,
-						`importe` as importe
-       			FROM PUJAS 
+		$sql = "SELECT  idPuja,
+						idSubasta,
+						idUser,
+						importe
+       			FROM PUJA
     			WHERE 
     				( (BINARY `idPuja` LIKE '%$this->idPuja%') &&
 					(BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
@@ -108,7 +108,7 @@ class PUJA_Model { //declaración de la clase
 	// funcion DELETE()
 	//Comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
 	//se manda un mensaje de que ese valor de clave no existe
-	function DELETE() {
+	/*function DELETE() {//No necesaria
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
 				FROM PUJAS 
@@ -127,7 +127,7 @@ class PUJA_Model { //declaración de la clase
 		} // si no existe el idPuja a borrar se devuelve el mensaje de que no existe
 		else
 			return "No existe";
-	} // fin metodo DELETE
+	} // fin metodo DELETE*/
 
 	// funcion RellenaDatos()
 	//Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
@@ -145,10 +145,10 @@ class PUJA_Model { //declaración de la clase
 		}
 	} // fin del metodo RellenaDatos()
 
-	// funcion EDIT()
+	// funcion EDIT()  //No necesaria
 	// Se comprueba que la tupla a modificar exista en base al valor de su clave primaria
 	// si existe se modifica
-	function EDIT() {
+	/*function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * 
 				FROM PUJAS 
@@ -171,6 +171,6 @@ class PUJA_Model { //declaración de la clase
 			}
 		} else // si no se encuentra la tupla se manda el mensaje de que no existe la tupla
 			return 'No existe en la base de datos';
-	} // fin del metodo EDIT
+	} // fin del metodo EDIT*/
 } //fin de clase
 ?>

@@ -1,26 +1,45 @@
 <?php
 //Crea-do el : 19-12-2018
 //Creado por: Salva
-class Login{
-	function __construct(){	
+class Login {
+	function __construct() {
 		$this->render();
 	}
+	function render() {
 
-	function render(){
-		include 'Header.php'; 
-?>			
-	<h1>LOGIN</h1>
-	<div id="forms">		
-		<form name = 'Form' action='../Controllers/LOGIN_Controller.php' method='post' id="formularioLogin">
-			Login : <input type = 'text'  name = 'login'  size = '10'  ><br>
-			Paswordtraseña : <input type = 'password' name = 'password' id="password" value="" size = '10' ><br>
-			<button>Sin función todavía</button> <!-- incluír acciones para confirmación -->
-		</form>
-	</div>	
-	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-							
+		include '../Views/Header.php';
+		?>
+		<div class="container section">
+			<div class="row justify-content-center">
+				<div class="col-2 col-offset-3" style="text-align: center;">
+					<br>
+					<br>
+					<form name='Form' action='../Controllers/LOGIN_Controller.php' method='post' onsubmit="return comprobarLogin()">
+						<table>
+							<tr>
+								<th class="formThTd">
+									<?php echo $strings['Usuario'];?> </th>
+
+								<td class="formThTd"><input type='text' id="idUser" name='idUser' maxlength='30'  value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')"><br>
+							</tr>
+							<tr>
+								<th class="formThTd">
+									<?php echo $strings['Contraseña'];?> </th>
+								<td class="formThTd"><input type='password' id="password" name='password' maxlength='20'  value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'20') && comprobarTexto(this,'20')"><br>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<button type="submit" name="action" value="Login"><img src="../Views/icon/conectarse.png" alt="<?php echo $strings['Conectarse'] ?>" /></button>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
 <?php
-	include 'Footer.php';
+		include '../Views/Footer.php';
 	} //fin metodo render
-} //fin Login
+
+	} //fin Login
+
 ?>

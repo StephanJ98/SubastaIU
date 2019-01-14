@@ -6,12 +6,14 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/USUARIO_Model.php';
+include '../Models/HISTORIAL_Model.php';
 include '../Views/USUARIOS_ADD_View.php';
 include '../Views/USUARIOS_DELETE_View.php';
 include '../Views/USUARIOS_EDIT_View.php';
 include '../Views/USUARIOS_SEARCH_View.php';
 include '../Views/USUARIOS_SHOWALL_View.php';
 include '../Views/USUARIOS_SHOWCURRENT_View.php';
+include '../Views/origin.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
@@ -38,7 +40,7 @@ function get_data_form() {
 		$avatar = $dir_subida . $nombreAvatar;
 		move_uploaded_file( $nombreTempAvatar, $avatar );
 	}
-	$USUARIO = new USUARIO_Model(
+	$USUARIO = new USUARIOS_Model(
 		$idUser,
 		$password,
 		$nombre,
@@ -64,7 +66,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_DELETE( $valores );
 		} else {
@@ -75,12 +77,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_EDIT( $valores );
 		} else {
-
 			$USUARIO = get_data_form();
 			$respuesta = $USUARIO->EDIT();
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_Controller.php' );
@@ -90,26 +90,28 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new USUARIOS_SEARCH();
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = new USUARIOS_Model($_REQUEST['idUser'],$_REQUEST['nombre'],$_REQUEST['email'],'',$_REQUEST['rol'],'');
 			$datos = $USUARIO->SEARCH();
-			$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
+			$lista = array( 'idUser', 'nombre', 'email', 'rol' );
 			new USUARIOS_SHOWALL( $lista, $datos );
 		}
 		break;
 	case 'SHOWCURRENT':
-		$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+		$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 		new USUARIOS_SHOWCURRENT( $valores );
 		break;
-	default:
+	case 'SHOWALL':
 		if ( !$_POST ) {
-			$USUARIO = new USUARIO_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
+			$USUARIO = new USUARIOS_Model( '', '', '', '', '', '');
 		} else {
 			$USUARIO = get_data_form();
 		}
 		$datos = $USUARIO->SEARCH();
 		$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
 		new USUARIOS_SHOWALL( $lista, $datos );
+		break;
+	default:
+		new ORIGIN();
 }
-
 ?>
