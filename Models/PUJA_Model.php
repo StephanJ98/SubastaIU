@@ -39,7 +39,7 @@ class PUJA_Model { //declaración de la clase
 						idSubasta,
 						idUser,
 						importe
-       			FROM PUJAS 
+       			FROM PUJA
     			WHERE 
     				( (BINARY `idPuja` LIKE '%$this->idPuja%') &&
 					(BINARY `idSubasta` LIKE '%$this->idSubasta%') &&

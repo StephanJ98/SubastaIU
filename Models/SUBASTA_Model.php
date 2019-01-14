@@ -45,7 +45,7 @@ class SUBASTA_Model { //declaración de la clase
 						ficheroSubasta,
 						esCiega,
 						mayorPuja
-       			FROM SUBASTAS 
+       			FROM SUBASTA 
     			WHERE 
     				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
 					(BINARY `producto` LIKE '%$this->producto%') &&
@@ -53,6 +53,7 @@ class SUBASTA_Model { //declaración de la clase
 	 				(BINARY `ficheroSubasta` LIKE '%$this->ficheroSubasta%') &&
 					(BINARY `esCiega` LIKE'%$this->esCiega%') &&
 					(BINARY `mayorPuja` LIKE'%$this->mayorPuja%') )";
+
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';

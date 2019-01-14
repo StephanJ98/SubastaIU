@@ -55,11 +55,13 @@ class USUARIOS_SHOWALL {
     					if($atributo == 'avatar'){
 ?>
 						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
+						
 <?php
 						} else {
 							echo $fila[ $atributo ];
 						}
 ?>
+						
 					</td>
 <?php
 					}
@@ -98,4 +100,5 @@ class USUARIOS_SHOWALL {
 <?php 
 	include '../Views/Footer.php';
 		}
-	}?>
+	}
+?>
