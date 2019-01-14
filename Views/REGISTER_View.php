@@ -13,7 +13,7 @@ class Register {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php'; //header necesita los strings
 		?>
-		<div class="container-fluid seccion">
+		<div class="container seccion">
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
@@ -49,23 +49,46 @@ class Register {
 						</th>
 						<td class="formThTd"><input type="file" id="nombreFoto" name="nombreFoto" value="" required accept="image/*" onblur="comprobarVacio(document.forms['ADD'].elements[7])"/>
 					</tr>
-					<tr>
-						<th class="formThTd">
-							<?php echo $strings['Rol']; ?>
-						</th>
-						<td class="formThTd">
-							<select id="rol" name="rol" value="" required onBlur="comprobarVacio(document.forms['ADD'].elements[7]) && comprobarVacio(document.forms['ADD'].elements[8]) && comprobarVacio(this) ">
-								<option value="">
-									<?php echo $strings['Elija rol']; ?>
-								</option>
+					<?php
+					if (IsAuthenticated()){
+						if ($_SESSION['rol'] == 0) {
+					?>
+						<tr>
+							<th class="formThTd">
+								<?php echo $strings['Rol']; ?>
+							</th>
+							<td class="formThTd">
+								<select id="rol" name="rol" value="" required onBlur="comprobarVacio(document.forms['ADD'].elements[7]) && comprobarVacio(document.forms['ADD'].elements[8]) && comprobarVacio(this) ">
+									<option value="">
+										<?php echo $strings['Elija rol']; ?>
+									</option>
+									<option value="1">
+										<?php echo $strings['Pujador']; ?>
+									</option>
+									<option value="2">
+										<?php echo $strings['Subastador']; ?>
+									</option>
+								</select>
+						</tr>
+						<?php
+						}
+					}
+					else{
+						?>
+						<tr>
+							<th class="formThTd">
+								<?php echo $strings['Rol']; ?>
+							</th>
+							<td class="formThTd">
+							<select id="rol" name="rol" value="" required readonly>
 								<option value="1">
 									<?php echo $strings['Pujador']; ?>
 								</option>
-								<option value="2">
-									<?php echo $strings['Subastador']; ?>
-								</option>
 							</select>
-					</tr>
+						</tr>
+					<?php
+					}
+					?>
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="REGISTER"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>
@@ -73,13 +96,9 @@ class Register {
 				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
 					</tr>
 			</table>
-
 		</div>
-
-		<?php
-		include '../Views/Footer.php';
-		} //fin metodo render
-
-		} //fin REGISTER
-
-		?>
+	<?php
+	include '../Views/Footer.php';
+	} //fin metodo render
+} //fin REGISTER
+?>

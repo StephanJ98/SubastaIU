@@ -8,20 +8,20 @@ class USUARIOS_EDIT {
 
 	function render( $valores ) {
 		$this->valores = $valores;
-		include '../Locales/Strings_' . $_SESSION[ 'idioma' ] . '.php';
+		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
 		<div class="seccion">
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
-			<form name="EDIT" action="../Controllers/USUARIOS_CONTROLLER.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
+			<form name="EDIT" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
 				<table>
 					<tr>
 						<th class="formThTd">
 							<?php echo $strings['Nombre de Usuario'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="login" name="login" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['login']?>" maxlength="30" size="34"  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')" required/>
+						<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['idUser']?>" maxlength="30" size="34"  readonly onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')" required/>
 					</tr>
 					<tr>
 						<th class="formThTd">
@@ -31,7 +31,7 @@ class USUARIOS_EDIT {
 					</tr>
 					<tr>
 						<th class="formThTd">
-							<?php echo $strings['Nombre y apellidos'];?>
+							<?php echo $strings['Nombre'];?>
 						</th>
 						<td class="formThTd"><input type="text" id="nombre" name="nombre" placeholder="<?php echo $strings['Escriba aqui...']?>" value="<?php echo $this->valores['nombre']?>" maxlength="150" size="154" required onBlur="comprobarVacio(this) && comprobarLongitud(this,'150') && comprobarTexto(this,'150') && comprobarAlfabetico(this,'150')"/>
 					</tr>
@@ -52,26 +52,34 @@ class USUARIOS_EDIT {
 					
 							<input type="file" id="avatar" name="avatar" value="<?php echo $this->valores['avatar']?>" accept="image/*"  />
 					</tr>
-                    <tr>
+					<?php
+					if ($_SESSION['rol'] == 0) {
+						?>
+						<tr>
 						<th class="formThTd">
 							<?php echo $strings['Rol'];?>
 						</th>
-						<td class="formThTd"><input type="text" id="userRol" name="userRol"  value="<?php echo $this->valores['userRol']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
-					</tr>
+						<td class="formThTd"><input type="text" id="rol" name="rol"  value="<?php echo $this->valores['rol']?>" maxlength="1" size="1" onBlur="comprobarVacio(this) && comprobarLongitud(this,'1') && comprobarEntero(this,'0','3')"/>
+						</tr>
+					<?php
+					}
+					?>
                     <tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-			<form action='../Controllers/USUARIOS_CONTROLLER.php' style="display: inline">
+			<form action='../Controllers/USUARIO_Controller.php' style="display: inline">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 			</tr>
 
 			</table>
 		</div>
+		<br>
+		<br>
 
 		<?php
 		include '../Views/Footer.php';
 		}
-		}
-		?>
+	}
+?>

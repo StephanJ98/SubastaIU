@@ -5,7 +5,7 @@
 	Función: contiene todas las características del footer
 */
 ?>
-		<footer class="container-fluid"><?php echo date("d-M-Y", time());?></br>
+		<footer class="container-fluid" id="foot"><?php echo date("d-M-Y", time());?></br>
 				<?php if ( IsAuthenticated() ){  
 					$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
 					echo $strings['Usuario'] . ' : ' . $sesion . '<br>'; }?>

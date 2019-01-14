@@ -45,7 +45,7 @@ class SUBASTA_Model { //declaración de la clase
 						ficheroSubasta,
 						esCiega,
 						mayorPuja
-       			FROM SUBASTAS 
+       			FROM SUBASTA 
     			WHERE 
     				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
 					(BINARY `producto` LIKE '%$this->producto%') &&
@@ -53,6 +53,7 @@ class SUBASTA_Model { //declaración de la clase
 	 				(BINARY `ficheroSubasta` LIKE '%$this->ficheroSubasta%') &&
 					(BINARY `esCiega` LIKE'%$this->esCiega%') &&
 					(BINARY `mayorPuja` LIKE'%$this->mayorPuja%') )";
+
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
@@ -70,32 +71,30 @@ class SUBASTA_Model { //declaración de la clase
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
-					FROM SUBASTAS 
+					FROM SUBASTA 
 					WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
-				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
+				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
 
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idSubasta)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
-							FROM SUBASTAS 
-							WHERE  (`ficheroSubasta` COLLATE utf8_bin = '$this->ficheroSubasta')";
+							FROM SUBASTA 
+							WHERE  (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 
-					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el ficheroSubasta)
+					if ( $result->num_rows != 0 ) {
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe un usuario con el ficheroSubasta introducido en la base de datos';// ya existe
-						
+						return 'Ya existe una subasta con el codigo introducido en la base de datos';	
 					} else {
-
-						$sql = "INSERT INTO SUBASTAS (
-									`idSubasta`,
-									`producto`,
-									`info`,
-									`ficheroSubasta`,
-									`esCiega`,
-									`mayorPuja`) 
+						$sql = "INSERT INTO SUBASTA (
+									idSubasta,
+									producto,
+									info,
+									ficheroSubasta,
+									esCiega,
+									mayorPuja) 
 								VALUES(
 									'$this->idSubasta',
 									'$this->producto',
@@ -104,16 +103,16 @@ class SUBASTA_Model { //declaración de la clase
 									'$this->esCiega',
 									'$this->mayorPuja')";
 					}
-					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje
+					if ( !$this->mysqli->query($sql) ) { // si da error en la ejecución del insert devolvemos mensaje
 						return 'Error en la inserción';
 					} else { //si no da error en la insercion devolvemos mensaje de exito
 						return 'Inserción realizada con éxito'; //operacion de insertado correcta
 					}
 				} else // si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-					return 'Ya existe el usuario introducido en la base de datos'; // ya existe
+					return 'Ya existe la subasta introducido en la base de datos'; // ya existe
 			}
 		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
-			return 'Introduzca un valor'; // introduzca un valor para el usuario
+			return 'Introduzca un valor'; // introduzca un valor para el SUBASTA
 		}
 	} // fin del metodo ADD
 
@@ -123,14 +122,14 @@ class SUBASTA_Model { //declaración de la clase
 	function DELETE() {
 		// se construye la sentencia sql de busqueda con los atributos de la clase
 		$sql = "SELECT * 
-				FROM SUBASTAS 
+				FROM SUBASTA 
 				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si existe una tupla con ese valor de clave
 		if ( $result->num_rows == 1 ) {
 			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM SUBASTAS 
+			$sql = "DELETE FROM SUBASTA 
 					WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta' )";
 			// se ejecuta la query
 			$this->mysqli->query( $sql );
@@ -146,7 +145,7 @@ class SUBASTA_Model { //declaración de la clase
 	//en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
-				FROM SUBASTAS 
+				FROM SUBASTA 
 				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -163,14 +162,14 @@ class SUBASTA_Model { //declaración de la clase
 	function EDIT() {
 		// se construye la sentencia de busqueda de la tupla en la bd
 		$sql = "SELECT * 
-				FROM SUBASTAS 
+				FROM SUBASTA 
 				WHERE (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 		// se ejecuta la query
 		$result = $this->mysqli->query( $sql );
 		// si el numero de filas es igual a uno es que lo encuentra
 		if ( $result->num_rows == 1 ) { // se construye la sentencia de modificacion en base a los atributos de la clase
 			if($this->ficheroSubasta <> null){
-				$sql = "UPDATE SUBASTAS SET 
+				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
 							`producto` = '$this->producto',
 							`info` = '$this->info',
@@ -179,7 +178,7 @@ class SUBASTA_Model { //declaración de la clase
 							`mayorPuja` = '$this->mayorPuja'
 						WHERE ( `idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 			}else{
-				$sql = "UPDATE SUBASTAS SET 
+				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
 							`producto` = '$this->producto',
 							`info` = '$this->info',

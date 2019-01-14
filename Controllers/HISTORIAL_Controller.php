@@ -6,12 +6,7 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/HISTORIAL_Model.php';
-include '../Views/HISTORIAL_ADD_View.php';
-include '../Views/HISTORIAL_DELETE_View.php';
-include '../Views/HISTORIAL_EDIT_View.php';
-include '../Views/HISTORIAL_SEARCH_View.php';
-include '../Views/HISTORIAL_SHOWALL_View.php';
-include '../Views/HISTORIAL_SHOWCURRENT_View.php';
+include '../Views/HISTORIAL_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
@@ -86,7 +81,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$HISTORIAL = new HISTORIAL_Model( $_REQUEST[ 'idHistorial' ], '', '', '', '');
+			$HISTORIAL = new HISTORIAL_Model( '', '', '', '', '');
 		} else {
 			$HISTORIAL = get_data_form();
 		}
@@ -94,5 +89,4 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$lista = array( 'idHistorial', 'idSubasta', 'idUser', 'idPuja', 'importe' );
 		new HISTORIAL_SHOWALL( $lista, $datos );
 }
-
 ?>

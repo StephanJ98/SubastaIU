@@ -18,13 +18,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Ceci doit être le premier css chargé.-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" media="screen" href="../Views/css/estilos.css" hreflang="es">
+	<link rel="stylesheet" type="text/css" media="screen" href="../Views/style/index.css" hreflang="es">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/tcal/tcal.css" hreflang="es">
 	<?php include '../Views/js/validaciones.js' ?>
 	<title>Subastas</title>
 </head>
 <body>
-<header class="container-fluid>
+<header class="container" id="head">
 	<p style="text-align:center">
 		<h1>
 <?php
@@ -32,14 +32,25 @@
 ?>
 		</h1>
 	</p>
-
 <?php	
 	if (IsAuthenticated()){
 ?>
+		<br>
 		<p style="font-size:20px; ">
 <?php
 			$sesion = isset($_SESSION['idUser']) ? $_SESSION['idUser'] : 'No identificado';
-			echo $strings['Usuario'] . ' : ' . $sesion . '<br>';
+			$tipo = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'Sin Rol Asignado';
+			echo $strings['Usuario'] . ' : ' . $sesion . '&nbsp&nbsp&nbsp&nbsp';
+			if ($tipo == 0) {
+				$texto = 'Administrador';
+			}
+			elseif ($tipo == 1) {
+				$texto = 'Pujador';
+			}
+			else{
+				$texto = 'Subastador';
+			}
+			echo $strings['Rol'] . ' : ' . $texto . '<br>';
 ?>	
 			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
 	
@@ -53,11 +64,56 @@
 <?php		
 	}
 ?>
-		
 	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
 		<?php echo $strings['idioma']; ?>
 		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
 	</form>	
+	<div class="row">
+		<?php
+		if (IsAuthenticated()){
+			?>
+			<div class="col">
+			<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
+			</div>
+			<?php
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			if (($_SESSION['rol'] == 2) || ($_SESSION['rol'] == 0)) {
+		?>
+				<div class="col">
+				<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
+				</div>
+			<?php
+			}
+			?>
+		<?php
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 0)) {
+		?>
+				<div class="col">
+				<a href="../Controllers/PUJA_Controller.php">Pujas</a>
+				</div>
+			<?php
+			}
+			?>
+		<?php
+		}
+		?>
+		<?php
+		if (IsAuthenticated()){
+			?>
+			<div class="col">
+			<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
+			</div>
+			<?php
+		}
+		?>
+	</div>
 </header>

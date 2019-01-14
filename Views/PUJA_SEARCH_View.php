@@ -23,11 +23,11 @@
 					<option value="">
 						<p><?php echo $strings['Elija']; ?></p>
 					</option>
-					<option value="user">
-						<p><?php echo $strings['Id de Usuario'];?></p>
+					<option value="idUser">
+						<p><?php echo $strings['IdUsuario'];?></p>
 					</option>
-					<option value="subasta">
-						<p><?php echo $strings['Id de Subasta'];?></p>
+					<option value="idSubasta">
+						<p><?php echo $strings['IdSubasta'];?></p>
 					</option>
 				</select>
 				<input type="text" id="SEARCHPUJA" name="SEARCHPUJA" placeholder="<?php echo $strings['Introduzca los datos']?>" value="" maxlength="30" size="34"/>

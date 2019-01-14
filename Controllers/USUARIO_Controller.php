@@ -6,12 +6,14 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/USUARIO_Model.php';
+include '../Models/HISTORIAL_Model.php';
 include '../Views/USUARIOS_ADD_View.php';
 include '../Views/USUARIOS_DELETE_View.php';
 include '../Views/USUARIOS_EDIT_View.php';
 include '../Views/USUARIOS_SEARCH_View.php';
 include '../Views/USUARIOS_SHOWALL_View.php';
 include '../Views/USUARIOS_SHOWCURRENT_View.php';
+include '../Views/origin.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
@@ -75,12 +77,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
 			$USUARIO = new USUARIOS_Model( $_REQUEST[ 'idUser' ], '', '', '', '', '');
 			$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 			new USUARIOS_EDIT( $valores );
 		} else {
-
 			$USUARIO = get_data_form();
 			$respuesta = $USUARIO->EDIT();
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_Controller.php' );
@@ -90,9 +90,9 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new USUARIOS_SEARCH();
 		} else {
-			$USUARIO = get_data_form();
+			$USUARIO = new USUARIOS_Model($_REQUEST['idUser'],$_REQUEST['nombre'],$_REQUEST['email'],'',$_REQUEST['rol'],'');
 			$datos = $USUARIO->SEARCH();
-			$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
+			$lista = array( 'idUser', 'nombre', 'email', 'rol' );
 			new USUARIOS_SHOWALL( $lista, $datos );
 		}
 		break;
@@ -101,7 +101,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 		new USUARIOS_SHOWCURRENT( $valores );
 		break;
-	default:
+	case 'SHOWALL':
 		if ( !$_POST ) {
 			$USUARIO = new USUARIOS_Model( '', '', '', '', '', '');
 		} else {
@@ -110,5 +110,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $USUARIO->SEARCH();
 		$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
 		new USUARIOS_SHOWALL( $lista, $datos );
+		break;
+	default:
+		new ORIGIN();
 }
 ?>
