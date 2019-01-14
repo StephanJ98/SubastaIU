@@ -109,6 +109,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		}
 		$datos = $SUBASTA->SEARCH();
 		$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja');
+
 		new SUBASTA_SHOWALL( $lista, $datos );
 }
 ?>
