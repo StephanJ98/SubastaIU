@@ -32,7 +32,6 @@
 ?>
 		</h1>
 	</p>
-
 <?php	
 	if (IsAuthenticated()){
 ?>
@@ -65,7 +64,6 @@
 <?php		
 	}
 ?>
-		
 	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
 		<?php echo $strings['idioma']; ?>
 		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>

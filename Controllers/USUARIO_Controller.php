@@ -13,6 +13,7 @@ include '../Views/USUARIOS_EDIT_View.php';
 include '../Views/USUARIOS_SEARCH_View.php';
 include '../Views/USUARIOS_SHOWALL_View.php';
 include '../Views/USUARIOS_SHOWCURRENT_View.php';
+include '../Views/origin.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
@@ -47,7 +48,6 @@ function get_data_form() {
 		$avatar,
 		$rol
 	);
-	
 	return $USUARIO;
 }
 
@@ -101,7 +101,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$valores = $USUARIO->RellenaDatos( $_REQUEST[ 'idUser' ] );
 		new USUARIOS_SHOWCURRENT( $valores );
 		break;
-	default:
+	case 'SHOWALL':
 		if ( !$_POST ) {
 			$USUARIO = new USUARIOS_Model( '', '', '', '', '', '');
 		} else {
@@ -110,5 +110,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		$datos = $USUARIO->SEARCH();
 		$lista = array( 'idUser', 'nombre', 'email', 'avatar', 'rol' );
 		new USUARIOS_SHOWALL( $lista, $datos );
+		break;
+	default:
+		new ORIGIN();
 }
 ?>
