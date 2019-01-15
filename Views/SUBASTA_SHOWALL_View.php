@@ -71,7 +71,22 @@ class SUBASTA_SHOWALL {
 					<td>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
-
+					<td>
+						<?php
+						if (IsAuthenticated()){
+							if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 0)) {
+						?>
+							<form action="../Controllers/PUJA_Controller.php" method="ADD" style="display:inline" >
+								<input type="text" id="importe" name="action" maxlength='30' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30')"> alt="<?php echo $strings['ID de Puja']?>" />
+								<input type="number" id="importe" name="action" maxlength='10' value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'10')"> alt="<?php echo $strings['TextArea de Puja']?>" />
+								<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Realizar Puja']?>" width="20" height="20"/></button>
+							</form>
+							<?php
+							}
+							?>
+						<?php
+						}
+						?>
 				</tr>
 <?php
 				}
