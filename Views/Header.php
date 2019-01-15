@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 05/01/2019
+	Fecha de creación: 05/01/2019 
 	Función: contiene todas las características del header
 */
 	include_once '../Functions/Authentication.php';
@@ -32,7 +32,7 @@
 ?>
 		</h1>
 	</p>
-<?php
+<?php	
 	if (IsAuthenticated()){
 ?>
 		<br>
@@ -51,25 +51,25 @@
 				$texto = 'Subastador';
 			}
 			echo $strings['Rol'] . ' : ' . $texto . '<br>';
-?>
+?>	
 			<a href="../Functions/Desconectar.php" style="text-decoration:none"> <img src="../Views/icon/desconexion.png" width="32" height="32" alt="<?php echo $strings['Desconectarse']?>" style="float:right;"></a>
-
+	
 		</p>
 <?php
 	} else {
-
+		
 		echo $strings['Usuario no identificado'];
-?>
+?> 
 		<a href = '../Controllers/Register_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
-<?php
+<?php		
 	}
 ?>
 	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
 		<?php echo $strings['idioma']; ?>
-		<button type="submit"  class="langButton" name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  class="langButton" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  class="langButton" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
-	</form>
+		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
+		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
+		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
+	</form>	
 	<div class="row">
 		<?php
 		if (IsAuthenticated()){

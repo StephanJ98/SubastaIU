@@ -1,24 +1,18 @@
 <?php
     class USUARIOS_ADD {
-
+        
      function __construct() {
 		$this->render();
 	}
-
+    
     function render() {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-<div class="container section">
-  <br>
-  <br>
-  <br>
-  <div class="row justify-content-center">
+    <div class="seccion">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
-    </div>
-    <div class="row justify-content-center">
             <form name="ADDFORM" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
                 <table>
 					<tr>
@@ -49,7 +43,7 @@
 						<th class="formThTd">
 							<?php echo $strings['Avatar'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
+						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>                                                                                                                                      
 					</tr>
                     <tr>
 						<th class="formThTd">
@@ -75,15 +69,12 @@
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
-    </tr>
-  </table>
-</div>
-      <div class="row justify-content-center">
 						<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
+					</tr>
+				</table>
 		</div>
-  </div>
 		<br>
 		<br>
 <?php
@@ -91,3 +82,4 @@
 		}
 		}
 ?>
+                    
