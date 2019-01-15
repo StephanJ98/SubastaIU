@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	idSubasta de creación: 13/1/2019 
+	idSubasta de creación: 13/1/2019
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
 class USUARIOS_SHOWALL {
@@ -11,17 +11,25 @@ class USUARIOS_SHOWALL {
 		$this->datos = $datos;
 		$this->render($this->lista,$this->datos);
 	}
-	
+
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="container seccion" >
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+	</div>
+			<br>
+		  <br>
+			<div class="row justify-content-center">
 			<table>
 				<caption style="margin-bottom:10px;margin: 10px;">
 					<form action='../Controllers/USUARIO_Controller.php'>
@@ -63,13 +71,13 @@ class USUARIOS_SHOWALL {
     					if($atributo == 'avatar'){
 ?>
 						<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
-						
+
 <?php
 						} else {
 							echo $fila[ $atributo ];
 						}
 ?>
-						
+
 					</td>
 <?php
 					}
@@ -97,13 +105,18 @@ class USUARIOS_SHOWALL {
 				}
 ?>
 			</table>
+			<br>
+			<br>
+		</div>
+		<div class="row justify-content-center">
 			<form action='../Controllers/USUARIO_Controller.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
+	</div>
 		<br>
 		<br>
-<?php 
+<?php
 	include '../Views/Footer.php';
 		}
 	}
