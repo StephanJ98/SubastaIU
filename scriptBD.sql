@@ -36,6 +36,8 @@ UNIQUE KEY `email` (`email`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('admin', 'admin', 'administrador', 'admin@admin.fr', '', '0');
+
 --
 -- Estructura de tabla para la tabla `ROL`
 --
