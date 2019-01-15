@@ -14,29 +14,29 @@ include '../Views/SUBASTA_SHOWALL_View.php';
 include '../Views/SUBASTA_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
 
-function get_data_form() { //en las vistas los id y name de los elemntos deben ser exactamente estos.
+function get_data_form() { 
     $idSubasta = $_REQUEST['idSubasta'];
     $producto = $_REQUEST['producto'];
     $info = $_REQUEST['info'];
     $ficheroSubasta = null;
     $esCiega = $_REQUEST['esCiega'];
     $mayorPuja = $_REQUEST['mayorPuja'];
-    $action = $_REQUEST[ 'action' ];//Variable a incluir en las vistas ( ver ejemplo)
+    $action = $_REQUEST[ 'action' ];
 
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'name' ] ) ) {
-		$dirFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
+		$nombreFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
 	} else {
-		$dirFicheroSubasta = null;
+		$nombreFicheroSubasta = null;
 	}
 	if ( isset( $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ] ) ) {
-		$dirTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
+		$nombreTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
 	} else {
-		$dirTempFicheroSubasta = null;
+		$nombreTempFicheroSubasta = null;
 	}
-	if ( $dirFicheroSubasta != null ) {
+	if ( $nombreFicheroSubasta != null ) {
 		$dir_subida = '../Files/';
-		$ficheroSubasta = $dir_subida . $dirFicheroSubasta;
-		move_uploaded_file( $dirTempFicheroSubasta, $ficheroSubasta );
+		$ficheroSubasta = $dir_subida . $nombreFicheroSubasta;
+		move_uploaded_file( $nombreTempFicheroSubasta, $ficheroSubasta );
 	}
     $SUBASTA = new SUBASTA_Model(
     	$idSubasta,
@@ -56,7 +56,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
 		} else {
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],$_REQUEST['ficheroSubasta'],$_REQUEST['esCiega'],$_REQUEST['mayorPuja'] );
+			$SUBASTA = get_data_form();
+			//$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja'] );
 			$respuesta = $SUBASTA->ADD();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
 		}

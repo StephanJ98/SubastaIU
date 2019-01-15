@@ -43,7 +43,7 @@
 						<th class="formThTd">
 							<?php echo $strings['Avatar'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>                                                                                                                                      
+						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this)" maxlength="50" required/>              
 					</tr>
                     <tr>
 						<th class="formThTd">
