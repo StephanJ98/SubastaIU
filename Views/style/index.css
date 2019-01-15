@@ -39,7 +39,7 @@ a {
 }
 
 a:hover{
-  color:green;
+  text-decoration: none;
 }
 
 a:active{

@@ -26,6 +26,10 @@ class USUARIOS_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+	</div>
+			<br>
+		  <br>
+			<div class="row justify-content-center">
 			<table>
 				<caption style="margin-bottom:10px;margin: 10px;">
 					<form action='../Controllers/USUARIO_Controller.php'>
@@ -101,6 +105,10 @@ class USUARIOS_SHOWALL {
 				}
 ?>
 			</table>
+			<br>
+			<br>
+		</div>
+		<div class="row justify-content-center">
 			<form action='../Controllers/USUARIO_Controller.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>

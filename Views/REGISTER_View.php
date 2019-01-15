@@ -21,6 +21,8 @@ class Register {
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
 			<form name="ADD" action='../Controllers/REGISTER_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd();">
 				<table>
 					<tr>
@@ -96,10 +98,12 @@ class Register {
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="REGISTER"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>
-			</form>
-				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
-					</tr>
+						</form>
+				</tr>
 			</table>
+		</div>
+		<div class="row justify-content-center">
+				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
 		</div>
 	</div>
 	<?php

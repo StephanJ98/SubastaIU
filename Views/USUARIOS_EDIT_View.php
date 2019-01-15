@@ -19,6 +19,8 @@ class USUARIOS_EDIT {
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
 			<form name="EDIT" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarEdit()">
 				<table>
 					<tr>
@@ -72,12 +74,13 @@ class USUARIOS_EDIT {
 						<td colspan="2">
 							<button type="submit" name="action" value="EDIT"><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
+		</tr>
+		</table>
+		</div>
+		<div class="row justify-content-center">
 			<form action='../Controllers/USUARIO_Controller.php' style="display: inline">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
-			</tr>
-
-			</table>
 		</div>
 	</div>
 		<br>

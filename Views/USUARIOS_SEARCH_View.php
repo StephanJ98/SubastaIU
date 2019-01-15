@@ -18,6 +18,8 @@ class USUARIOS_SEARCH {
 			<h2>
 				<?php echo $strings['Formulario de búsqueda'];?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
 			<form id="SEARCH" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
 				<table>
 					<tr>
@@ -48,12 +50,14 @@ class USUARIOS_SEARCH {
 						<td colspan="2">
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
 			</form>
+		</td>
+	</tr>
+</table>
+		</div>
+		<div class="row justify-content-center">
 						<form action='../Controllers/USUARIO_Controller.php' method="post" style="display:inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
-						</td>
-					</tr>
-				</table>
 		</div>
 	</div>
 		<br>

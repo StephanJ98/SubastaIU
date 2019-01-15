@@ -24,6 +24,8 @@ class SUBASTA_SHOWALL {
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
 			<table>
 				<caption style="margin-bottom:10px;margin: 10px;">
 					<form action='../Controllers/SUBASTA_Controller.php'>
@@ -75,6 +77,8 @@ class SUBASTA_SHOWALL {
 				}
 ?>
 			</table>
+		</div>
+		<div class="row justify-content-center">
 			<form action='../Controllers/SUBASTA_Controller.php' method="post">
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
