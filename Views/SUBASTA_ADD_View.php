@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 13/1/2019 
+	Fecha de creación: 13/1/2019
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
     class SUBASTA_ADD {
@@ -12,7 +12,11 @@
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-    <div class="seccion">
+<div class="container section">
+  <br>
+  <br>
+  <br>
+  <div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
@@ -40,7 +44,7 @@
 						<th class="formThTd">
 							<?php echo $strings['Fichero'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>                                                     
+						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
 					</tr>
                     <tr>
 						<th class="formThTd">
@@ -75,6 +79,7 @@
 					</tr>
 				</table>
 		</div>
+  </div>
 		<br>
 		<br>
 <?php
@@ -82,4 +87,3 @@
 		}
 		}
 ?>
-                    

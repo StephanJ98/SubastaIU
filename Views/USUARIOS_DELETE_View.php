@@ -11,7 +11,11 @@ class USUARIOS_DELETE {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Tabla de borrado'];?>
 			</h2>
@@ -82,6 +86,7 @@ class USUARIOS_DELETE {
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
+	</div>
 		<br>
 		<br>
 <?php

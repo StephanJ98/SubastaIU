@@ -1,6 +1,6 @@
 <?php
 /*  Autor: 	GUI
-	Fecha de creación: 07/01/2019 
+	Fecha de creación: 07/01/2019
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
 */
 class Register {
@@ -13,7 +13,11 @@ class Register {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php'; //header necesita los strings
 		?>
-		<div class="container seccion">
+		<div class="container section">
+			<br>
+			<br>
+			<br>
+			<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
@@ -97,6 +101,7 @@ class Register {
 					</tr>
 			</table>
 		</div>
+	</div>
 	<?php
 	include '../Views/Footer.php';
 	} //fin metodo render

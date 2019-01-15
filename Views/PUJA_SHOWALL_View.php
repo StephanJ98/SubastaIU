@@ -6,14 +6,18 @@ class PUJA_SHOWALL {
 		$this->datos = $datos;
 		$this->render($this->lista,$this->datos);
 	}
-	
+
 	function render($lista,$datos){
 		$this->lista = $lista;
 		$this->datos = $datos;
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="container seccion" >
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
@@ -63,7 +67,7 @@ class PUJA_SHOWALL {
 						<form action="../Controllers/PUJA_Controller.php" method="get" style="display:inline" >
 							<input type="hidden" name="idSubasta" value="<?php echo $fila['idSubasta']; ?>">
 					<td>
-								
+
 					<td>
 								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 						</form>
@@ -77,9 +81,10 @@ class PUJA_SHOWALL {
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
+	</div>
 		<br>
 		<br>
-<?php 
+<?php
 	include '../Views/Footer.php';
 		}
 	}?>

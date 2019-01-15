@@ -1,15 +1,19 @@
 <?php
     class USUARIOS_ADD {
-        
+
      function __construct() {
 		$this->render();
 	}
-    
+
     function render() {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-    <div class="seccion">
+<div class="container section">
+  <br>
+  <br>
+  <br>
+  <div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
@@ -43,7 +47,7 @@
 						<th class="formThTd">
 							<?php echo $strings['Avatar'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>                                                                                                                                      
+						<td class="formThTd"><input type="file" id="avatar" name="avatar" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
 					</tr>
                     <tr>
 						<th class="formThTd">
@@ -75,6 +79,7 @@
 					</tr>
 				</table>
 		</div>
+  </div>
 		<br>
 		<br>
 <?php
@@ -82,4 +87,3 @@
 		}
 		}
 ?>
-                    

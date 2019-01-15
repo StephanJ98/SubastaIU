@@ -11,7 +11,11 @@ class USUARIOS_EDIT {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 		?>
-		<div class="seccion">
+		<div class="container section">
+			<br>
+			<br>
+			<br>
+			<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Formulario de modificación'];?>
 			</h2>
@@ -49,7 +53,7 @@ class USUARIOS_EDIT {
 							<a href="<?php echo $this->valores['avatar']?>" alt="<?php echo $strings['Avatar'];?>">
 								<?php echo $this->valores['avatar']?></a>
 							<p style="font-size: 12px"><?php echo $strings['Seleccione una nueva foto personal si desea cambiarla, en caso contrario, no es necesario seleccionarla de nuevo.'];?></p>
-					
+
 							<input type="file" id="avatar" name="avatar" value="<?php echo $this->valores['avatar']?>" accept="image/*"  />
 					</tr>
 					<?php
@@ -75,6 +79,7 @@ class USUARIOS_EDIT {
 
 			</table>
 		</div>
+	</div>
 		<br>
 		<br>
 

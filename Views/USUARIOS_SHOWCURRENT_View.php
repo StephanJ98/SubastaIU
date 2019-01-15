@@ -11,6 +11,11 @@ class USUARIOS_SHOWCURRENT {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
 		</h2>
@@ -71,6 +76,8 @@ class USUARIOS_SHOWCURRENT {
 				</form>
 			</caption>
 		</table>
+	</div>
+</div>
 		<br>
 		<br>
 <?php

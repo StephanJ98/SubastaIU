@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 13/1/2019 
+	Fecha de creación: 13/1/2019
 	Función: contiene el array que permite la traducción de los textos a español
 */
 class SUBASTA_SHOWALL {
@@ -16,7 +16,11 @@ class SUBASTA_SHOWALL {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="container seccion" >
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Tabla de datos'];?>
 			</h2>
@@ -49,7 +53,7 @@ class SUBASTA_SHOWALL {
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
-<?php 
+<?php
 							echo $fila[ $atributo ];
 ?>
 					</td>
@@ -75,9 +79,10 @@ class SUBASTA_SHOWALL {
 				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 			</form>
 		</div>
+	</div>
 		<br>
 		<br>
-<?php 
+<?php
 	include '../Views/Footer.php';
 		}
 	}
