@@ -56,14 +56,14 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
 		} else {
-			$SUBASTA = get_data_form();
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],$_REQUEST['ficheroSubasta'],$_REQUEST['esCiega'],$_REQUEST['mayorPuja'] );
 			$respuesta = $SUBASTA->ADD();
-			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
 		}
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','','' );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_DELETE( $valores );
 		} 
@@ -76,7 +76,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','','' );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_EDIT( $valores );
 		} 
