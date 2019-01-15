@@ -58,7 +58,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		} else {
 			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],$_REQUEST['ficheroSubasta'],$_REQUEST['esCiega'],$_REQUEST['mayorPuja'] );
 			$respuesta = $SUBASTA->ADD();
-			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php' );
+			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
 		}
 		break;
 	case 'DELETE':
