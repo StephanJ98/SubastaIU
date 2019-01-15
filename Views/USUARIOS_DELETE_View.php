@@ -11,10 +11,16 @@ class USUARIOS_DELETE {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-		<div class="seccion">
+<div class="container section">
+	<br>
+	<br>
+	<br>
+	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Tabla de borrado'];?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
 			<table>
 				<tr>
 					<th>
@@ -78,10 +84,13 @@ class USUARIOS_DELETE {
 				<input type="hidden" name="rol" value=<?php echo $this->valores['rol'] ?> />
 				<button type="submit" name="action" value="DELETE"><img src="../Views/icon/confirmar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
+		</div>
+		<div class="row justify-content-center">
 			<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
 				<button type="submit"><img src="../Views/icon/cancelar.png" alt="<?php echo $strings['Atras'] ?>"/></button>
 			</form>
 		</div>
+	</div>
 		<br>
 		<br>
 <?php

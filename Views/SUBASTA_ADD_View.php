@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 13/1/2019 
+	Fecha de creación: 13/1/2019
 	Función: modelo de datos definida en una clase que permite interactuar con la base de datos
 */
     class SUBASTA_ADD {
@@ -12,10 +12,16 @@
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-    <div class="seccion">
+<div class="container section">
+  <br>
+  <br>
+  <br>
+  <div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
+    </div>
+    <div class="row justify-content-center">
             <form name="ADDFORM" action="../Controllers/SUBASTA_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
                 <table>
 					<tr>
@@ -40,7 +46,7 @@
 						<th class="formThTd">
 							<?php echo $strings['Fichero'];?>
 						</th>
-						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>                                                     
+						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
 					</tr>
                     <tr>
 						<th class="formThTd">
@@ -69,12 +75,15 @@
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
 			</form>
+    </tr>
+  </table>
+    </div>
+      <div class="row justify-content-center">
 						<form action='../Controllers/SUBASTA_Controller.php' method="post" style="display: inline">
 							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
 						</form>
-					</tr>
-				</table>
 		</div>
+  </div>
 		<br>
 		<br>
 <?php
@@ -82,4 +91,3 @@
 		}
 		}
 ?>
-                    
