@@ -93,9 +93,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new SUBASTA_SEARCH();
 		} 
 		else {
-			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja']);
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],'');
 			$datos = $SUBASTA->SEARCH();
-			$lista = array( 'idSubasta','idUser','producto','info','esCiega','mayorPuja');
+			$lista = array( 'idSubasta','idUser','producto','info','esCiega');
+			new SUBASTA_SHOWALL( $lista, $datos );
+		}
+		break;
+	case 'SEARCHBIS':
+		if ( !$_POST ) {
+			new SUBASTA_SEARCH();
+		} 
+		else {
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],'');
+			$datos = $SUBASTA->SEARCHBIS();
+			$lista = array( 'idSubasta','idUser','producto','info','esCiega');
 			new SUBASTA_SHOWALL( $lista, $datos );
 		}
 		break;
