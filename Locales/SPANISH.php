@@ -127,6 +127,13 @@ array(
 	'Identificador de Subasta' => 'Identificador de Subasta',
 	'Insertar Usuario' => 'INSERTAR USUARIO',
 	'Elija opción' => 'Elija opción',
-	'Buscar Usuario' => 'BUSCAR USUARIO'	
+	'Buscar Usuario' => 'BUSCAR USUARIO',
+	'Nombre de PUJA'=>'Nombre de PUJA',
+	'Id Subasta'=>'Id Subasta',
+	'Formulario de búsqueda de pujas'=>'Formulario de búsqueda de pujas',
+	'NombredePuja'=>'NombredePuja',
+	'Id de Subasta'=>'Id de Subasta',
+	'Nombre de Usuario'=>'Nombre de Usuario',
+	
 		);				
     ?>

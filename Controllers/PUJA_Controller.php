@@ -10,6 +10,7 @@ include '../Views/PUJA_SEARCH_View.php';
 include '../Views/PUJA_SHOWALL_View.php';
 include '../Views/PUJA_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
+include '../Views/PUJA_ADD_View.php';
 
 function get_data_form() { //en las vistas los id y name de los elemntos deben ser exactamente estos.
     $idPuja = $_REQUEST['idPuja'];
@@ -37,7 +38,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_DELETE( $valores );
 		} 
@@ -50,7 +51,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_EDIT( $valores );
 		} 
@@ -66,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PUJA_SEARCH();
 		} 
 		else {
-			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
+			$PUJA = new PUJA_Model('',$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
 			$datos = $PUJA->SEARCH();
 			$lista = array( 'idPuja','idSubasta','idUser','importe');
 			new PUJA_SHOWALL( $lista, $datos );

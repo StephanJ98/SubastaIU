@@ -19,7 +19,7 @@ DROP USER `GUIBD`@`localhost`;
 --
 CREATE USER IF NOT EXISTS `GUIBD`@`localhost` IDENTIFIED BY 'passGUIBD';
 GRANT USAGE ON *.* TO `GUIBD`@`localhost` REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
-GRANT ALL PRIVILEGES ON `GUIBD`.* TO `GUIBD`@`localhost` WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON `GUIBD`.* TO `GUIBD`@`localhost` WITH GRANT OPTION; 
 --
 -- Estructura de tabla para la tabla `USUARIO`
 --
@@ -35,6 +35,8 @@ FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`),
 UNIQUE KEY `email` (`email`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('admin', 'admin', 'administrador', 'admin@admin.fr', '', '0');
 
 --
 -- Estructura de tabla para la tabla `ROL`
