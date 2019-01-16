@@ -9,10 +9,13 @@
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-    <div class="seccion">
+    <div class="container seccion">
+    	<div class="row justify-content-center">
 			<h2>
 				<?php echo $strings['Formulario de inserción'];?>
 			</h2>
+		</div>
+		<div class="row justify-content-center">
             <form name="ADDFORM" action="../Controllers/USUARIO_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarAddForm()">
                 <table>
 					<tr>
@@ -68,17 +71,21 @@
                     <tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario']?>" /></button>
-			</form>
-						<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
-							<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-						</form>
-					</tr>
+						</tr>
 				</table>
+			</form>
 		</div>
-		<br>
-		<br>
+		<div class="row justify-content-center">
+			<form action='../Controllers/USUARIO_Controller.php' method="post" style="display: inline">
+				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+			</form>
+		</div>
+				
+	</div>
+	<br>
+	<br>
 <?php
-		include '../Views/Footer.php';
-		}
-		}
+	include '../Views/Footer.php';
+	}
+}
 ?>

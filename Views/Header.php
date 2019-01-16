@@ -42,13 +42,13 @@
 			$tipo = isset($_SESSION['rol']) ? $_SESSION['rol'] : 'Sin Rol Asignado';
 			echo $strings['Usuario'] . ' : ' . $sesion . '&nbsp&nbsp&nbsp&nbsp';
 			if ($tipo == 0) {
-				$texto = 'Administrador';
+				$texto = $strings['Administrador'];
 			}
 			elseif ($tipo == 1) {
-				$texto = 'Pujador';
+				$texto = $strings['Pujador'];
 			}
 			else{
-				$texto = 'Subastador';
+				$texto = $strings['Subastador'];
 			}
 			echo $strings['Rol'] . ' : ' . $texto . '<br>';
 ?>	
@@ -75,7 +75,7 @@
 		if (IsAuthenticated()){
 			?>
 			<div class="col">
-			<a href="../Controllers/USUARIO_Controller.php">Inicio</a>
+			<a href="../Controllers/USUARIO_Controller.php"><?php echo $strings['Inicio'];?></a>
 			</div>
 			<?php
 		}
@@ -85,7 +85,7 @@
 			if (($_SESSION['rol'] == 2) || ($_SESSION['rol'] == 0)) {
 		?>
 				<div class="col">
-				<a href="../Controllers/SUBASTA_Controller.php">Subastas</a>
+				<a href="../Controllers/SUBASTA_Controller.php"><?php echo $strings['Subastas'];?></a>
 				</div>
 			<?php
 			}
@@ -98,7 +98,7 @@
 			if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 0)) {
 		?>
 				<div class="col">
-				<a href="../Controllers/PUJA_Controller.php">Pujas</a>
+				<a href="../Controllers/PUJA_Controller.php"><?php echo $strings['Pujas'];?></a>
 				</div>
 			<?php
 			}
@@ -110,7 +110,7 @@
 		if (IsAuthenticated()){
 			?>
 			<div class="col">
-			<a href="../Controllers/HISTORIAL_Controller.php">Historial</a>
+			<a href="../Controllers/HISTORIAL_Controller.php"><?php echo $strings['Historial'];?></a>
 			</div>
 			<?php
 		}

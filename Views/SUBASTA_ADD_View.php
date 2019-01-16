@@ -30,6 +30,12 @@
 					</th>
 					<td class="formThTd"><input type="text" id="idSubasta" name="idSubasta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
 				</tr>
+				<tr>
+					<th class="formThTd">
+						<?php echo $strings['Identificador de Usuario'];?>
+					</th>
+					<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
+				</tr>
                 <tr>
 					<th class="formThTd">
 						<?php echo $strings['Producto'];?>
@@ -44,9 +50,9 @@
 				</tr>
                 <tr>
 					<th class="formThTd">
-						<?php echo $strings['Fichero'];?>
-					</th>
-					<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
+							<?php echo $strings['Fichero'];?>
+						</th>
+						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this)" maxlength="50" required/>
 				</tr>
                 <tr>
 					<th class="formThTd">

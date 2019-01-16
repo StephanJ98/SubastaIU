@@ -7,6 +7,7 @@
 class SUBASTA_Model { //declaración de la clase
 
 	var $idSubasta; // declaración del atributo idSubasta
+	var $idUser; // declaración del atributo idSubasta
 	var $producto; //declaración del atributo producto
 	var $info; // declaración del atributo info
 	var $ficheroSubasta; // declaración del atributo ficheroSubasta
@@ -16,9 +17,10 @@ class SUBASTA_Model { //declaración de la clase
 
 	//Constructor de la clase
 
-	function __construct($idSubasta, $producto, $info, $ficheroSubasta, $esCiega, $mayorPuja) {
+	function __construct($idSubasta, $idUser, $producto, $info, $ficheroSubasta, $esCiega, $mayorPuja) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->idSubasta = $idSubasta;
+		$this->idUser = $idUser;
 		$this->producto = $producto;
 		$this->info = $info;
 		$this->ficheroSubasta = $ficheroSubasta;
@@ -40,6 +42,7 @@ class SUBASTA_Model { //declaración de la clase
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "SELECT  idSubasta,
+						idUser,
 						producto,
 						info,
 						ficheroSubasta,
@@ -48,6 +51,7 @@ class SUBASTA_Model { //declaración de la clase
        			FROM SUBASTA 
     			WHERE 
     				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+    				(BINARY `idUser` LIKE '%$this->idUser%') &&
 					(BINARY `producto` LIKE '%$this->producto%') &&
 					(BINARY `info` LIKE '%$this->info%') &&
 	 				(BINARY `ficheroSubasta` LIKE '%$this->ficheroSubasta%') &&
@@ -78,18 +82,19 @@ class SUBASTA_Model { //declaración de la clase
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
 
-				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idSubasta)
+				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe la idSubasta)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM SUBASTA 
 							WHERE  (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 
-					if ( $result->num_rows != 0 ) {
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe la subasta con esos datos)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe una subasta con el codigo introducido en la base de datos';	
+						return 'Ya existe una subasta con los datos introducido en la base de datos';	
 					} else {
 						$sql = "INSERT INTO SUBASTA (
 									idSubasta,
+									idUser,
 									producto,
 									info,
 									ficheroSubasta,
@@ -97,6 +102,7 @@ class SUBASTA_Model { //declaración de la clase
 									mayorPuja) 
 								VALUES(
 									'$this->idSubasta',
+									'$this->idUser',
 									'$this->producto',
 									'$this->info',
 									'$this->ficheroSubasta',
@@ -114,7 +120,8 @@ class SUBASTA_Model { //declaración de la clase
 		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
 			return 'Introduzca un valor'; // introduzca un valor para el SUBASTA
 		}
-	} // fin del metodo ADD
+	}
+	 // fin del metodo ADD
 
 	// funcion DELETE()
 	//Comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
@@ -171,6 +178,7 @@ class SUBASTA_Model { //declaración de la clase
 			if($this->ficheroSubasta <> null){
 				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
+							`idUser` = '$this->idUser',
 							`producto` = '$this->producto',
 							`info` = '$this->info',
 							`ficheroSubasta` = '$this->ficheroSubasta',
@@ -180,6 +188,7 @@ class SUBASTA_Model { //declaración de la clase
 			}else{
 				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
+							`idUser` = '$this->idUser',
 							`producto` = '$this->producto',
 							`info` = '$this->info',
 							`esCiega` = '$this->esCiega' ,
