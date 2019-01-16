@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `USUARIO`(
 `password` varchar(128) NOT NULL,
 `nombre` varchar(150) NOT NULL,
 `email` varchar(60) NOT NULL,
-`avatar` varchar(50) NOT NULL,
+`avatar` varchar(60) NOT NULL,
 `rol` varchar(1) NOT NULL,
 PRIMARY KEY (`idUser`),
 FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`),
@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `SUBASTA`(
 `idSubasta` varchar(30) NOT NULL,
 `producto` varchar(30) NOT NULL,
 `info` varchar(30) NOT NULL,
-`ficheroSubasta` varchar(50) NOT NULL,
+`ficheroSubasta` varchar(60) NOT NULL,
 `esCiega` varchar(30) NOT NULL,
 `mayorPuja` varchar(50) NOT NULL,
 PRIMARY KEY (`idSubasta`)
