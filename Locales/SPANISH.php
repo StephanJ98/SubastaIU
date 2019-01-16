@@ -136,6 +136,7 @@ array(
 	'Es Ciega' => 'Es Ciega',
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
+	'Elija opción' => 'Elija opción',
 	'Buscar Usuario' => 'Buscar usuario'
 		);
     ?>
