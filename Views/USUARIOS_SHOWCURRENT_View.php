@@ -11,16 +11,9 @@ class USUARIOS_SHOWCURRENT {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
 ?>
-<div class="container section">
-	<br>
-	<br>
-	<br>
-	<div class="row justify-content-center">
 		<h2>
 			<?php echo $strings['Vista detallada'];?>
 		</h2>
-	</div>
-	<div class="row justify-content-center">
 		<table class="tablaDatos">
 			<tr>
 				<th>
@@ -73,15 +66,11 @@ class USUARIOS_SHOWCURRENT {
                 </td>
             </tr>
             <caption style="margin-top:10px;" align="bottom">
-						</div>
-							<div class="row justify-content-center">
 				<form action='../Controllers/USUARIO_Controller.php' method="post">
 					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras'] ?>" /></button>
 				</form>
 			</caption>
 		</table>
-	</div>
-</div>
 		<br>
 		<br>
 <?php

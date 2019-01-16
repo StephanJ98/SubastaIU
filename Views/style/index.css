@@ -11,9 +11,6 @@ body{
   line-height: 1.6em;
   text-align: center;
 }
-.langButton {
-  border-radius: 3px;
-}
 .seccion{
   color: #555555;
   background-color: #E4E4E4;
@@ -39,7 +36,7 @@ a {
 }
 
 a:hover{
-  text-decoration: none;
+  color:green;
 }
 
 a:active{
