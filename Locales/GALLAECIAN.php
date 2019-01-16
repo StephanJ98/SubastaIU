@@ -124,14 +124,18 @@ array(
 	'Precio Base' => 'Prezo Base',
 	'SI' => 'SI',
 	'NO' => 'NON',
-    'Opciones' => 'Opcións',
-	'Inicio' => 'INICIO',
-	'usuarios' => 'USUARIOS',
-	'Footer' => 'Pé de páxina',
+  'Opciones' => 'Opcións',
+	'Inicio' => 'Inicio',
+	'usuarios' => 'Usuarios',
+	'Footer' => 'Pé de página',
 	'Mostrar Usuarios' => 'Mostrar Usuarios',
 	'Identificador de Subasta' => 'Identificador de Almoeda',
-	'Insertar Usuario' => 'INSERTAR USUARIO',
+	'Insertar Usuario' => 'Insertar Usuario',
+	'Info' => 'Info',
+	'Es Ciega' => 'É Cega',
+	'Mayor Puja' => 'Maior Poxa',
+	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elixa opción',
-	'Buscar Usuario' => 'BUSCAR USUARIO'
+	'Buscar Usuario' => 'Buscar usuario'
 		);
     ?>
