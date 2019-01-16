@@ -124,13 +124,17 @@ array(
 	'Precio Base' => 'Starting bid',
 	'SI' => 'YES',
 	'NO' => 'NO',
-    'Opciones' => 'Options',
+  'Opciones' => 'Options',
 	'Inicio' => 'Home',
 	'usuarios' => 'Users',
 	'Footer' => 'Footer',
 	'Mostrar Usuarios' => 'Show Users',
 	'Identificador de Subasta' => 'Auction ID',
 	'Insertar Usuario' => 'Insert User',
+	'Info' => 'Info',
+	'Es Ciega' => 'Is Blind',
+	'Mayor Puja' => 'Highest Bid',
+	'Identificador de Usuario' => 'User ID',
 	'Elija opción' => 'Choose option',
 	'Buscar Usuario' => 'Search User'
 		);

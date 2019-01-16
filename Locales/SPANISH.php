@@ -126,16 +126,16 @@ array(
 	'NO' => 'NO',
   'Opciones' => 'Opciones',
 	'Inicio' => 'Inicio',
-	'usuarios' => 'USUARIOS',
+	'usuarios' => 'Usuarios',
 	'Footer' => 'Pie de página',
 	'Mostrar Usuarios' => 'Mostrar Usuarios',
 	'Identificador de Subasta' => 'Identificador de Subasta',
 	'Insertar Usuario' => 'Insertar Usuario',
-	'Identificador de Subasta' => 'Identificador de Subasta',
 	'Info' => 'Info',
 	'Es Ciega' => 'Es Ciega',
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
+	'Elija opción' => 'Elija opción',
 	'Buscar Usuario' => 'Buscar usuario'
-		);
+	);
     ?>
