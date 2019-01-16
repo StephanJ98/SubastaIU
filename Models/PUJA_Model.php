@@ -49,7 +49,6 @@ class PUJA_Model { //declaración de la clase
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
 			return $resultado;
 		}
 	} // fin metodo SEARCH
@@ -62,7 +61,7 @@ class PUJA_Model { //declaración de la clase
 
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
-					FROM PUJAS 
+					FROM PUJA 
 					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
@@ -72,7 +71,7 @@ class PUJA_Model { //declaración de la clase
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idPuja)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
-							FROM PUJAS 
+							FROM PUJA
 							WHERE  (`importe` COLLATE utf8_bin = '$this->importe')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el importe)
@@ -81,7 +80,7 @@ class PUJA_Model { //declaración de la clase
 						
 					} else {
 
-						$sql = "INSERT INTO PUJAS (
+						$sql = "INSERT INTO PUJA (
 									`idPuja`,
 									`idSubasta`,
 									`idUser`,
@@ -134,7 +133,7 @@ class PUJA_Model { //declaración de la clase
 	//en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
-				FROM PUJAS 
+				FROM PUJA 
 				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {

@@ -23,7 +23,6 @@ class PUJA_SHOWALL {
 					<caption style="margin-bottom:10px;margin: 10px;">
 						<form action='../Controllers/PUJA_Controller.php'>
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 						</form>
 					</caption>
 					<tr>
@@ -33,6 +32,7 @@ class PUJA_SHOWALL {
 						<th>
 							<?php echo $strings[$atributo]?>
 						</th>
+						<th><p>&nbsp&nbsp</p></th>
 	<?php
 						}
 	?>
@@ -48,16 +48,9 @@ class PUJA_SHOWALL {
 						foreach ( $lista as $atributo ) {
 	?>
 						<td>
-	<?php
-	    					if($atributo == 'avatar'){
-	?>
-							<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
-	<?php
-							} else {
-								echo $fila[ $atributo ];
-							}
-	?>
+							<?php echo $fila[ $atributo ];?>
 						</td>
+						<td><p>&nbsp&nbsp</p></td>
 	<?php
 						}
 	?>

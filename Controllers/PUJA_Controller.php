@@ -8,7 +8,6 @@ session_start(); //solicito trabajar con la session
 include '../Models/PUJA_Model.php';
 include '../Views/PUJA_SEARCH_View.php';
 include '../Views/PUJA_SHOWALL_View.php';
-include '../Views/PUJA_SHOWCURRENT_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() { //en las vistas los id y name de los elemntos deben ser exactamente estos.

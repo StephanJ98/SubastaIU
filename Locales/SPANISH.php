@@ -124,7 +124,7 @@ array(
 	'Precio Base' => 'Precio Base',
 	'SI' => 'SI',
 	'NO' => 'NO',
-  'Opciones' => 'Opciones',
+ 	'Opciones' => 'Opciones',
 	'Inicio' => 'Inicio',
 	'usuarios' => 'USUARIOS',
 	'Footer' => 'Pie de página',
@@ -137,6 +137,8 @@ array(
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elija opción',
+	'Identificador Puja' => 'Identificador Puja',
+	'Importe' => 'Importe',
 	'Buscar Usuario' => 'Buscar usuario'
 );
 ?>
