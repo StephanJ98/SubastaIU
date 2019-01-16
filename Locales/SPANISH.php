@@ -131,7 +131,11 @@ array(
 	'Mostrar Usuarios' => 'Mostrar Usuarios',
 	'Identificador de Subasta' => 'Identificador de Subasta',
 	'Insertar Usuario' => 'Insertar Usuario',
-	'Elija opción' => 'Elija opción',
+	'Identificador de Subasta' => 'Identificador de Subasta',
+	'Info' => 'Info',
+	'Es Ciega' => 'Es Ciega',
+	'Mayor Puja' => 'Mayor Puja',
+	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Buscar Usuario' => 'Buscar usuario'
 		);
     ?>

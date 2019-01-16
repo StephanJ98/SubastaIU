@@ -27,7 +27,14 @@ class SUBASTA_SHOWALL {
 					<caption style="margin-bottom:10px;margin: 10px;">
 						<form action='../Controllers/SUBASTA_Controller.php'>
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+
+							<?php
+							if (($_SESSION['rol'] == 0) || ($_SESSION['rol'] == 2)) {
+								?>
+								<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+							<?php
+							}
+							?>
 						</form>
 					</caption>
 					<tr>
@@ -35,7 +42,7 @@ class SUBASTA_SHOWALL {
 						foreach ( $lista as $atributo ) {
 	?>
 						<th>
-							<?php echo $strings[$atributo]?>
+							<?php echo $strings[$atributo];?>
 						</th>
 	<?php
 						}
@@ -55,24 +62,37 @@ class SUBASTA_SHOWALL {
 	<?php
 	    					if($atributo == 'ficheroSubasta'){
 	?>
-							<img src="<?php echo $fila['ficheroSubasta']?>" alt="<?php echo $strings['No hay Fichero'];?>" style="width: 20px"></a>
-							
+							<a><img src="<?php echo $fila['ficheroSubasta']?>" alt="<?php echo $strings['No hay Fichero'];?>" style="width: 20px"></a>
 	<?php
 							} else {
 								echo $fila[ $atributo ];
 							}
-	?>
-							
+							if($fila['esCiega'] == 'true'){
+								if ((($_SESSION['rol'] == 0) || ($_SESSION['idUser'] == $fila['idUser']))) {
+								}
+								else{
+									$fila['mayorPuja'] = 'X';
+								}
+							}
+	?>	
 						</td>
 	<?php
 						}
 	?>
 						<td>
-							<form action="../Controllers/SUBASTA_Controller.php" method="get" style="display:inline" >
+							<form action="../Controllers/SUBASTA_Controller.php" method="get" style="display:inline">
 								<input type="hidden" name="idSubasta" value="<?php echo $fila['idSubasta']; ?>">
-									<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
+									<?php
+									if (IsAuthenticated()){
+										if (($_SESSION['rol'] == 0) || ($_SESSION['idUser'] == $fila['idUser'])) {
+									?>
+										<button type="submit" name="action" value="EDIT" ><img src="../Views/icon/modificar.png" alt="<?php echo $strings['Modificar']?>" width="20" height="20" /></button>
 						<td>
 									<button type="submit" name="action" value="DELETE" ><img src="../Views/icon/eliminar.png" alt="<?php echo $strings['Eliminar']?>" width="20" height="20" /></button>
+										<?php
+										}
+									}
+									?>
 						<td>
 									<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
 							</form>

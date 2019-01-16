@@ -7,6 +7,7 @@
 class SUBASTA_Model { //declaración de la clase
 
 	var $idSubasta; // declaración del atributo idSubasta
+	var $idUser; // declaración del atributo idSubasta
 	var $producto; //declaración del atributo producto
 	var $info; // declaración del atributo info
 	var $ficheroSubasta; // declaración del atributo ficheroSubasta
@@ -16,9 +17,10 @@ class SUBASTA_Model { //declaración de la clase
 
 	//Constructor de la clase
 
-	function __construct($idSubasta, $producto, $info, $ficheroSubasta, $esCiega, $mayorPuja) {
+	function __construct($idSubasta, $idUser, $producto, $info, $ficheroSubasta, $esCiega, $mayorPuja) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->idSubasta = $idSubasta;
+		$this->idUser = $idUser;
 		$this->producto = $producto;
 		$this->info = $info;
 		$this->ficheroSubasta = $ficheroSubasta;
@@ -40,6 +42,7 @@ class SUBASTA_Model { //declaración de la clase
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "SELECT  idSubasta,
+						idUser,
 						producto,
 						info,
 						ficheroSubasta,
@@ -48,6 +51,7 @@ class SUBASTA_Model { //declaración de la clase
        			FROM SUBASTA 
     			WHERE 
     				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+    				(BINARY `idUser` LIKE '%$this->idUser%') &&
 					(BINARY `producto` LIKE '%$this->producto%') &&
 					(BINARY `info` LIKE '%$this->info%') &&
 	 				(BINARY `ficheroSubasta` LIKE '%$this->ficheroSubasta%') &&
@@ -90,6 +94,7 @@ class SUBASTA_Model { //declaración de la clase
 					} else {
 						$sql = "INSERT INTO SUBASTA (
 									idSubasta,
+									idUser,
 									producto,
 									info,
 									ficheroSubasta,
@@ -97,6 +102,7 @@ class SUBASTA_Model { //declaración de la clase
 									mayorPuja) 
 								VALUES(
 									'$this->idSubasta',
+									'$this->idUser',
 									'$this->producto',
 									'$this->info',
 									'$this->ficheroSubasta',
@@ -172,6 +178,7 @@ class SUBASTA_Model { //declaración de la clase
 			if($this->ficheroSubasta <> null){
 				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
+							`idUser` = '$this->idUser',
 							`producto` = '$this->producto',
 							`info` = '$this->info',
 							`ficheroSubasta` = '$this->ficheroSubasta',
@@ -181,6 +188,7 @@ class SUBASTA_Model { //declaración de la clase
 			}else{
 				$sql = "UPDATE SUBASTA SET 
 							`idSubasta` = '$this->idSubasta',
+							`idUser` = '$this->idUser',
 							`producto` = '$this->producto',
 							`info` = '$this->info',
 							`esCiega` = '$this->esCiega' ,
