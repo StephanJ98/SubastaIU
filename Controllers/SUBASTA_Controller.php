@@ -56,23 +56,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
 		} else {
-			//$SUBASTA = get_data_form();
-			if ( isset( $_FILES[ 'ficheroSubasta' ][ 'name' ] ) ) {
-				$nombreFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'name' ];
-			} else {
-				$nombreFicheroSubasta = null;
-			}
-			if ( isset( $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ] ) ) {
-				$nombreTempFicheroSubasta = $_FILES[ 'ficheroSubasta' ][ 'tmp_name' ];
-			} else {
-				$nombreTempFicheroSubasta = null;
-			}
-			if ( $nombreFicheroSubasta != null ) {
-				$dir_subida = '../Files/';
-				$ficheroSubasta = $dir_subida . $nombreFicheroSubasta;
-				move_uploaded_file( $nombreTempFicheroSubasta, $ficheroSubasta );
-			}
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],$ficheroSubasta,$_REQUEST['esCiega'],$_REQUEST['mayorPuja'] );
+			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->ADD();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
 		}
