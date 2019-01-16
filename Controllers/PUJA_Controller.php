@@ -40,6 +40,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'La puja no es suficientemente alta', '../Controllers/PUJA_Controller.php' );
 			}
 			else{
+				
 				$PUJA = get_data_form();
 				$respuesta = $PUJA->ADD();
 				new MESSAGE( $respuesta, '../Controllers/PUJA_Controller.php' );
