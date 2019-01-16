@@ -16,6 +16,7 @@ include '../Views/MESSAGE_View.php';
 
 function get_data_form() { 
     $idSubasta = $_REQUEST['idSubasta'];
+    $idUser = $_REQUEST['idUser'];
     $producto = $_REQUEST['producto'];
     $info = $_REQUEST['info'];
     $ficheroSubasta = null;
@@ -40,6 +41,7 @@ function get_data_form() {
 	}
     $SUBASTA = new SUBASTA_Model(
     	$idSubasta,
+    	$idUser,
     	$producto,
     	$info,
     	$ficheroSubasta,
@@ -63,7 +65,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','' );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_DELETE( $valores );
 		} 
@@ -76,7 +78,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','' );
+			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_EDIT( $valores );
 		} 
@@ -91,26 +93,26 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new SUBASTA_SEARCH();
 		} 
 		else {
-			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja']);
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja']);
 			$datos = $SUBASTA->SEARCH();
-			$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja');
+			$lista = array( 'idSubasta','idUser','producto','info','esCiega','mayorPuja');
 			new SUBASTA_SHOWALL( $lista, $datos );
 		}
 		break;
 	case 'SHOWCURRENT':
-		$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','');
+		$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','');
 		$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 		new SUBASTA_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$SUBASTA = new SUBASTA_Model( '','','','','','');
+			$SUBASTA = new SUBASTA_Model( '','','','','','','');
 		} 
 		else {
 			$SUBASTA = get_data_form();
 		}
 		$datos = $SUBASTA->SEARCH();
-		$lista = array( 'idSubasta','producto','info','esCiega','mayorPuja','ficheroSubasta');
+		$lista = array( 'idSubasta','idUser','producto','info','esCiega','mayorPuja','ficheroSubasta');
 		new SUBASTA_SHOWALL( $lista, $datos );
 }
 ?>
