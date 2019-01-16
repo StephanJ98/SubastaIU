@@ -138,5 +138,5 @@ array(
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elija opción',
 	'Buscar Usuario' => 'Buscar usuario'
-		);
+	);
     ?>
