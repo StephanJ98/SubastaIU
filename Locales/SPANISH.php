@@ -124,7 +124,7 @@ array(
 	'Precio Base' => 'Precio Base',
 	'SI' => 'SI',
 	'NO' => 'NO',
-    'Opciones' => 'Opciones',
+  'Opciones' => 'Opciones',
 	'Inicio' => 'Inicio',
 	'usuarios' => 'USUARIOS',
 	'Footer' => 'Pie de página',
