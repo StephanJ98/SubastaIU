@@ -60,7 +60,7 @@ CREATE TABLE IF NOT EXISTS `SUBASTA`(
 `idSubasta` varchar(30) NOT NULL,
 `producto` varchar(30) NOT NULL,
 `info` varchar(30) NOT NULL,
-`ficheroSubasta` varchar(30) NOT NULL,
+`ficheroSubasta` varchar(50) NOT NULL,
 `esCiega` varchar(30) NOT NULL,
 `mayorPuja` varchar(50) NOT NULL,
 PRIMARY KEY (`idSubasta`)
