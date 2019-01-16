@@ -124,7 +124,7 @@ array(
 	'Precio Base' => 'Precio Base',
 	'SI' => 'SI',
 	'NO' => 'NO',
-  'Opciones' => 'Opciones',
+ 	'Opciones' => 'Opciones',
 	'Inicio' => 'Inicio',
 	'usuarios' => 'Usuarios',
 	'Footer' => 'Pie de página',
@@ -136,6 +136,10 @@ array(
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elija opción',
+	'Identificador Puja' => 'Identificador Puja',
+	'Importe' => 'Importe',
+	'Ya existe la puja introducido en la base de datos' => 'Ya existe la puja introducida en la base de datos',
+	'La puja no es suficientemente alta'=>'La puja no es suficientemente alta',
 	'Buscar Usuario' => 'Buscar usuario'
-	);
-    ?>
+);
+?>
