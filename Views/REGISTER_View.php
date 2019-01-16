@@ -1,6 +1,6 @@
 <?php
 /*  Autor: 	GUI
-	Fecha de creación: 07/01/2019
+	Fecha de creación: 07/01/2019 
 	Función: vista del formulario de registro(register) realizada con una clase donde se muestran todos los campos necesarios para añadir un nuevo usuario a la base de datos
 */
 class Register {
@@ -13,16 +13,10 @@ class Register {
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php'; //header necesita los strings
 		?>
-		<div class="container section">
-			<br>
-			<br>
-			<br>
-			<div class="row justify-content-center">
+		<div class="container seccion">
 			<h2>
 				<?php echo $strings['Registro']; ?>
 			</h2>
-		</div>
-		<div class="row justify-content-center">
 			<form name="ADD" action='../Controllers/REGISTER_Controller.php' method="post" enctype="multipart/form-data" onsubmit="return comprobarAdd();">
 				<table>
 					<tr>
@@ -98,14 +92,11 @@ class Register {
 					<tr>
 						<td colspan="2">
 							<button type="submit" name="action" value="REGISTER"><img src="../Views/icon/añadir.png" alt="<?php echo $strings['Confirmar formulario'] ?>" /></button>
-						</form>
-				</tr>
+			</form>
+				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
+					</tr>
 			</table>
 		</div>
-		<div class="row justify-content-center">
-				<a href='../index.php'><img src="../Views/icon/atras.png" width="32" height="32" alt="<?php echo $strings['Atras'] ?>"></a>
-		</div>
-	</div>
 	<?php
 	include '../Views/Footer.php';
 	} //fin metodo render
