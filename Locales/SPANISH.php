@@ -1,7 +1,7 @@
 <?php
 /*
 	Autor: 	GUI
-	Fecha de creación: 20/12/2018 
+	Fecha de creación: 20/12/2018
 	Función: contiene el array que permite la traducción de los textos a español
 */
 $strings=
@@ -29,7 +29,7 @@ array(
 	'Seleccione una opción' => 'Seleccione una opción',
 	'Formulario de búsqueda' => 'Formulario de búsqueda',
 	'Formulario de modificación' => 'Formulario de modificación',
-	'Formulario de inserción'=> 'Formulario de inserción', 
+	'Formulario de inserción'=> 'Formulario de inserción',
 	'Tabla de borrado' => 'Tabla de borrado',
 	'Tabla de datos' => 'Tabla de datos',
 	'Vista detallada' => 'Vista detallada',
@@ -61,7 +61,6 @@ array(
 	'Inserción realizada con éxito' => 'Inserción realizada con éxito',
 	'Ya existe el usuario introducido en la base de datos' => 'Ya existe el usuario introducido en la base de datos',
 	'Ya existe un usuario con el email introducido en la base de datos' => 'Ya existe un usuario con el email introducido en la base de datos',
-	'Ya existe un usuario con el DNI introducido en la base de datos' => 'Ya existe un usuario con el DNI introducido en la base de datos',
 	'Introduzca un valor' => 'Introduzca un valor',
 	'Borrado correctamente' => 'Borrado correctamente',
 	'No existe' => 'No existe',
@@ -83,19 +82,19 @@ array(
 	'Conectarse' => 'Conectarse',
 	'Desconectarse' => 'Desconectarse',
 	'Cambiar idioma a español' => 'Cambiar idioma a español',
-	'Cambiar idioma a inglés' => 'Cambiar idioma a inglés',
-	'Cambiar idioma a gallego' => 'Cambiar idioma a gallego',
+	'Cambiar idioma a inglés' => 'Switch language to english',
+	'Cambiar idioma a gallego' => 'Cambiar idioma a galego',
 	'Confirmar formulario' => 'Confirmar formulario',
 	'Buscar formulario' => 'Buscar formulario',
 	'El atributo' => 'El atributo',
-	'no puede ser vacio' => 'no puede ser vacio',
+	'no puede ser vacio' => 'no puede ser vacío',
 	'El atributo ' => 'El atributo ',
-	' no puede ser vacio' => ' no puede ser vacio',
+	' no puede ser vacio' => ' no puede ser vacío',
 	'Longitud incorrecta. El atributo ' => 'Longitud incorrecta. El atributo ',
 	' puede tener una longitud máxima de ' => ' puede tener una longitud máxima de ',
 	' y es de ' => ' y es de ',
 	' contiene algún carácter no válido: ' => '  contiene algún carácter no válido: ',
-	' solo admite carácteres alfabéticos' => ' solo admite carácteres alfabéticos',
+	' solo admite carácteres alfabéticos' => ' solo admite caracteres alfabéticos',
 	' tiene que ser un dígito' => ' tiene que ser un dígito',
 	' no puede ser mayor que ' => ' no puede ser mayor que ',
 	' no puede ser menor que ' => ' no puede ser menor que ',
@@ -122,13 +121,13 @@ array(
 	'SI' => 'SI',
 	'NO' => 'NO',
     'Opciones' => 'Opciones',
-	'Inicio' => 'INICIO',
+	'Inicio' => 'Inicio',
 	'usuarios' => 'USUARIOS',
-	'Footer' => 'FOOTER',
+	'Footer' => 'Pie de página',
 	'Mostrar Usuarios' => 'Mostrar Usuarios',
 	'Identificador de Subasta' => 'Identificador de Subasta',
-	'Insertar Usuario' => 'INSERTAR USUARIO',
+	'Insertar Usuario' => 'Insertar Usuario',
 	'Elija opción' => 'Elija opción',
-	'Buscar Usuario' => 'BUSCAR USUARIO'	
-		);				
+	'Buscar Usuario' => 'Buscar usuario'
+		);
     ?>
