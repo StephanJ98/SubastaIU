@@ -78,15 +78,15 @@ class SUBASTA_Model { //declaración de la clase
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el controlador manejara
 			} else { // si la ejecución de la query no da error
 
-				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idSubasta)
+				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe la idSubasta)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
 							FROM SUBASTA 
 							WHERE  (`idSubasta` COLLATE utf8_bin = '$this->idSubasta')";
 
-					if ( $result->num_rows != 0 ) {
+					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe la subasta con esos datos)
 						// si ya existe ese valor de clave en la tabla devolvemos el mensaje correspondiente
-						return 'Ya existe una subasta con el codigo introducido en la base de datos';	
+						return 'Ya existe una subasta con los datos introducido en la base de datos';	
 					} else {
 						$sql = "INSERT INTO SUBASTA (
 									idSubasta,
@@ -114,7 +114,8 @@ class SUBASTA_Model { //declaración de la clase
 		} else { // si el atributo clave de la bd es vacio solicitamos un valor en un mensaje
 			return 'Introduzca un valor'; // introduzca un valor para el SUBASTA
 		}
-	} // fin del metodo ADD
+	}
+	 // fin del metodo ADD
 
 	// funcion DELETE()
 	//Comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino

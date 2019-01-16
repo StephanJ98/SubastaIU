@@ -49,9 +49,17 @@ class SUBASTA_SHOWALL {
 					foreach ( $lista as $atributo ) {
 ?>
 					<td>
-<?php 
-							echo $fila[ $atributo ];
+<?php
+    					if($atributo == 'ficheroSubasta'){
 ?>
+						<img src="<?php echo $fila['ficheroSubasta']?>" alt="<?php echo $strings['No hay Fichero'];?>" style="width: 20px"></a>
+						
+<?php
+						} else {
+							echo $fila[ $atributo ];
+						}
+?>
+						
 					</td>
 <?php
 					}

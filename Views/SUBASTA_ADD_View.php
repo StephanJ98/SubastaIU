@@ -44,9 +44,9 @@
 				</tr>
                 <tr>
 					<th class="formThTd">
-						<?php echo $strings['Fichero'];?>
-					</th>
-					<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this) && comprobarLongitud(this,'50')" maxlength="50"  required/>
+							<?php echo $strings['Fichero'];?>
+						</th>
+						<td class="formThTd"><input type="file" id="ficheroSubasta" name="ficheroSubasta" value='' size = '50'  onBlur="comprobarVacio(this)" maxlength="50" required/>
 				</tr>
                 <tr>
 					<th class="formThTd">

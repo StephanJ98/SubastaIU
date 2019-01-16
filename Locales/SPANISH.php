@@ -15,6 +15,8 @@ array(
 	'avatar' => 'Avatar',
 	'Rol' => 'Rol',
 	'rol' => 'Rol',
+	'ficheroSubasta' => 'ficheroSubasta',
+	'No hay Fichero' => 'No hay Fichero',
 	'Elija rol' => 'Elija rol',
 	'Elija una opción'=> 'Elija una opción',
 	'Pujador' => 'Pujador',
