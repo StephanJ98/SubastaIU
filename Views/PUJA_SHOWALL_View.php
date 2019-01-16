@@ -36,9 +36,6 @@ class PUJA_SHOWALL {
 	<?php
 						}
 	?>
-						<th colspan="3" >
-							<?php echo $strings['Opciones']?>
-						</th>
 					</tr>
 	<?php
 					while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -54,15 +51,6 @@ class PUJA_SHOWALL {
 	<?php
 						}
 	?>
-						<td>
-							<form action="../Controllers/PUJA_Controller.php" method="get" style="display:inline" >
-								<input type="hidden" name="idSubasta" value="<?php echo $fila['idSubasta']; ?>">
-						<td>
-									
-						<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-							</form>
-
 					</tr>
 	<?php
 					}

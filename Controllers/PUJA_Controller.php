@@ -15,9 +15,13 @@ function get_data_form() { //en las vistas los id y name de los elemntos deben s
     $idSubasta = $_REQUEST['idSubasta'];
     $idUser = $_REQUEST['idUser'];
     $importe = $_REQUEST['importe'];
-    $action = $_REQUEST[ 'action' ];//Variable a incluir en las vistas ( ver ejemplo)
+    $action = $_REQUEST[ 'action' ];
 
-    $PUJA = new PUJA_Model($idPuja,$idSubasta,$idUser,$importe);
+    $PUJA = new PUJA_Model(
+    	$idPuja,
+    	$idSubasta,
+    	$idUser,
+    	$importe);
 	return $PUJA;
 }
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
@@ -78,10 +82,10 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	default:
 		if ( !$_POST ) {
-			$PUJA = new PUJA_Model( '','','','');
+			$PUJA = new PUJA_Model('','','','');
 		} 
 		else {
-			$PUJA = get_data_form();
+			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
 		}
 		$datos = $PUJA->SEARCH();
 		$lista = array( 'idPuja','idSubasta','idUser','importe');

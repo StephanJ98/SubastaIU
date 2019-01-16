@@ -110,8 +110,12 @@ class SUBASTA_SHOWCURRENT {
 			            		<p>&nbsp</p>
 			            	</th>
 			            	<td>
-			            		<input type="text" id="idUser" name="idUser" style="display: none;" value='<?php $this->lista['idUser'];?>'>
-			            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value='<?php $this->lista['idSubasta'];?>'>
+			            		<?php
+			            		$user = $_SESSION['idUser'];
+			            		$subast = $this->lista['idSubasta'];
+			            		?>
+			            		<input type="text" id="idUser" name="idUser" style="display: none;" value="<?php echo $user ?>">
+			            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value="<?php echo $subast?>">
 			            		<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 			            	</td>
 			            </tr>
