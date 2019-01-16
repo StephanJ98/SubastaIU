@@ -140,6 +140,7 @@ array(
 	'Identificador Puja' => 'Identificador Puja',
 	'Importe' => 'Importe',
 	'Ya existe la puja introducido en la base de datos' => 'Ya existe la puja introducida en la base de datos',
+	'La puja no es suficientemente alta'=>'La puja no es suficientemente alta',
 	'Buscar Usuario' => 'Buscar usuario'
 );
 ?>

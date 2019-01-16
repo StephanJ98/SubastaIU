@@ -24,6 +24,7 @@ function get_data_form() { //en las vistas los id y name de los elemntos deben s
     	$importe);
 	return $PUJA;
 }
+
 if ( !isset( $_REQUEST[ 'action' ] ) ) {
 	$_REQUEST[ 'action' ] = '';
 }
@@ -33,9 +34,16 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PUJA_ADD();
 		}
 		else {
-			$PUJA = get_data_form();
-			$respuesta = $PUJA->ADD();
-			new MESSAGE( $respuesta, '../Controllers/PUJA_Controller.php' );
+			$mayor = $_REQUEST['mayo'];
+			$impor = $_REQUEST['importe'];
+			if ($mayor > $impor) {
+				new MESSAGE( 'La puja no es suficientemente alta', '../Controllers/PUJA_Controller.php' );
+			}
+			else{
+				$PUJA = get_data_form();
+				$respuesta = $PUJA->ADD();
+				new MESSAGE( $respuesta, '../Controllers/PUJA_Controller.php' );
+			}
 		}
 		break;
 	case 'DELETE':

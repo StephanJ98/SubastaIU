@@ -76,6 +76,7 @@ class SUBASTA_SHOWCURRENT {
 			                </th>
 			                <td>
 			                	<?php
+			                	$mayor = $this->lista['mayorPuja'];
 			                	if($lista['esCiega'] == 'true'){
 									if ((($_SESSION['rol'] == 0) || ($_SESSION['idUser'] == $lista['idUser']))) {
 										echo $this->lista['mayorPuja'];
@@ -113,8 +114,10 @@ class SUBASTA_SHOWCURRENT {
 			            		<?php
 			            		$user = $_SESSION['idUser'];
 			            		$subast = $this->lista['idSubasta'];
+			            		
 			            		?>
 			            		<input type="text" id="idUser" name="idUser" style="display: none;" value="<?php echo $user ?>">
+			            		<input type="text" id="mayo" name="mayo" style="display: none;" value="<?php echo $mayor ?>">
 			            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value="<?php echo $subast?>">
 			            		<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 			            	</td>

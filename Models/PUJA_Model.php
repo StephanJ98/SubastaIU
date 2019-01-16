@@ -62,11 +62,9 @@ class PUJA_Model { //declaración de la clase
 			$sql = "SELECT * 
 					FROM PUJA 
 					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
-
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
 			} else { // si la ejecución de la query no da error
-
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idPuja)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
