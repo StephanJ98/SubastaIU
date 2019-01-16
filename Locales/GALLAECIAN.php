@@ -15,6 +15,8 @@ array(
 	'avatar' => 'Avatar',
 	'Rol' => 'Rol',
 	'rol' => 'Rol',
+	'ficheroSubasta' => 'ficheroAlmoeda',
+	'No hay Fichero' => 'Non hai Ficheiro',
 	'Elija rol' => 'Elixa rol',
 	'Elija una opción'=> 'Elixa unha opción',
 	'Pujador' => 'Poxador',
@@ -42,6 +44,10 @@ array(
 	'apellidos' => 'Apelidos',
 	'0(Admin), 1(Pujador) o 2(Subastador)' => '0(Admin), 1(Poxador) o 2(Licitante)',
 	'idSubasta' => 'idAlmoeda',
+	'Subastas' => 'Almoedas',
+	'Pujas' => 'Poxas',
+	'Historial' => 'Historial',
+	'Administración' => 'Administración',
 	'producto' => 'produto',
 	'Producto' => 'Produto',
 	'Correo electrónico' => 'Correo electrónico',
@@ -126,6 +132,6 @@ array(
 	'Identificador de Subasta' => 'Identificador de Almoeda',
 	'Insertar Usuario' => 'INSERTAR USUARIO',
 	'Elija opción' => 'Elixa opción',
-	'Buscar Usuario' => 'BUSCAR USUARIO'	
+	'Buscar Usuario' => 'BUSCAR USUARIO'
 		);
     ?>
