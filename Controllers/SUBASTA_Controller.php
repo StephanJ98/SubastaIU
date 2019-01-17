@@ -80,7 +80,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
 			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_EDIT( $valores );
