@@ -7,6 +7,7 @@
 session_start(); //solicito trabajar con la session
 include '../Models/HISTORIAL_Model.php';
 include '../Views/HISTORIAL_View.php';
+include '../Views/HISTORIAL_SEARCH_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {

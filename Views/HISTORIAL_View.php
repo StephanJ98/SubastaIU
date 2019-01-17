@@ -1,4 +1,9 @@
 <?php
+/*
+	Autor: Salva
+	Fecha de creación: 17/01/2019 
+	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Historial
+*/
 class HISTORIAL_SHOWALL {
 	function __construct( $lista, $datos) {
 		$this->lista = $lista;
