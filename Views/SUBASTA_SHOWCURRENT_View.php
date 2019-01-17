@@ -114,8 +114,15 @@ class SUBASTA_SHOWCURRENT {
 			            		<?php
 			            		$user = $_SESSION['idUser'];
 			            		$subast = $this->lista['idSubasta'];
-			            		
+			            		$product = $this->lista['producto'];
+			            		$inf = $this->lista['info'];
+			            		$cieg = $this->lista['esCiega'];
+			            		$fiche = $this->lista['ficheroSubasta'];
 			            		?>
+			            		<input type="text" id="producto" name="producto" style="display: none;" value="<?php echo $product ?>">
+			            		<input type="text" id="info" name="info" style="display: none;" value="<?php echo $inf ?>">
+			            		<input type="text" id="esCiega" name="esCiega" style="display: none;" value="<?php echo $cieg ?>">
+			            		<input type="text" id="ficheroSubasta" name="ficheroSubasta" style="display: none;" value="<?php echo $fiche ?>">
 			            		<input type="text" id="idUser" name="idUser" style="display: none;" value="<?php echo $user ?>">
 			            		<input type="text" id="mayo" name="mayo" style="display: none;" value="<?php echo $mayor ?>">
 			            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value="<?php echo $subast?>">
