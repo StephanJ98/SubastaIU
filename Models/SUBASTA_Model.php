@@ -67,9 +67,6 @@ class SUBASTA_Model { //declaración de la clase
 		}
 	} // fin metodo SEARCH
 
-
-
-
 	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
 	function SEARCHBIS() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
