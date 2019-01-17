@@ -98,7 +98,7 @@ class SUBASTA_SHOWCURRENT {
 				            		<?php echo $strings['Identificador Puja'];?>
 				            	</th>
 				            	<td>
-				            		<input type="text" id="idPuja" name="idPuja" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="30" size = '30' value = ''/>
+				            		<input type="text" id="idPuja" name="idPuja" placeholder="<?php echo time()?>" maxlength="30" size = '30' readonly value ='<?php echo time()?>'/>
 				            	</td>
 				            </tr>
 				            <tr>

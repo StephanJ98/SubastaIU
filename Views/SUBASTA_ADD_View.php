@@ -28,7 +28,7 @@
 					<th class="formThTd">
 						<?php echo $strings['Identificador de Subasta'];?>
 					</th>
-					<td class="formThTd"><input type="text" id="idSubasta" name="idSubasta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
+					<td class="formThTd"><input type="text" id="idSubasta" name="idSubasta" placeholder="<?php echo time()?>" value="<?php echo time()?>" readonly maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
 				</tr>
 				<tr>
 					<th class="formThTd">
