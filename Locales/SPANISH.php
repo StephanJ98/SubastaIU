@@ -24,7 +24,7 @@ array(
 	'idioma' => 'Idioma',
 	'Opciones' => 'Opciones',
 	'Registro' => 'Registro',
-	'Nombre de Usuario' => 'Nombre de Usuario',
+	'Nombre de Usuario' => 'Identificador',
 	'password' => 'password',
 	'Seleccione una opción' => 'Seleccione una opción',
 	'Formulario de búsqueda' => 'Formulario de búsqueda',
@@ -50,7 +50,7 @@ array(
 	'Administración' => 'Administración',
 	'producto' => 'producto',
 	'Producto' => 'Producto',
-	'Correo electrónico' => 'Correo electrónico',
+	'Correo electrónico' => 'Correo electrónico &nbsp',
 	'email' => 'Correo electrónico',
 	'info' => 'info',
 	'esCiega' => 'Ciega',
@@ -136,10 +136,12 @@ array(
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elija opción',
-	'Identificador Puja' => 'Identificador Puja',
+	'Identificador Puja' => 'Identificador de Puja',
 	'Importe' => 'Importe',
 	'Ya existe la puja introducido en la base de datos' => 'Ya existe la puja introducida en la base de datos',
 	'La puja no es suficientemente alta'=>'La puja no es suficientemente alta',
+	'idHistorial' => 'idHistorial',
+	'Identificador de Historial' => 'Identificador de Historial',
 	'Buscar Usuario' => 'Buscar usuario'
 );
 ?>

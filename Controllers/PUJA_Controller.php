@@ -5,6 +5,7 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Puja
 */
 session_start(); //solicito trabajar con la session
+include '../Models/HISTORIAL_Model.php';
 include '../Models/PUJA_Model.php';
 include '../Models/SUBASTA_Model.php';
 include '../Views/PUJA_SEARCH_View.php';
@@ -41,6 +42,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 				new MESSAGE( 'La puja no es suficientemente alta', '../Controllers/PUJA_Controller.php' );
 			}
 			else{
+				$HISTORIAL = new HISTORIAL_Model(time(),$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['idPuja'],$impor);
+				$HISTORIAL->ADD();
 				$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],$_REQUEST['ficheroSubasta'],$_REQUEST['esCiega'],$impor);
 				$SUBASTA->EDIT();
 				$PUJA = get_data_form();
@@ -51,7 +54,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','' );
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_DELETE( $valores );
 		} 
@@ -64,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','' );
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_EDIT( $valores );
 		} 
@@ -80,7 +83,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PUJA_SEARCH();
 		} 
 		else {
-			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
+			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],'');
 			$datos = $PUJA->SEARCH();
 			$lista = array( 'idPuja','idSubasta','idUser','importe');
 			new PUJA_SHOWALL( $lista, $datos );

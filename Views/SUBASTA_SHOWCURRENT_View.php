@@ -90,45 +90,55 @@ class SUBASTA_SHOWCURRENT {
 			                    ?>
 			                </td>
 			            </tr>
-			            <tr>
-			            	<th>
-			            		<?php echo $strings['Identificador Puja'];?>
-			            	</th>
-			            	<td>
-			            		<input type="text" id="idPuja" name="idPuja" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="30" size = '30' value = ''/>
-			            	</td>
-			            </tr>
-			            <tr>
-			            	<th>
-			            		<?php echo $strings['Importe'];?>
-			            	</th>
-			            	<td>
-			            		<input type="text" id="importe" name="importe" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="10" size = '30' value = ''/>
-			            	</td>
-			            </tr>
-			            <tr>
-			            	<th>
-			            		<p>&nbsp</p>
-			            	</th>
-			            	<td>
-			            		<?php
-			            		$user = $_SESSION['idUser'];
-			            		$subast = $this->lista['idSubasta'];
-			            		$product = $this->lista['producto'];
-			            		$inf = $this->lista['info'];
-			            		$cieg = $this->lista['esCiega'];
-			            		$fiche = $this->lista['ficheroSubasta'];
-			            		?>
-			            		<input type="text" id="producto" name="producto" style="display: none;" value="<?php echo $product ?>">
-			            		<input type="text" id="info" name="info" style="display: none;" value="<?php echo $inf ?>">
-			            		<input type="text" id="esCiega" name="esCiega" style="display: none;" value="<?php echo $cieg ?>">
-			            		<input type="text" id="ficheroSubasta" name="ficheroSubasta" style="display: none;" value="<?php echo $fiche ?>">
-			            		<input type="text" id="idUser" name="idUser" style="display: none;" value="<?php echo $user ?>">
-			            		<input type="text" id="mayo" name="mayo" style="display: none;" value="<?php echo $mayor ?>">
-			            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value="<?php echo $subast?>">
-			            		<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
-			            	</td>
-			            </tr>
+			            <?php
+							if (($_SESSION['rol'] == 0) || ($_SESSION['rol'] == 1)) {
+						?>
+				            <tr>
+				            	<th>
+				            		<?php echo $strings['Identificador Puja'];?>
+				            	</th>
+				            	<td>
+				            		<input type="text" id="idPuja" name="idPuja" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="30" size = '30' value = ''/>
+				            	</td>
+				            </tr>
+				            <tr>
+				            	<th>
+				            		<?php echo $strings['Importe'];?>
+				            	</th>
+				            	<td>
+				            		<input type="text" id="importe" name="importe" placeholder="<?php echo $strings['Escriba aqui...']?>" maxlength="10" size = '30' value = ''/>
+				            	</td>
+				            </tr>
+			            <?php
+							}
+							if (($_SESSION['rol'] == 0) || ($_SESSION['rol'] == 1)) {
+						?>
+				            <tr>
+				            	<th>
+				            		<p>&nbsp</p>
+				            	</th>
+				            	<td>
+				            		<?php
+				            		$user = $_SESSION['idUser'];
+				            		$subast = $this->lista['idSubasta'];
+				            		$product = $this->lista['producto'];
+				            		$inf = $this->lista['info'];
+				            		$cieg = $this->lista['esCiega'];
+				            		$fiche = $this->lista['ficheroSubasta'];
+				            		?>
+				            		<input type="text" id="producto" name="producto" style="display: none;" value="<?php echo $product ?>">
+				            		<input type="text" id="info" name="info" style="display: none;" value="<?php echo $inf ?>">
+				            		<input type="text" id="esCiega" name="esCiega" style="display: none;" value="<?php echo $cieg ?>">
+				            		<input type="text" id="ficheroSubasta" name="ficheroSubasta" style="display: none;" value="<?php echo $fiche ?>">
+				            		<input type="text" id="idUser" name="idUser" style="display: none;" value="<?php echo $user ?>">
+				            		<input type="text" id="mayo" name="mayo" style="display: none;" value="<?php echo $mayor ?>">
+				            		<input type="text" id="idSubasta" name="idSubasta" style="display: none;" value="<?php echo $subast?>">
+				            		<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
+				            	</td>
+				            </tr>
+				        <?php
+							}
+						?>
 			            <tr>
 				            <td>
 					            <div class="row justify-content-center">
