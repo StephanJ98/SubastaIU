@@ -36,9 +36,9 @@ UNIQUE KEY `email` (`email`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('admin', 'admin', 'administrador', 'admin@admin.fr', '0', '0');
-INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('puja', 'puja', 'pujador', 'puja@puja.fr', '1', '1');
-INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('subas', 'subas', 'subastador', 'subas@subas.fr', '2', '2');
+INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('admin', 'admin', 'administrador', 'admin@admin.fr', '../Files/icijapon___Baa4UThAl55___.jpg', '0');
+INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('puja', 'puja', 'pujador', 'puja@puja.fr', '../Files/icijapon___BbMp2K9gXcJ___.jpg', '1');
+INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('subas', 'subas', 'subastador', 'subas@subas.fr', '../Files/bonsaimirai___BcDP_9pD2Vi___.jpg', '2');
 
 --
 -- Estructura de tabla para la tabla `ROL`
