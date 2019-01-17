@@ -23,7 +23,6 @@ class PUJA_SHOWALL {
 					<caption style="margin-bottom:10px;margin: 10px;">
 						<form action='../Controllers/PUJA_Controller.php'>
 							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
-							<button type="submit" name="action" value="ADD"><img src="../Views/icon/añadir.png" alt="AÑADIR" /></button>
 						</form>
 					</caption>
 					<tr>
@@ -33,12 +32,10 @@ class PUJA_SHOWALL {
 						<th>
 							<?php echo $strings[$atributo]?>
 						</th>
+						<th><p>&nbsp&nbsp</p></th>
 	<?php
 						}
 	?>
-						<th colspan="3" >
-							<?php echo $strings['Opciones']?>
-						</th>
 					</tr>
 	<?php
 					while ( $fila = mysqli_fetch_array( $this->datos ) ) {
@@ -48,28 +45,12 @@ class PUJA_SHOWALL {
 						foreach ( $lista as $atributo ) {
 	?>
 						<td>
-	<?php
-	    					if($atributo == 'avatar'){
-	?>
-							<img src="<?php echo $fila['avatar']?>" alt="<?php echo $strings['Avatar'];?>" style="width: 20px"></a>
-	<?php
-							} else {
-								echo $fila[ $atributo ];
-							}
-	?>
+							<?php echo $fila[ $atributo ];?>
 						</td>
+						<td><p>&nbsp&nbsp</p></td>
 	<?php
 						}
 	?>
-						<td>
-							<form action="../Controllers/PUJA_Controller.php" method="get" style="display:inline" >
-								<input type="hidden" name="idSubasta" value="<?php echo $fila['idSubasta']; ?>">
-						<td>
-									
-						<td>
-								<button type="submit" name="action" value="SHOWCURRENT" ><img src="../Views/icon/verDetalles.png" alt="<?php echo $strings['Ver en detalle']?>" width="20" height="20"/></button>
-							</form>
-
 					</tr>
 	<?php
 					}

@@ -26,7 +26,7 @@ class SUBASTA_SHOWALL {
 				<table>
 					<caption style="margin-bottom:10px;margin: 10px;">
 						<form action='../Controllers/SUBASTA_Controller.php'>
-							<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
+							<button type="submit" name="action" value="SEARCHBIS"><img src="../Views/icon/buscar.png" alt="BUSCAR" /></button>
 
 							<?php
 							if (($_SESSION['rol'] == 0) || ($_SESSION['rol'] == 2)) {
@@ -44,6 +44,7 @@ class SUBASTA_SHOWALL {
 						<th>
 							<?php echo $strings[$atributo];?>
 						</th>
+						<th><p>&nbsp&nbsp</p></th>
 	<?php
 						}
 	?>
@@ -76,6 +77,7 @@ class SUBASTA_SHOWALL {
 							}
 	?>	
 						</td>
+						<td><p>&nbsp&nbsp</p></td>
 	<?php
 						}
 	?>

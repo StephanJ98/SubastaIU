@@ -34,7 +34,7 @@
 					<th class="formThTd">
 						<?php echo $strings['Identificador de Usuario'];?>
 					</th>
-					<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
+					<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $_SESSION['idUser']?>" readonly value="<?php echo $_SESSION['idUser'] ?>" maxlength="30" size="34" onBlur=" comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')""/">
 				</tr>
                 <tr>
 					<th class="formThTd">

@@ -47,6 +47,7 @@ class USUARIOS_SHOWALL {
 						<th>
 							<?php echo $strings[$atributo]?>
 						</th>
+						<th><p>&nbsp&nbsp</p></th>
 	<?php
 						}
 	?>
@@ -74,6 +75,7 @@ class USUARIOS_SHOWALL {
 	?>
 							
 						</td>
+						<td><p>&nbsp&nbsp</p></td>
 	<?php
 						}
 	?>

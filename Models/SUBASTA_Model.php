@@ -67,6 +67,31 @@ class SUBASTA_Model { //declaración de la clase
 		}
 	} // fin metodo SEARCH
 
+	//funcion SEARCH: hace una búsqueda en la tabla con los datos proporcionados. Si van vacios devuelve todos
+	function SEARCHBIS() {
+		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
+		$sql = "SELECT  idSubasta,
+						idUser,
+						producto,
+						info,
+						esCiega
+       			FROM SUBASTA 
+    			WHERE 
+    				( (BINARY `idSubasta` LIKE '%$this->idSubasta%') &&
+    				(BINARY `idUser` LIKE '%$this->idUser%') &&
+					(BINARY `producto` LIKE '%$this->producto%') &&
+					(BINARY `info` LIKE '%$this->info%') &&
+					(BINARY `esCiega` LIKE'%$this->esCiega%') )";
+
+		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
+		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
+			return 'Error en la consulta sobre la base de datos';
+		} else { // si la busqueda es correcta devolvemos el recordset resultado
+
+			return $resultado;
+		}
+	} // fin metodo SEARCH
+
 	//Metodo ADD()
 	//Inserta en la tabla  de la bd  los valores de los atributos del objeto. Comprueba si la clave/s esta vacia y 
 	//si existe ya en la tabla

@@ -5,6 +5,7 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Subasta
 */
 session_start(); //solicito trabajar con la session
+include '../Models/HISTORIAL_Model.php';
 include '../Models/SUBASTA_Model.php';
 include '../Views/SUBASTA_ADD_View.php';
 include '../Views/SUBASTA_DELETE_View.php';
@@ -58,6 +59,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
 		} else {
+			$HISTORIAL = new HISTORIAL_Model(time(),$_REQUEST['idSubasta'],$_REQUEST['idUser'],'','');
+			$HISTORIAL->ADD();
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->ADD();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
@@ -77,7 +80,6 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'EDIT':
 		if ( !$_POST ) {
-
 			$SUBASTA = new SUBASTA_Model( $_REQUEST['idSubasta'],'','','','','','' );
 			$valores = $SUBASTA->RellenaDatos( $_REQUEST[ 'idSubasta' ] );
 			new SUBASTA_EDIT( $valores );
@@ -93,9 +95,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new SUBASTA_SEARCH();
 		} 
 		else {
-			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],$_REQUEST['mayorPuja']);
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],'');
 			$datos = $SUBASTA->SEARCH();
-			$lista = array( 'idSubasta','idUser','producto','info','esCiega','mayorPuja');
+			$lista = array( 'idSubasta','idUser','producto','info','esCiega');
+			new SUBASTA_SHOWALL( $lista, $datos );
+		}
+		break;
+	case 'SEARCHBIS':
+		if ( !$_POST ) {
+			new SUBASTA_SEARCH();
+		} 
+		else {
+			$SUBASTA = new SUBASTA_Model($_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['producto'],$_REQUEST['info'],'',$_REQUEST['esCiega'],'');
+			$datos = $SUBASTA->SEARCHBIS();
+			$lista = array( 'idSubasta','idUser','producto','info','esCiega');
 			new SUBASTA_SHOWALL( $lista, $datos );
 		}
 		break;

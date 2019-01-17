@@ -49,7 +49,6 @@ class PUJA_Model { //declaración de la clase
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
 			return 'Error en la consulta sobre la base de datos';
 		} else { // si la busqueda es correcta devolvemos el recordset resultado
-
 			return $resultado;
 		}
 	} // fin metodo SEARCH
@@ -59,20 +58,17 @@ class PUJA_Model { //declaración de la clase
 	//si existe ya en la tabla
 	function ADD() {
 		if ( ( $this->idPuja <> '' ) ) { // si el atributo clave de la entidad no esta vacio
-
 			// construimos el sql para buscar esa clave en la tabla
 			$sql = "SELECT * 
-					FROM PUJAS 
+					FROM PUJA 
 					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
-
 			if ( !$result = $this->mysqli->query( $sql ) ) { // si da error la ejecución de la query
 				return 'No se ha podido conectar con la base de datos'; // error en la consulta (no se ha podido conectar con la bd). Devolvemos un mensaje que el contmayorPujaador manejara
 			} else { // si la ejecución de la query no da error
-
 				if ( $result->num_rows == 0 ) { // miramos si el resultado de la consulta es vacio (no existe el idPuja)
 					// construimos el sql para buscar esa clave candidata en la tabla
 					$sql = "SELECT * 
-							FROM PUJAS 
+							FROM PUJA
 							WHERE  (`importe` COLLATE utf8_bin = '$this->importe')";
 
 					if ( $result->num_rows != 0 ) {// miramos si el resultado de la consulta no es vacio ( existe el importe)
@@ -81,7 +77,7 @@ class PUJA_Model { //declaración de la clase
 						
 					} else {
 
-						$sql = "INSERT INTO PUJAS (
+						$sql = "INSERT INTO PUJA (
 									`idPuja`,
 									`idSubasta`,
 									`idUser`,
@@ -105,36 +101,12 @@ class PUJA_Model { //declaración de la clase
 		}
 	} // fin del metodo ADD
 
-	// funcion DELETE()
-	//Comprueba que exista el valor de clave por el que se va a borrar,si existe se ejecuta el borrado, sino
-	//se manda un mensaje de que ese valor de clave no existe
-	/*function DELETE() {//No necesaria
-		// se construye la sentencia sql de busqueda con los atributos de la clase
-		$sql = "SELECT * 
-				FROM PUJAS 
-				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
-		// se ejecuta la query
-		$result = $this->mysqli->query( $sql );
-		// si existe una tupla con ese valor de clave
-		if ( $result->num_rows == 1 ) {
-			// se construye la sentencia sql de borrado
-			$sql = "DELETE FROM PUJAS 
-					WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja' )";
-			// se ejecuta la query
-			$this->mysqli->query( $sql );
-			// se devuelve el mensaje de borrado correcto
-			return "Borrado correctamente";
-		} // si no existe el idPuja a borrar se devuelve el mensaje de que no existe
-		else
-			return "No existe";
-	} // fin metodo DELETE*/
-
 	// funcion RellenaDatos()
 	//Esta función obtiene de la entidad de la bd todos los atributos a partir del valor de la clave que esta
 	//en el atributo de la clase
 	function RellenaDatos() { // se construye la sentencia de busqueda de la tupla
 		$sql = "SELECT * 
-				FROM PUJAS 
+				FROM PUJA 
 				WHERE (`idPuja` COLLATE utf8_bin = '$this->idPuja')";
 		// Si la busqueda no da resultados, se devuelve el mensaje de que no existe
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
