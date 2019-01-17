@@ -59,6 +59,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new USUARIOS_ADD();
 		} else {
+			$HISTORIAL = new HISTORIAL_Model(time(),'',$_REQUEST['idUser'],'','');
+			$HISTORIAL->ADD();
 			$USUARIO = get_data_form();
 			$respuesta = $USUARIO->ADD();
 			new MESSAGE( $respuesta, '../Controllers/USUARIO_Controller.php' );

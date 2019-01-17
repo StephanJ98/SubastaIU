@@ -5,6 +5,7 @@
 	Función: controlador que realiza las acciones, recibidas de las vistas,relativas  a la clase Subasta
 */
 session_start(); //solicito trabajar con la session
+include '../Models/HISTORIAL_Model.php';
 include '../Models/SUBASTA_Model.php';
 include '../Views/SUBASTA_ADD_View.php';
 include '../Views/SUBASTA_DELETE_View.php';
@@ -58,6 +59,8 @@ switch ( $_REQUEST[ 'action' ] ) {
 		if ( !$_POST ) {
 			new SUBASTA_ADD();
 		} else {
+			$HISTORIAL = new HISTORIAL_Model(time(),$_REQUEST['idSubasta'],$_REQUEST['idUser'],'','');
+			$HISTORIAL->ADD();
 			$SUBASTA = get_data_form();
 			$respuesta = $SUBASTA->ADD();
 			new MESSAGE( $respuesta, '../Controllers/SUBASTA_Controller.php');
