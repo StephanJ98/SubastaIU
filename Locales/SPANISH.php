@@ -136,7 +136,7 @@ array(
 	'Mayor Puja' => 'Mayor Puja',
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elija opción',
-	'Identificador Puja' => 'Identificador Puja',
+	'Identificador Puja' => 'Identificador de Puja',
 	'Importe' => 'Importe',
 	'Ya existe la puja introducido en la base de datos' => 'Ya existe la puja introducida en la base de datos',
 	'La puja no es suficientemente alta'=>'La puja no es suficientemente alta',

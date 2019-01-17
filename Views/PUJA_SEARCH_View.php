@@ -1,52 +1,60 @@
 <?php
-/*
-	Autor: 	GUI
-	Fecha de creación: 05/01/2019 
-	Función: contiene todas las características del footer
-*/
-class PUJA_SEARCH { 
+class PUJA_SEARCH {
+
 	function __construct() {
 		$this->render();
 	}
 
 	function render() {
+
 		include '../Locales/' . $_SESSION[ 'idioma' ] . '.php';
 		include '../Views/Header.php';
-	?>
-	<div class="container seccion">
-		<div class="row justify-content-center">
-			<h2>
-				<?php echo $strings['Formulario de búsqueda de Pujas'];?>
-			</h2>
+?>
+		<div class="container seccion">
+			<div class="row justify-content-center">
+				<h2>
+					<?php echo $strings['Formulario de búsqueda'];?>
+				</h2>
+			</div>
+			<div class="row justify-content-center">
+				<form id="SEARCHBIS" action="../Controllers/PUJA_Controller.php" method="post" enctype="multipart/form-data" onsubmit="return comprobarSearch()">
+					<table>
+						<tr>
+							<th class="formThTd">
+								<?php echo $strings['Identificador Puja'];?>
+							</th>
+							<td class="formThTd"><input type="text" id="idPuja" name="idPuja" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30')"/>
+						</tr>
+						<tr>
+							<th class="formThTd">
+								<?php echo $strings['Identificador de Subasta'];?>
+							</th>
+							<td class="formThTd"><input type="text" id="idSubasta" name="idSubasta" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30')"/>
+						</tr>
+						<tr>
+							<th class="formThTd">
+								<?php echo $strings['Identificador de Usuario'];?>
+							</th>
+							<td class="formThTd"><input type="text" id="idUser" name="idUser" placeholder="<?php echo $strings['Escriba aqui...']?>" value="" maxlength="30" size="34" onBlur="comprobarLongitud(this,'30') && comprobarTexto(this,'30')"/>
+						</tr>
+	                    <tr>
+							<td colspan="2">
+								<button type="submit" name="action" value="SEARCH"><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="row justify-content-center">
+				<form action='../Controllers/PUJA_Controller.php' method="post" style="display:inline">
+					<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
+				</form>	
+			</div>
 		</div>
-		<div class="row justify-content-center">
-			<form id="SEARCHPUJA" action="../Controllers/PUJA_Controller.php" method="post" onsubmit="return comprobarSearchLot()">
-				<div>
-					<select id="rol" name="rol" value="" required >
-						<option value="">
-							<p><?php echo $strings['Elija']; ?></p>
-						</option>
-						<option value="idUser">
-							<p><?php echo $strings['IdUsuario'];?></p>
-						</option>
-						<option value="idSubasta">
-							<p><?php echo $strings['IdSubasta'];?></p>
-						</option>
-					</select>
-					<input type="text" id="SEARCHPUJA" name="SEARCHPUJA" placeholder="<?php echo $strings['Introduzca los datos']?>" value="" maxlength="30" size="34"/>
-					<br>
-					<button type="submit" name="action" value="SEARCH" ><img src="../Views/icon/buscar.png" alt="<?php echo $strings['Buscar formulario']?>" /></button>		
-				</div>
-			</form>
-		</div>
-		<div class="row justify-content-center">
-			<form action='../Controllers/PUJA_Controller.php' method="post" style="display:inline">
-				<button type="submit"><img src="../Views/icon/atras.png" alt="<?php echo $strings['Atras']?>" /></button>
-			</form>
-		</div>
-	</div>
-	<?php
-		include '../Views/Footer.php';
+	<br>
+	<br>
+<?php
+	include '../Views/Footer.php';
 	}
 }
 ?>

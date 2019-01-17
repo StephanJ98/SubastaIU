@@ -54,7 +54,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','' );
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_DELETE( $valores );
 		} 
@@ -67,7 +67,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','','','','','' );
+			$PUJA = new PUJA_Model( $_REQUEST['idPuja'],'','','' );
 			$valores = $PUJA->RellenaDatos( $_REQUEST[ 'idPuja' ] );
 			new PUJA_EDIT( $valores );
 		} 
@@ -83,7 +83,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new PUJA_SEARCH();
 		} 
 		else {
-			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],$_REQUEST['importe']);
+			$PUJA = new PUJA_Model($_REQUEST['idPuja'],$_REQUEST['idSubasta'],$_REQUEST['idUser'],'');
 			$datos = $PUJA->SEARCH();
 			$lista = array( 'idPuja','idSubasta','idUser','importe');
 			new PUJA_SHOWALL( $lista, $datos );
