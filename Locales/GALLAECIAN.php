@@ -136,6 +136,12 @@ array(
 	'Mayor Puja' => 'Maior Poxa',
 	'Identificador de Usuario' => 'Identificador de Usuario',
 	'Elija opción' => 'Elixa opción',
+	'Identificador Puja' => 'Identificador de Poxa',
+	'Importe' => 'Importe',
+	'Ya existe la puja introducido en la base de datos' => 'Xa existe a poxa introducida na base de datos',
+	'La puja no es suficientemente alta'=>'A poxa non é suficientemente alta',
+	'idHistorial' => 'idHistorial',
+	'Identificador de Historial' => 'Identificador de Historial',
 	'Buscar Usuario' => 'Buscar usuario'
 		);
     ?>
