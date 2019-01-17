@@ -136,6 +136,12 @@ array(
 	'Mayor Puja' => 'Highest Bid',
 	'Identificador de Usuario' => 'User ID',
 	'Elija opción' => 'Choose option',
+	'Identificador Puja' => 'Bid ID',
+	'Importe' => 'Amount',
+	'Ya existe la puja introducido en la base de datos' => 'Inserted bid already exists in Database',
+	'La puja no es suficientemente alta'=>'Bid is not high enough',
+	'idHistorial' => 'idHistory',
+	'Identificador de Historial' => 'History ID',
 	'Buscar Usuario' => 'Search User'
 		);
     ?>
