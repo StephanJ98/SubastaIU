@@ -6,7 +6,9 @@
 */
 class Index {
 	function __construct(){
-		session_start();
+		if($_SESSION['idUser'] == null){
+			session_start();
+		}
 		$this->render();
 	}
 	function render(){
