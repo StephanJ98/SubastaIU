@@ -80,34 +80,14 @@
 			<?php
 		}
 		?>
+		<div class="col">
+			<a href="../Controllers/SUBASTA_Controller.php"><?php echo $strings['Subastas'];?></a>
+		</div>
+		<div class="col">
+			<a href="../Controllers/PUJA_Controller.php"><?php echo $strings['Pujas'];?></a>
+		</div>
 		<?php
-		if (IsAuthenticated()){
-			if (($_SESSION['rol'] == 2) || ($_SESSION['rol'] == 0)) {
-		?>
-				<div class="col">
-				<a href="../Controllers/SUBASTA_Controller.php"><?php echo $strings['Subastas'];?></a>
-				</div>
-			<?php
-			}
-			?>
-		<?php
-		}
-		?>
-		<?php
-		if (IsAuthenticated()){
-			if (($_SESSION['rol'] == 1) || ($_SESSION['rol'] == 0)) {
-		?>
-				<div class="col">
-				<a href="../Controllers/PUJA_Controller.php"><?php echo $strings['Pujas'];?></a>
-				</div>
-			<?php
-			}
-			?>
-		<?php
-		}
-		?>
-		<?php
-		if (IsAuthenticated()){
+		if (IsAuthenticated() && $_SESSION['rol'] == 0){
 			?>
 			<div class="col">
 			<a href="../Controllers/HISTORIAL_Controller.php"><?php echo $strings['Historial'];?></a>

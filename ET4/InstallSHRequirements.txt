@@ -1,6 +1,0 @@
-Entregar además:
-a) un fichero install.sh que proporcione los permisos necesarios para la ejecución del
-proyecto dentro de su carpeta ET4 y cree la base de datos, los usuarios de acceso
-al proyecto, las tablas de la bd y los inserts necesarios para su funcionamiento.
-b) un fichero READMElogins.txt donde esten los usuarios y passwords de acceso al
-proyecto
