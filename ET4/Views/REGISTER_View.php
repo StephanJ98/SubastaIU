@@ -104,6 +104,7 @@ class Register {
 			</div>
 			<br>
 			<br>
+			<br>
 		</div>
 	<?php
 	include '../Views/Footer.php';

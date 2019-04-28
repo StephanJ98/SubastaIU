@@ -7,18 +7,14 @@
 class NOTIFICACION_Model { //declaración de la clase
 
 	var $idNotificacion; // declaración del atributo idNotificacion
-	var $fecha; //declaración del atributo fecha
-	var $idUser; // declaración del atributo idUser
 	var $mensaje; // declaración del atributo mensaje
 	var $mysqli; // declaración del atributo manejador de la bd
 
 	//Constructor de la clase
 
-	function __construct($idNotificacion, $fecha, $idUser, $mensaje) {
+	function __construct($idNotificacion, $mensaje) {
 		//asignación de valores de parámetro a los atributos de la clase
 		$this->idNotificacion = $idNotificacion;
-		$this->fecha = $fecha;
-		$this->idUser = $idUser;
 		$this->mensaje = $mensaje;
 
 		// incluimos la funcion de acceso a la bd
@@ -36,14 +32,10 @@ class NOTIFICACION_Model { //declaración de la clase
 	function SEARCH() {
 		// construimos la sentencia de busqueda con LIKE y los atributos de la entidad
 		$sql = "SELECT  idNotificacion,
-						fecha,
-						idUser,
 						mensaje
        			FROM NOTIFICACION
     			WHERE 
     				( (BINARY `idNotificacion` LIKE '%$this->idNotificacion%') &&
-					(BINARY DATE_FORMAT(`fecha`,'%d/%m/%Y') LIKE '%$this->fecha%') &&
-					(BINARY `idUser` LIKE '%$this->idUser%') &&
 	 				(BINARY `mensaje` LIKE '%$this->mensaje%') )";
 		// si se produce un error en la busqueda mandamos el mensaje de error en la consulta
 		if ( !( $resultado = $this->mysqli->query( $sql ) ) ) {
@@ -83,13 +75,9 @@ class NOTIFICACION_Model { //declaración de la clase
 
 						$sql = "INSERT INTO NOTIFICACION (
 									`idNotificacion`,
-									`fecha`,
-									`idUser`,
 									`mensaje`) 
 								VALUES(
 									'$this->idNotificacion',
-									STR_TO_DATE(REPLACE('$this->fecha','/','.') ,GET_FORMAT(date,'EUR')),
-									'$this->idUser',
 									'$this->mensaje')";
 					}
 					if ( !$this->mysqli->query( $sql ) ) { // si da error en la ejecución del insert devolvemos mensaje

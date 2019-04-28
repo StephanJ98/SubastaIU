@@ -17,8 +17,7 @@ class Login {
 					<form name='Form' action='../Controllers/LOGIN_Controller.php' method='post' onsubmit="return comprobarLogin()">
 						<table>
 							<tr>
-								<th class="formThTd">
-									<?php echo $strings['Usuario'];?> </th>
+								<th class="formThTd"> <?php echo $strings['Usuario'];?> </th>
 
 								<td class="formThTd"><input type='text' id="idUser" name='idUser' maxlength='30'  value='' required onBlur="comprobarVacio(this) && comprobarLongitud(this,'30') && comprobarTexto(this,'30')"><br>
 							</tr>

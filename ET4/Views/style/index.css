@@ -19,9 +19,13 @@ body{
   line-height: 1.6em;
   text-align: center;
 }
+.test{
+  background-color: #000;
+}
+
 #head {
   text-align: center;
-  background-color: #f4f4f4;
+  background-color: #000;
   border-radius: 20px;
 }
 #foot {

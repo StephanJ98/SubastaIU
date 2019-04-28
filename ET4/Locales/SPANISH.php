@@ -142,6 +142,10 @@ array(
 	'La puja no es suficientemente alta'=>'La puja no es suficientemente alta',
 	'idHistorial' => 'idHistorial',
 	'Identificador de Historial' => 'Identificador de Historial',
-	'Buscar Usuario' => 'Buscar usuario'
+	'Buscar Usuario' => 'Buscar usuario',
+	'idNotificacion' => 'idNotificacion',
+	'fecha' => 'fecha',
+	'mensaje' => 'mensaje',
+	'Notificación' => 'Notificación'
 );
 ?>
