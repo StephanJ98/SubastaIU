@@ -19,13 +19,13 @@
 		<!-- Ceci doit être le premier css chargé.-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" media="screen" href="../Views/style/index.css" hreflang="es">
-	<link rel="stylesheet" type="text/css" media="screen" href="../Views/tcal/tcal.css" hreflang="es">
+	
 	<?php include '../Views/js/validaciones.js' ?>
 	<title>Subastas</title>
 </head>
 <body>
 <header class="container" id="head">
-	<p style="text-align:center">
+	<p style="text-align:center;">
 		<h1>
 <?php
 			echo $strings['Portal de Subastas'];
@@ -63,14 +63,7 @@
 		<a href = '../Controllers/Register_Controller.php' ><img src="../Views/icon/registrarse.png" alt="<?php echo $strings['Registrar']?>" /></a>
 <?php		
 	}
-?>
-	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
-		<?php echo $strings['idioma']; ?>
-		<button type="submit"  name="idioma" value="FRANCAIS" ><img src="../Views/icon/france.png" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
-		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
-	</form>	
+?>	
 	<div class="row">
 		<?php
 		if (IsAuthenticated()){
