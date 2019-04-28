@@ -6,25 +6,16 @@
 */
 session_start(); //solicito trabajar con la session
 include '../Models/NOTIFICACION_Model.php';
-include '../Views/NOTIFICACION_ADD_View.php';
-include '../Views/NOTIFICACION_DELETE_View.php';
-include '../Views/NOTIFICACION_EDIT_View.php';
-include '../Views/NOTIFICACION_SEARCH_View.php';
-include '../Views/NOTIFICACION_SHOWALL_View.php';
-include '../Views/NOTIFICACION_SHOWCURRENT_View.php';
+include '../Views/NOTIFICACION_View.php';
 include '../Views/MESSAGE_View.php';
 
 function get_data_form() {
 	$idNotificacion = $_REQUEST[ 'idNotificacion' ];
-	$fecha = $_REQUEST[ 'fecha' ];
-	$idUser = $_REQUEST[ 'idUser' ];
 	$mensaje = $_REQUEST[ 'mensaje' ];
 	$action = $_REQUEST[ 'action' ];
 
 	$NOTIFICACION = new NOTIFICACION_Model(
 		$idNotificacion,
-		$fecha,
-		$idUser,
 		$mensaje
 	);
 	return $NOTIFICACION;
@@ -45,7 +36,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 		break;
 	case 'DELETE':
 		if ( !$_POST ) {
-			$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '', '', '');
+			$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '');
 			$valores = $NOTIFICACION->RellenaDatos( $_REQUEST[ 'idNotificacion' ] );
 			new NOTIFICACION_DELETE( $valores );
 		} else {
@@ -57,7 +48,7 @@ switch ( $_REQUEST[ 'action' ] ) {
 	case 'EDIT':
 		if ( !$_POST ) {
 
-			$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '', '', '');
+			$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '');
 			$valores = $NOTIFICACION->RellenaDatos( $_REQUEST[ 'idNotificacion' ] );
 			new NOTIFICACION_EDIT( $valores );
 		} else {
@@ -67,29 +58,20 @@ switch ( $_REQUEST[ 'action' ] ) {
 			new MESSAGE( $respuesta, '../Controllers/NOTIFICACION_Controller.php' );
 		}
 		break;
-	case 'SEARCH':
-		if ( !$_POST ) {
-			new NOTIFICACION_SEARCH();
-		} else {
-			$NOTIFICACION = get_data_form();
-			$datos = $NOTIFICACION->SEARCH();
-			$lista = array( 'idNotificacion', 'fecha', 'idUser', 'mensaje' );
-			new NOTIFICACION_SHOWALL( $lista, $datos );
-		}
-		break;
+
 	case 'SHOWCURRENT':
-		$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '', '', '');
+		$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '');
 		$valores = $NOTIFICACION->RellenaDatos( $_REQUEST[ 'idNotificacion' ] );
 		new NOTIFICACION_SHOWCURRENT( $valores );
 		break;
 	default:
 		if ( !$_POST ) {
-			$NOTIFICACION = new NOTIFICACION_Model( $_REQUEST[ 'idNotificacion' ], '', '', '');
+			$NOTIFICACION = new NOTIFICACION_Model( '', '');
 		} else {
 			$NOTIFICACION = get_data_form();
 		}
 		$datos = $NOTIFICACION->SEARCH();
-		$lista = array( 'idNotificacion', 'fecha', 'idUser', 'mensaje' );
-		new NOTIFICACION_SHOWALL( $lista, $datos );
+		$lista = array( 'idNotificacion', 'mensaje' );
+		new NOTIFICACION( $lista, $datos );
 }
 ?>

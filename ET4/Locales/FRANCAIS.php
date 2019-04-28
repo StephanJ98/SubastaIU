@@ -138,6 +138,10 @@ array(
 	'La puja no es suficientemente alta'=>"L'offre n'est pas assez élevée",
 	'idHistorial' => 'idhistory',
 	'Identificador de Historial' => 'Identifiant de l´historique',
-	'Buscar Usuario' => 'Rechercher un utilisateur'
+	'Buscar Usuario' => 'Rechercher un utilisateur',
+	'idNotificacion' => 'idNotif',
+	'fecha' => 'date',
+	'mensaje' => 'messaje',
+	'Notificación' => 'Notification'
 );
 ?>

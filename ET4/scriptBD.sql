@@ -31,7 +31,6 @@ CREATE TABLE IF NOT EXISTS `USUARIO`(
 `avatar` varchar(60) NOT NULL,
 `rol` varchar(1) NOT NULL,
 PRIMARY KEY (`idUser`),
-FOREIGN KEY (`rol`) REFERENCES ROL(`idRol`),
 UNIQUE KEY `email` (`email`),
 UNIQUE KEY `avatar` (`avatar`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -39,21 +38,6 @@ UNIQUE KEY `avatar` (`avatar`)
 INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('admin', 'admin', 'administrador', 'admin@admin.fr', '../Files/icijapon___Baa4UThAl55___.jpg', '0');
 INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('puja', 'puja', 'pujador', 'puja@puja.fr', '../Files/icijapon___BbMp2K9gXcJ___.jpg', '1');
 INSERT INTO `usuario` (`idUser`, `password`, `nombre`, `email`, `avatar`, `rol`) VALUES ('subas', 'subas', 'subastador', 'subas@subas.fr', '../Files/bonsaimirai___BcDP_9pD2Vi___.jpg', '2');
-
---
--- Estructura de tabla para la tabla `ROL`
---
-CREATE TABLE IF NOT EXISTS `ROL`(
-`idRol` varchar(1) NOT NULL,
-`nomRol` varchar(15) NOT NULL,
-`descripRol` varchar(300) NOT NULL,
-PRIMARY KEY (`idRol`),
-UNIQUE KEY `NomRol` (`NomRol`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('0','Administrador','Supervisa usuarios y subastas.');
-INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('1','Pujador','Solo puede pujar.');
-INSERT INTO ROL(`idRol`,`nomRol`,`descripRol`) VALUES ('2','Subastador','Crea subastas.');
 
 --
 -- Estructura de tabla para la tabla `SUBASTA`
@@ -88,8 +72,6 @@ FOREIGN KEY (`idUser`) REFERENCES USUARIO(`idUser`)
 -- 
 CREATE TABLE IF NOT EXISTS `NOTIFICACION`(
 `idNotificacion` varchar(30) NOT NULL,
-`fecha` date NOT NULL,
-`idUser` varchar(30) NOT NULL,
 `mensaje` varchar(300) NOT NULL,
 PRIMARY KEY (`idNotificacion`),
 FOREIGN KEY (`idUser`) REFERENCES USUARIO(`idUser`)

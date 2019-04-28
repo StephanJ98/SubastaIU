@@ -85,7 +85,10 @@
 		if (IsAuthenticated() && $_SESSION['rol'] == 0){
 			?>
 			<div class="col">
-			<a href="../Controllers/HISTORIAL_Controller.php"><?php echo $strings['Historial'];?></a>
+				<a href="../Controllers/HISTORIAL_Controller.php"><?php echo $strings['Historial'];?></a>
+			</div>
+			<div class="col">
+				<a href="../Controllers/NOTIFICACION_Controller.php"><?php echo $strings['Notificación'];?></a>
 			</div>
 			<?php
 		}
