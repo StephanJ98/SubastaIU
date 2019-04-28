@@ -66,6 +66,7 @@
 ?>
 	<form name='idiomform' action="../Functions/CambioIdioma.php" method="post">
 		<?php echo $strings['idioma']; ?>
+		<button type="submit"  name="idioma" value="FRANCAIS" ><img src="../Views/icon/france.png" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="SPANISH" ><img src="../Views/icon/banderaEspaña.jpg" alt="<?php echo $strings['Cambiar idioma a español']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="ENGLISH" ><img src="../Views/icon/banderaReinoUnido.png" alt="<?php echo $strings['Cambiar idioma a inglés']?>" width="32" height="20" style="display: block;"/></button>
 		<button type="submit"  name="idioma" value="GALLAECIAN" ><img src="../Views/icon/banderaGalicia.png" alt="<?php echo $strings['Cambiar idioma a gallego']?>" width="32" height="20" style="display: block;"/></button>
@@ -77,15 +78,16 @@
 			<div class="col">
 			<a href="../Controllers/USUARIO_Controller.php"><?php echo $strings['Inicio'];?></a>
 			</div>
-			<?php
-		}
-		?>
+		
 		<div class="col">
 			<a href="../Controllers/SUBASTA_Controller.php"><?php echo $strings['Subastas'];?></a>
 		</div>
 		<div class="col">
 			<a href="../Controllers/PUJA_Controller.php"><?php echo $strings['Pujas'];?></a>
 		</div>
+			<?php
+		}
+		?>
 		<?php
 		if (IsAuthenticated() && $_SESSION['rol'] == 0){
 			?>
